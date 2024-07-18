@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.7.34031.279
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EduHome", "EduHome\EduHome.csproj", "{ACC7EA85-58B7-43B1-9368-BE4D207120FB}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{ACC7EA85-58B7-43B1-9368-BE4D207120FB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ACC7EA85-58B7-43B1-9368-BE4D207120FB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ACC7EA85-58B7-43B1-9368-BE4D207120FB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ACC7EA85-58B7-43B1-9368-BE4D207120FB}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {0E3EDF31-FAFC-4DAB-B3CA-73AA50D51A0D}
+	EndGlobalSection
+EndGlobal
