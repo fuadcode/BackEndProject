@@ -161,6 +161,10 @@
       "PackagePath": "staticwebassets\\img\\banner\\banner.jpg"
     },
     {
+      "Id": "C:\\Users\\Feteli Isgenderov\\Desktop\\EduHome\\EduHome\\wwwroot\\img\\banner\\download.jpg",
+      "PackagePath": "staticwebassets\\img\\banner\\download.jpg"
+    },
+    {
       "Id": "C:\\Users\\Feteli Isgenderov\\Desktop\\EduHome\\EduHome\\wwwroot\\img\\blog\\blog-detail.jpg",
       "PackagePath": "staticwebassets\\img\\blog\\blog-detail.jpg"
     },
@@ -343,6 +347,10 @@
     {
       "Id": "C:\\Users\\Feteli Isgenderov\\Desktop\\EduHome\\EduHome\\wwwroot\\img\\footer\\footer4.jpg",
       "PackagePath": "staticwebassets\\img\\footer\\footer4.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Feteli Isgenderov\\Desktop\\EduHome\\EduHome\\wwwroot\\img\\icon\\edu-icon.png",
+      "PackagePath": "staticwebassets\\img\\icon\\edu-icon.png"
     },
     {
       "Id": "C:\\Users\\Feteli Isgenderov\\Desktop\\EduHome\\EduHome\\wwwroot\\img\\icon\\section.png",

@@ -5,25 +5,27 @@
         <!-- Start Slingle Slide -->
         @foreach (var img in Model.Sliders)
         {
-            <div class="single-slide item" style="background-image: url(img/slider/@img.ImgUrl)"></div>
-
-        }
-        <!-- Start Slider Main -->
-        <div class="slider-content-area">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-7 col-md-offset-left-5">
-                        <div class="slide-content-wrapper text-left">
-                            <div class="slide-content">
-                                <h3>@Model.SliderText.Title </h3>
-                                <p>@Model.SliderText.Desc  </p>
-                                <a class="default-btn" asp-controller="about" asp-action="index">@Model.SliderText.ImgUrl</a>
+            <div class="single-slide item" style="background-image: url(img/slider/@img.ImgUrl)">
+                <!-- Start Slider Main -->
+                <div class="slider-content-area">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-7 col-md-offset-left-5">
+                                <div class="slide-content-wrapper text-left">
+                                    <div class="slide-content">
+                                        <h3>@Model.SliderText.Title </h3>
+                                        <p>@Model.SliderText.Desc  </p>
+                                        <a class="default-btn" href="about.html">Learn more</a>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
+                </div>
+
+        }
+       
     </div>
 </section>
 <!-- Background Area End -->
@@ -33,58 +35,40 @@
         <div class="row">
             <div class="col-md-6 col-sm-6 col-xs-12">
                 <div class="notice-left">
-                    <h3>notice board</h3>
+                    <h3>NOTICE BOARD</h3>
                     <div class="single-notice-left mb-25 pb-25">
-                        <h4>5, June 2017</h4>
-                        <p>I must explain to you how all this mistaken idea of denouncing plasure and praising pain was born and I will give you a complete </p>
-                    </div>
-                    <div class="single-notice-left mb-25 pb-25">
-                        <h4>4, June 2017</h4>
-                        <p>I must explain to you how all this mistaken idea of denouncing plasure and praising pain was born and I will give you a complete </p>
-                    </div>
-                    <div class="single-notice-left pb-75">
-                        <h4>3, June 2017</h4>
-                        <p>I must explain to you how all this mistaken idea of denouncing plasure and praising pain was born and I will give you a complete </p>
-                    </div>
-                    <div class="single-notice-left mb-25 pb-25">
-                        <h4>5, June 2017</h4>
-                        <p>I must explain to you how all this mistaken idea of denouncing plasure and praising pain was born and I will give you a complete </p>
-                    </div>
-                    <div class="single-notice-left mb-25 pb-25">
-                        <h4>4, June 2017</h4>
-                        <p>I must explain to you how all this mistaken idea of denouncing plasure and praising pain was born and I will give you a complete </p>
-                    </div>
-                    <div class="single-notice-left pb-70">
-                        <h4>3, June 2017</h4>
-                        <p>I must explain to you how all this mistaken idea of denouncing plasure and praising pain was born and I will give you a complete </p>
-                    </div>
-                    <div class="single-notice-left mb-25 pb-25">
-                        <h4>5, June 2017</h4>
-                        <p>I must explain to you how all this mistaken idea of denouncing plasure and praising pain was born and I will give you a complete </p>
-                    </div>
-                    <div class="single-notice-left mb-25 pb-25">
-                        <h4>4, June 2017</h4>
-                        <p>I must explain to you how all this mistaken idea of denouncing plasure and praising pain was born and I will give you a complete </p>
-                    </div>
-                    <div class="single-notice-left pb-70">
-                        <h4>3, June 2017</h4>
-                        <p>I must explain to you how all this mistaken idea of denouncing plasure and praising pain was born and I will give you a complete </p>
-                    </div>
+                        @foreach (var item in Model.Event)
+                        {
+                            <div class="single-notice-right mb-25 pb-25">
+                            <h4>@item.Time</h4>
+                            <p>@item.Desc</p> 
+                            </div>
+                        }
+     </div>          
                 </div>
             </div>
             <div class="col-md-6 col-sm-6 col-xs-12">
                 <div class="notice-right">
                     <div class="single-notice-right mb-25 pb-25">
                         <h3>PROFESSIONAL TEACHER</h3>
-                        <p>I must explain to you how all this mistaken idea of denouncing pleure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings </p>
+                        @foreach(var item in Model.Settings)
+                        {
+                            <p>@item.Desc</p>
+                        }
                     </div>
                     <div class="single-notice-right mb-25 pb-25">
                         <h3>Online courses</h3>
-                        <p>I must explain to you how all this mistaken idea of denouncing pleure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings </p>
-                    </div>
+                        @foreach (var item in Model.Settings)
+                        {
+                            <p>@item.Desc</p>
+                        }
+                      </div>
                     <div class="single-notice-right">
                         <h3>easy to addmission</h3>
-                        <p>I must explain to you how all this mistaken idea of denouncing pleure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings </p>
+                            @foreach (var item in Model.Settings)
+                            {
+                                <p>@item.Desc</p>
+                            }
                     </div>
                 </div>
             </div>
@@ -99,8 +83,12 @@
             <div class="col-md-8 col-md-offset-left-4 col-sm-8 col-md-offset-left-4">
                 <div class="choose-content text-left">
                     <h2>WHY YOU CHOOSE EDUHOME ?</h2>
-                    <p>I must explain to you how all this mistaken idea of denouncing pleure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings  the master-builder of humanit happiness. No one rejects, dislikes, or avoids pleasure itself, because it is pleasure, but because. </p>
-                    <p class="choose-option">I must explain to you how all this mistaken idea of denouncing pleure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings  the master-builder. </p>
+                    @foreach (var item in Model.Mains)
+                    {
+                        <p>@item.Desc </p>
+                        <p class="choose-option">@item.Desc</p>
+                    }
+                        
                     <a class="default-btn" href="course-details.html">view courses</a>
                 </div>
             </div>
@@ -119,12 +107,14 @@
                 </div>
             </div>
         </div>
-        <div class="row">
+        @foreach(var img in Model.Cards)
+        {
+              <div class="row">
             <div class="col-md-4 col-sm-6 col-xs-12">
                 <div class="single-course">
                     <div class="course-img">
                         <a href="course-details.html">
-                            <img src="img/course/course1.jpg" alt="course">
+                            <img src="~/img/course/@img.ImgUrl" alt="course">
                             <div class="course-hover">
                                 <i class="fa fa-link"></i>
                             </div>
@@ -137,44 +127,12 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-4 col-sm-6 col-xs-12">
-                <div class="single-course">
-                    <div class="course-img">
-                        <a href="course-details.html">
-                            <img src="img/course/course2.jpg" alt="course">
-                            <div class="course-hover">
-                                <i class="fa fa-link"></i>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="course-content">
-                        <h3><a href="course-details.html">CSE ENGINEERING</a></h3>
-                        <p>I must explain to you how all this a mistaken idea of denouncing great explorer of the rut the is lder of human happiness</p>
-                        <a class="default-btn" href="course-details.html">read more</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4 hidden-sm col-xs-12">
-                <div class="single-course">
-                    <div class="course-img">
-                        <a href="course-details.html">
-                            <img src="img/course/course3.jpg" alt="course">
-                            <div class="course-hover">
-                                <i class="fa fa-link"></i>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="course-content">
-                        <h3><a href="course-details.html">CSE ENGINEERING</a></h3>
-                        <p>I must explain to you how all this a mistaken idea of denouncing great explorer of the rut the is lder of human happiness</p>
-                        <a class="default-btn" href="course-details.html">read more</a>
-                    </div>
-                </div>
-            </div>
+             </div>
+  
+        }
         </div>
-    </div>
 </div>
-<!-- Courses Area End -->
+        <!-- Courses Area End -->
 <!-- Event Area Start -->
 <div class="event-area one text-center pt-140 pb-150">
     <div class="container">

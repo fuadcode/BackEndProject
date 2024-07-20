@@ -1,5 +1,5 @@
 ﻿using EduHome.Models;
-using System.Reflection.Metadata;
+
 
 namespace EduHome.ViewModels
 {
@@ -7,5 +7,14 @@ namespace EduHome.ViewModels
     {
         public IEnumerable<Slider> Sliders { get; set; }
         public SliderText SliderText { get; set; }
+
+        public IEnumerable<Event> Event { get; set; }
+
+        public IEnumerable<Setting> Settings { get; set; }
+
+        public IEnumerable<Main> Mains { get; set; }
+        public IEnumerable<Card> Cards { get; set; }
+
+        public CardText CardTexts { get; set; }
     }
 }

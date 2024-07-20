@@ -8,8 +8,15 @@ namespace EduHome.Data
     {
         public DbSet<Slider> Sliders { get; set; }
         public DbSet<SliderText> SliderText { get; set; }
+        public DbSet<Event> Event { get; set; }
+        public DbSet<Setting> Settings { get; set; }
+        public DbSet<Main> Mains { get; set; }
+        public DbSet<Card> Cards { get; set; }
+        public DbSet<CardText> CardTexts { get; set; }
 
-       public EduHomeDbContext() { }    
+
+
+        public EduHomeDbContext() { }    
      
 
         public EduHomeDbContext(DbContextOptions<EduHomeDbContext> options)
