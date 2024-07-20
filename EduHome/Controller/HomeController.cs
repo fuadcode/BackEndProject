@@ -1,4 +1,7 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using EduHome.Data;
+using EduHome.ViewModels;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace EduHome.Controllers
 {
@@ -6,7 +9,9 @@ namespace EduHome.Controllers
     {
         public IActionResult Index()
         {
+            
             return View();
         }
+
     }
 }

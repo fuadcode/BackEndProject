@@ -1,20 +1,26 @@
-﻿using EduHome.Models;
-using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+﻿
+using EduHome.Models;
 using Microsoft.EntityFrameworkCore;
-
 
 namespace EduHome.Data
 {
-    public class EduHomeDbContext : IdentityDbContext<AppUser>
+    public class EduHomeDbContext : DbContext
     {
         public DbSet<Slider> Sliders { get; set; }
-        public DbSet<SliderEntity> SliderEntities { get; set; }
+        public DbSet<SliderText> SliderText { get; set; }
 
+       public EduHomeDbContext() { }    
+     
+
+        public EduHomeDbContext(DbContextOptions<EduHomeDbContext> options)
+       : base(options)
+        {
+        }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             if (!optionsBuilder.IsConfigured)
             {
-                optionsBuilder.UseSqlServer("YourConnectionStringHere");
+                optionsBuilder.UseSqlServer("Your_Connection_String_Here");
             }
         }
 
