@@ -11,8 +11,6 @@
     <Folder Include="Areas\AdminArea\" />
     <Folder Include="Extensions\" />
     <Folder Include="Helpers\" />
-    <Folder Include="ViewComponents\" />
-    <Folder Include="Views\Setting\" />
   </ItemGroup>
 
   <ItemGroup>

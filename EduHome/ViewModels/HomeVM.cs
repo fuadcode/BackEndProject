@@ -5,16 +5,12 @@ namespace EduHome.ViewModels
 {
     public class HomeVM
     {
+        public Dictionary<string,string> WebSettings { get; set; }
         public IEnumerable<Slider> Sliders { get; set; }
-        public SliderText SliderText { get; set; }
-
-        public IEnumerable<Event> Event { get; set; }
-
-        public IEnumerable<Setting> Settings { get; set; }
-
-        public IEnumerable<Main> Mains { get; set; }
-        public IEnumerable<Card> Cards { get; set; }
-
-        public CardText CardTexts { get; set; }
+        public IEnumerable<Event> Events { get; set; }
+        public IEnumerable<Course> Courses { get; set; }
+        public IEnumerable<Testimonial> Testimonials { get; set; }
+        public IEnumerable<Blog> Blogs { get; set; }
+        public Subscription Subscriptions { get; set; }
     }
 }

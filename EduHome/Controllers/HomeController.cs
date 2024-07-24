@@ -1,7 +1,9 @@
 ﻿using EduHome.Data;
+using EduHome.Models;
 using EduHome.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+
 
 namespace EduHome.Controllers
 {
@@ -16,29 +18,49 @@ namespace EduHome.Controllers
 
         public IActionResult Index()
         {
+            var websettings = _context.WebSettings.ToDictionary(s => s.Key, s => s.Value);
             var sliders = _context.Sliders.AsNoTracking().ToList();
-            var sliderText = _context.SliderText.AsNoTracking().FirstOrDefault();
-            var events = _context.Event.AsNoTracking().ToList();
-            var setting =_context.Settings.AsNoTracking().ToList(); 
-            var main = _context.Mains.AsNoTracking().ToList();
-            var card=_context.Cards.AsNoTracking().ToList();
-            var cardtext =_context.CardTexts.AsNoTracking().FirstOrDefault();
-           
+            var events = _context.Events.AsNoTracking().ToList();
+            var courses = _context.Courses.AsNoTracking().ToList();
+            var testimonials = _context.Testimonials.AsNoTracking().ToList();
+            var blogs = _context.Blogs.AsNoTracking().ToList();
+            var subscription = _context.Subscriptions.AsNoTracking().FirstOrDefault();
+
             HomeVM homeVM = new()
             {
+                WebSettings = websettings,
                 Sliders = sliders,
-                SliderText = sliderText,
-                Event = events,
-                Settings = setting,
-                Mains=main,
-                Cards=card,
-                CardTexts=cardtext
-                
-               
-             
-
+                Events = events,
+                Courses = courses,
+                Testimonials = testimonials,
+                Blogs = blogs,
+                Subscriptions = subscription,
             };
             return View(homeVM);
+        }
+
+        [HttpPost]
+        [Route("subscribe")]
+        public async Task<IActionResult> Subscribe(string email)
+        {
+            if (ModelState.IsValid)
+            {
+                var existingSubscription = await _context.Subscriptions
+                    .AsNoTracking()
+                    .FirstOrDefaultAsync(s => s.Email == email);
+
+                if (existingSubscription != null)
+                {
+                    return Json(new { success = false, message = "Bu email artiq subscribe olunmushdur!" });
+                }
+
+                var subscription = new Subscription { Email = email };
+                _context.Subscriptions.Add(subscription);
+                await _context.SaveChangesAsync();
+                return Json(new {message="Subscribe Ugurlu!" });
+            }
+
+            return Json(new {message = "Invalid Email Adress!" });
         }
     }
 }

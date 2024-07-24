@@ -1,5 +1,8 @@
-﻿@model HomeVM
-
+﻿@using System.Globalization;
+@model HomeVM
+@{
+    CultureInfo englishCulture = new CultureInfo("en-US");
+}
 <section id="slider-container" class="slider-area">
     <div class="slider-owl owl-theme owl-carousel">
         <!-- Start Slingle Slide -->
@@ -13,8 +16,8 @@
                             <div class="col-md-7 col-md-offset-left-5">
                                 <div class="slide-content-wrapper text-left">
                                     <div class="slide-content">
-                                        <h3>@Model.SliderText.Title </h3>
-                                        <p>@Model.SliderText.Desc  </p>
+                                        <h3>@img.Title </h3>
+                                        <p>@img.Desc</p>
                                         <a class="default-btn" href="about.html">Learn more</a>
                                     </div>
                                 </div>
@@ -23,9 +26,7 @@
                     </div>
                 </div>
                 </div>
-
         }
-       
     </div>
 </section>
 <!-- Background Area End -->
@@ -35,40 +36,31 @@
         <div class="row">
             <div class="col-md-6 col-sm-6 col-xs-12">
                 <div class="notice-left">
-                    <h3>NOTICE BOARD</h3>
-                    <div class="single-notice-left mb-25 pb-25">
-                        @foreach (var item in Model.Event)
-                        {
-                            <div class="single-notice-right mb-25 pb-25">
-                            <h4>@item.Time</h4>
-                            <p>@item.Desc</p> 
+                    <h3>notice board</h3>
+                    @foreach (var item in Model.Events)
+                    {
+                        <a asp-controller="event" asp-action="detail" asp-route-id="@item.Id">
+                            <div class="single-notice-left mb-25 pb-25">
+                                <h4>@item.Time.ToString("MMM dd, yyyy",englishCulture) </h4>
+                                <p>@item.Desc </p>
                             </div>
-                        }
-     </div>          
+                        </a>
+                    }
                 </div>
             </div>
             <div class="col-md-6 col-sm-6 col-xs-12">
                 <div class="notice-right">
                     <div class="single-notice-right mb-25 pb-25">
-                        <h3>PROFESSIONAL TEACHER</h3>
-                        @foreach(var item in Model.Settings)
-                        {
-                            <p>@item.Desc</p>
-                        }
+                        <h3>@Model.WebSettings.FirstOrDefault(s=>s.Key=="SettingsTitle").Value</h3>
+                        <p>@Model.WebSettings.FirstOrDefault(s=>s.Key=="SettingsDesc").Value </p>
                     </div>
                     <div class="single-notice-right mb-25 pb-25">
-                        <h3>Online courses</h3>
-                        @foreach (var item in Model.Settings)
-                        {
-                            <p>@item.Desc</p>
-                        }
-                      </div>
+                        <h3>@Model.WebSettings.FirstOrDefault(s=>s.Key=="SettingsTitlee").Value</h3>
+                        <p>@Model.WebSettings.FirstOrDefault(s=>s.Key=="SettingsDescc").Value</p>
+                    </div>
                     <div class="single-notice-right">
-                        <h3>easy to addmission</h3>
-                            @foreach (var item in Model.Settings)
-                            {
-                                <p>@item.Desc</p>
-                            }
+                        <h3>@Model.WebSettings.FirstOrDefault(s=>s.Key=="SettingsTitles").Value</h3>
+                        <p>@Model.WebSettings.FirstOrDefault(s=>s.Key=="SettingsDescs").Value</p>
                     </div>
                 </div>
             </div>
@@ -82,13 +74,9 @@
         <div class="row">
             <div class="col-md-8 col-md-offset-left-4 col-sm-8 col-md-offset-left-4">
                 <div class="choose-content text-left">
-                    <h2>WHY YOU CHOOSE EDUHOME ?</h2>
-                    @foreach (var item in Model.Mains)
-                    {
-                        <p>@item.Desc </p>
-                        <p class="choose-option">@item.Desc</p>
-                    }
-                        
+                    <h2>@Model.WebSettings.FirstOrDefault(s=>s.Key=="CourseTitle").Value</h2>
+                    <p>@Model.WebSettings.FirstOrDefault(s=>s.Key=="CourseDesc").Value</p>
+                    <p class="choose-option">@Model.WebSettings.FirstOrDefault(s=>s.Key=="CourseDescNext").Value</p>
                     <a class="default-btn" href="course-details.html">view courses</a>
                 </div>
             </div>
@@ -107,32 +95,32 @@
                 </div>
             </div>
         </div>
-        @foreach(var img in Model.Cards)
-        {
-              <div class="row">
-            <div class="col-md-4 col-sm-6 col-xs-12">
-                <div class="single-course">
-                    <div class="course-img">
-                        <a href="course-details.html">
-                            <img src="~/img/course/@img.ImgUrl" alt="course">
-                            <div class="course-hover">
-                                <i class="fa fa-link"></i>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="course-content">
-                        <h3><a href="course-details.html">@Model.CardTexts.Title</a></h3>
-                        <p>@Model.CardTexts.Desc</p>
-                        <a class="default-btn" href="course-details.html">read more</a>
+        <div class="row">
+            @foreach(var item in Model.Courses)
+            {
+                <div class="col-md-4 col-sm-6 col-xs-12">
+                    <div class="single-course">
+                        <div class="course-img">
+                            <a href="course-details.html">
+                                <img src="~/img/course/@item.ImgUrl" alt="course">
+                                <div class="course-hover">
+                                    <i class="fa fa-link"></i>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="course-content">
+                            <h3><a href="course-details.html">@item.Name</a></h3>
+                            <p>@item.Desc</p>
+                            <a class="default-btn" href="course-details.html">read more</a>
+                        </div>
                     </div>
                 </div>
+            }
+                </div>
             </div>
-             </div>
-  
-        }
         </div>
-</div>
-        <!-- Courses Area End -->
+ 
+<!-- Courses Area End -->
 <!-- Event Area Start -->
 <div class="event-area one text-center pt-140 pb-150">
     <div class="container">
@@ -145,17 +133,19 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-md-6 col-sm-12 col-xs-12">
+            @foreach (var item in Model.Events)
+            {
+                 <div class="col-md-6 col-sm-12 col-xs-12">
                 <div class="single-event mb-35">
                     <div class="event-date">
-                        <h3><a href="event-details.html">20 <span>June</span></a></h3>
+                            <h3><a href="event-details.html">@item.Time.ToString("MMM dd",englishCulture)</a></h3>
                     </div>
                     <div class="event-content text-left">
                         <div class="event-content-left">
-                            <h4><a href="event-details.html">MICRO BIOLOGICAL WORKSHOP</a></h4>
+                            <h4><a href="event-details.html">@item.Name</a></h4>
                             <ul>
-                                <li><i class="fa fa-clock-o"></i>9.00 AM - 4.45 PM</li>
-                                <li><i class="fa fa-map-marker"></i>New Yourk City</li>
+                                    <li><i class="fa fa-clock-o"></i>@item.Time.ToString("h:mm tt-h:mm-tt")</li>
+                                <li><i class="fa fa-map-marker"></i>@item.Area</li>
                             </ul>
                         </div>
                         <div class="event-content-right">
@@ -163,155 +153,41 @@
                         </div>
                     </div>
                 </div>
-                <div class="single-event mb-35">
-                    <div class="event-date">
-                        <h3><a href="event-details.html">18 <span>June</span></a></h3>
-                    </div>
-                    <div class="event-content text-left">
-                        <div class="event-content-left">
-                            <h4><a href="event-details.html">ADVANCE PHP WORKSHOP</a></h4>
-                            <ul>
-                                <li><i class="fa fa-clock-o"></i>9.00 AM - 4.45 PM</li>
-                                <li><i class="fa fa-map-marker"></i>New Yourk City</li>
-                            </ul>
-                        </div>
-                        <div class="event-content-right">
-                            <a class="default-btn" href="event-details.html">join now</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="single-event mb-35">
-                    <div class="event-date">
-                        <h3><a href="event-details.html">16 <span>June</span></a></h3>
-                    </div>
-                    <div class="event-content text-left">
-                        <div class="event-content-left">
-                            <h4><a href="event-details.html">LEARN ENGLISH HISTORY</a></h4>
-                            <ul>
-                                <li><i class="fa fa-clock-o"></i>9.00 AM - 4.45 PM</li>
-                                <li><i class="fa fa-map-marker"></i>New Yourk City</li>
-                            </ul>
-                        </div>
-                        <div class="event-content-right">
-                            <a class="default-btn" href="event-details.html">join now</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="single-event">
-                    <div class="event-date">
-                        <h3><a href="event-details.html">14 <span>June</span></a></h3>
-                    </div>
-                    <div class="event-content text-left">
-                        <div class="event-content-left">
-                            <h4><a href="event-details.html">GLOBAL ECONOMIC CONFERENCE</a></h4>
-                            <ul>
-                                <li><i class="fa fa-clock-o"></i>9.00 AM - 4.45 PM</li>
-                                <li><i class="fa fa-map-marker"></i>New Yourk City</li>
-                            </ul>
-                        </div>
-                        <div class="event-content-right">
-                            <a class="default-btn" href="event-details.html">join now</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-6 hidden-sm hidden-xs">
-                <div class="single-event mb-35">
-                    <div class="event-date">
-                        <h3><a href="event-details.html">12 <span>June</span></a></h3>
-                    </div>
-                    <div class="event-content text-left">
-                        <div class="event-content-left">
-                            <h4><a href="event-details.html">MATHEMATICAL WORKSHOP</a></h4>
-                            <ul>
-                                <li><i class="fa fa-clock-o"></i>9.00 AM - 4.45 PM</li>
-                                <li><i class="fa fa-map-marker"></i>New Yourk City</li>
-                            </ul>
-                        </div>
-                        <div class="event-content-right">
-                            <a class="default-btn" href="event-details.html">join now</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="single-event mb-35">
-                    <div class="event-date">
-                        <h3><a href="event-details.html">10 <span>June</span></a></h3>
-                    </div>
-                    <div class="event-content text-left">
-                        <div class="event-content-left">
-                            <h4><a href="event-details.html">WORDPRESS AUTHOR MEET UP</a></h4>
-                            <ul>
-                                <li><i class="fa fa-clock-o"></i>9.00 AM - 4.45 PM</li>
-                                <li><i class="fa fa-map-marker"></i>New Yourk City</li>
-                            </ul>
-                        </div>
-                        <div class="event-content-right">
-                            <a class="default-btn" href="event-details.html">join now</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="single-event mb-35">
-                    <div class="event-date">
-                        <h3><a href="event-details.html">08 <span>June</span></a></h3>
-                    </div>
-                    <div class="event-content text-left">
-                        <div class="event-content-left">
-                            <h4><a href="event-details.html">DIGITAL MARKETING ANALYSIS</a></h4>
-                            <ul>
-                                <li><i class="fa fa-clock-o"></i>9.00 AM - 4.45 PM</li>
-                                <li><i class="fa fa-map-marker"></i>New Yourk City</li>
-                            </ul>
-                        </div>
-                        <div class="event-content-right">
-                            <a class="default-btn" href="event-details.html">join now</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="single-event">
-                    <div class="event-date">
-                        <h3><a href="event-details.html">06 <span>June</span></a></h3>
-                    </div>
-                    <div class="event-content text-left">
-                        <div class="event-content-left">
-                            <h4><a href="event-details.html">WROKSHOP ON UI &amp; UX</a></h4>
-                            <ul>
-                                <li><i class="fa fa-clock-o"></i>9.00 AM - 4.45 PM</li>
-                                <li><i class="fa fa-map-marker"></i>New Yourk City</li>
-                            </ul>
-                        </div>
-                        <div class="event-content-right">
-                            <a class="default-btn" href="event-details.html">join now</a>
-                        </div>
-                    </div>
-                </div>
+               
+               </div>       
+            }
+        </div>
             </div>
         </div>
-    </div>
-</div>
+   
 <!-- Event Area End -->
 <!-- Testimonial Area Start -->
 <div class="testimonial-area pt-110 pb-105 text-center">
     <div class="container">
         <div class="row">
-            <div class="testimonial-owl owl-theme owl-carousel">
-                <div class="col-md-8 col-md-offset-2 col-sm-12">
-                    <div class="single-testimonial">
-                        <div class="testimonial-info">
-                            <div class="testimonial-img">
-                                <img src="img/testimonial/testimonial.jpg" alt="testimonial">
-                            </div>
-                            <div class="testimonial-content">
-                                <p>I must explain to you how all this mistaken idea of denoung pleure and praising pain was born and I will give you a coete account of the system, and expound the actual</p>
-                                <h4>David Morgan</h4>
-                                <h5>Student, CSE</h5>
+            @foreach(var item in Model.Testimonials)
+            {
+                <div class="testimonial-owl owl-theme owl-carousel">
+                    <div class="col-md-8 col-md-offset-2 col-sm-12">
+                        <div class="single-testimonial">
+                            <div class="testimonial-info">
+                                <div class="testimonial-img">
+                                    <img src="~/img/testimonial/@item.ImgUrl" alt="testimonial">
+                                </div>
+                                <div class="testimonial-content">
+                                    <p>@item.Desc</p>
+                                    <h4>@item.Name</h4>
+                                    <h5>@item.Work</h5>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+                              </div>
     </div>
-</div>
+            }
+        </div>
+        </div>
+        </div>
+  
 <!-- Testimonial Area End -->
 <!-- Blog Area Start -->
 <div class="blog-area pt-150 pb-150">
@@ -325,66 +201,32 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-md-4 col-sm-6 col-xs-12">
-                <div class="single-blog">
-                    <div class="blog-img">
-                        <a href="blog-details.html"><img src="img/blog/blog1.jpg" alt="blog"></a>
-                        <div class="blog-hover">
-                            <a href="blog-details.html"><i class="fa fa-link"></i></a>
+            @foreach(var item in Model.Blogs)
+            {
+                <div class="col-md-4 col-sm-6 col-xs-12">
+                    <div class="single-blog">
+                        <div class="blog-img">
+                            <a href="blog-details.html"><img src="~/img/blog/@item.ImgUrl" alt="blog"></a>
+                            <div class="blog-hover">
+                                <a href="blog-details.html"><i class="fa fa-link"></i></a>
+                            </div>
                         </div>
-                    </div>
-                    <div class="blog-content">
-                        <div class="blog-top">
-                            <p>By Alex  /  June 20, 2017  /  <i class="fa fa-comments-o"></i> 4</p>
-                        </div>
-                        <div class="blog-bottom">
-                            <h2><a href="blog-details.html">I must explain to you how all this a mistaken idea </a></h2>
-                            <a href="blog-details.html">read more</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4 col-sm-6 col-xs-12">
-                <div class="single-blog">
-                    <div class="blog-img">
-                        <a href="blog-details.html"><img src="img/blog/blog2.jpg" alt="blog"></a>
-                        <div class="blog-hover">
-                            <a href="blog-details.html"><i class="fa fa-link"></i></a>
-                        </div>
-                    </div>
-                    <div class="blog-content">
-                        <div class="blog-top">
-                            <p>By Alex  /  June 20, 2017  /  <i class="fa fa-comments-o"></i> 4</p>
-                        </div>
-                        <div class="blog-bottom">
-                            <h2><a href="blog-details.html">I must explain to you how all this a mistaken idea </a></h2>
-                            <a href="blog-details.html">read more</a>
+                        <div class="blog-content">
+                            <div class="blog-top">
+                                <p>@item.Name  /  @item.Time.ToString("MMM dd, yyyy",englishCulture)  /  <i class="fa fa-comments-o"></i> @item.Comment</p>
+                            </div>
+                            <div class="blog-bottom">
+                                <h2><a href="blog-details.html">@item.Desc </a></h2>
+                                <a href="blog-details.html">read more</a>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="col-md-4 hidden-sm col-xs-12">
-                <div class="single-blog">
-                    <div class="blog-img">
-                        <a href="blog-details.html"><img src="img/blog/blog3.jpg" alt="blog"></a>
-                        <div class="blog-hover">
-                            <a href="blog-details.html"><i class="fa fa-link"></i></a>
-                        </div>
-                    </div>
-                    <div class="blog-content">
-                        <div class="blog-top">
-                            <p>By Alex  /  June 20, 2017  /  <i class="fa fa-comments-o"></i> 4</p>
-                        </div>
-                        <div class="blog-bottom">
-                            <h2><a href="blog-details.html">I must explain to you how all this a mistaken idea </a></h2>
-                            <a href="blog-details.html">read more</a>
-                        </div>
+            }
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
-</div>
+  
 <!-- Blog Area End -->
 <!-- Subscribe Start -->
 <div class="subscribe-area pt-60 pb-70">
@@ -392,28 +234,25 @@
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
                 <div class="subscribe-content section-title text-center">
-                    <h2>subscribe our newsletter</h2>
-                    <p>I must explain to you how all this mistaken idea </p>
+                    <h2>Subscribe to our newsletter</h2>
+                    <p>Stay updated with our latest news and offers.</p>
                 </div>
-                <div class="newsletter-form mc_embed_signup">
-                    <form action="http://devitems.us11.list-manage.com/subscribe/post?u=6bbb9b6f5827bd842d9640c82&amp;id=05d85f18ef" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
-                        <div id="mc_embed_signup_scroll" class="mc-form">
-                            <input type="email" value="" name="EMAIL" class="email" id="mce-EMAIL" placeholder="Enter your e-mail address" required>
-                            <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
-                            <div class="mc-news" aria-hidden="true"><input type="text" name="b_6bbb9b6f5827bd842d9640c82_05d85f18ef" tabindex="-1" value=""></div>
-                            <button id="mc-embedded-subscribe" class="default-btn" type="submit" name="subscribe"><span>subscribe</span></button>
+                <div class="newsletter-form">
+                    <form action="/subscribe" method="post" id="subscribe-form" novalidate>
+                        <div id="subscribe-form-content" class="mc-form">
+                            <input type="email" name="Email" class="email" placeholder="Enter your e-mail address" required>
+                            <button class="default-btn" type="submit"><span>Subscribe</span></button>
                         </div>
                     </form>
-                    <!-- mailchimp-alerts Start -->
-                    <div class="mailchimp-alerts">
-                        <div class="mailchimp-submitting"></div><!-- mailchimp-submitting end -->
-                        <div class="mailchimp-success"></div><!-- mailchimp-success end -->
-                        <div class="mailchimp-error"></div><!-- mailchimp-error end -->
+                    <div class="alerts">
+                        <div class="submitting" style="display: none;">Submitting...</div>
+                        <div class="success" style="display: none;">Subscribed successfully!</div>
+                        <div class="error" style="display: none;">An error occurred. Please try again.</div>
                     </div>
-                    <!-- mailchimp-alerts end -->
                 </div>
             </div>
         </div>
     </div>
 </div>
+
 <!-- Subscribe End -->
