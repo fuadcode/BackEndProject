@@ -1,6 +1,5 @@
 ﻿
 using EduHome.Models;
-using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 namespace EduHome.Data
@@ -22,8 +21,8 @@ namespace EduHome.Data
 
 
 
-        public EduHomeDbContext() { }    
-     
+        public EduHomeDbContext() { }
+
 
         public EduHomeDbContext(DbContextOptions<EduHomeDbContext> options)
        : base(options)

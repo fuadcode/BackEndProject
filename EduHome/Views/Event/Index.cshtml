@@ -1,4 +1,6 @@
-﻿    <!-- Banner Area Start -->
+﻿@model EventVM
+
+<!-- Banner Area Start -->
 <div class="banner-area-wrapper">
     <div class="banner-area text-center">
         <div class="container">
@@ -6,7 +8,7 @@
                 <div class="col-xs-12">
                     <div class="banner-content-wrapper">
                         <div class="banner-content">
-                            <h2>our teachers</h2>
+                            <h2>event</h2>
                         </div>
                     </div>
                 </div>
@@ -15,15 +17,15 @@
     </div>
 </div>
 <!-- Banner Area End -->
-<!-- Teacher Start -->
-<div class="teacher-area pt-150 pb-105">
+<!-- Event Start -->
+<div class="event-area three text-center pt-150 pb-150">
     <div class="container">
         <div class="row">
-           @await Component.InvokeAsync("Teacher")
+            @await Component.InvokeAsync("Event")
         </div>
     </div>
 </div>
-<!-- Teacher End -->
+<!-- Event End -->
 <!-- Subscribe Start -->
 <div class="subscribe-area pt-60 pb-70">
     <div class="container">

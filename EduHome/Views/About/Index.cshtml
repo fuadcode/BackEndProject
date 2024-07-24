@@ -1,5 +1,8 @@
-﻿@model AboutVM
-
+﻿@using System.Globalization;
+@model AboutVM
+@{
+    CultureInfo englishCulture = new CultureInfo("en-US");
+}
 <body>
     <!-- Banner Area Start -->
     <div class="banner-area-wrapper">
@@ -74,30 +77,34 @@
         </div>
     </div>
         <!-- Teacher End -->
-        <!-- Testimonial Area Start -->
-        <div class="testimonial-area pt-110 pb-105 text-center">
-            <div class="container">
-                <div class="row">
+    <!-- Testimonial Area Start -->
+    <div class="testimonial-area pt-110 pb-105 text-center">
+        <div class="container">
+            <div class="row">
+                @foreach (var item in Model.Testimonials)
+                {
                     <div class="testimonial-owl owl-theme owl-carousel">
                         <div class="col-md-8 col-md-offset-2 col-sm-12">
                             <div class="single-testimonial">
                                 <div class="testimonial-info">
                                     <div class="testimonial-img">
-                                        <img src="img/testimonial/testimonial.jpg" alt="testimonial">
+                                        <img src="~/img/testimonial/@item.ImgUrl" alt="testimonial">
                                     </div>
                                     <div class="testimonial-content">
-                                        <p>I must explain to you how all this mistaken idea of denoung pleure and praising pain was born and I will give you a coete account of the system, and expound the actual</p>
-                                        <h4>David Morgan</h4>
-                                        <h5>Student, CSE</h5>
+                                        <p>@item.Desc</p>
+                                        <h4>@item.Name</h4>
+                                        <h5>@item.Work</h5>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
+                }
             </div>
         </div>
-        <!-- Testimonial Area End -->
+    </div>
+
+    <!-- Testimonial Area End -->
         <!-- Notice Start -->
         <section class="notice-area two pt-140 pb-100">
             <div class="container">
@@ -118,30 +125,15 @@
                         <div class="notice-left-wrapper">
                             <h3>notice board</h3>
                             <div class="notice-left">
-                                <div class="single-notice-left mb-23 pb-20">
-                                    <h4>5, June 2017</h4>
-                                    <p>I must explain to you how all this mistaken idea of denouncing plasure and praising pain was born and I will give you a complete </p>
-                                </div>
-                                <div class="single-notice-left hidden-sm mb-23 pb-20">
-                                    <h4>4, June 2017</h4>
-                                    <p>I must explain to you how all this mistaken idea of denouncing plasure and praising pain was born and I will give you a complete </p>
-                                </div>
-                                <div class="single-notice-left pb-70">
-                                    <h4>3, June 2017</h4>
-                                    <p>I must explain to you how all this mistaken idea of denouncing plasure and praising pain was born and I will give you a complete </p>
-                                </div>
-                                <div class="single-notice-left mb-23 pb-20">
-                                    <h4>5, June 2017</h4>
-                                    <p>I must explain to you how all this mistaken idea of denouncing plasure and praising pain was born and I will give you a complete </p>
-                                </div>
-                                <div class="single-notice-left hidden-sm mb-23 pb-20">
-                                    <h4>4, June 2017</h4>
-                                    <p>I must explain to you how all this mistaken idea of denouncing plasure and praising pain was born and I will give you a complete </p>
-                                </div>
-                                <div class="single-notice-left pb-70">
-                                    <h4>3, June 2017</h4>
-                                    <p>I must explain to you how all this mistaken idea of denouncing plasure and praising pain was born and I will give you a complete </p>
-                                </div>
+                            @foreach (var item in Model.Events)
+                            {
+                                <a asp-controller="event" asp-action="detail" asp-route-id="@item.Id">
+                                    <div class="single-notice-left mb-25 pb-25">
+                                        <h4>@item.Time.ToString("MMM dd, yyyy",englishCulture) </h4>
+                                        <p>@item.Desc </p>
+                                    </div>
+                                </a>
+                            }
                             </div>
                         </div>
                     </div>
@@ -149,35 +141,28 @@
             </div>
         </section>
         <!-- Notice End -->
-        <!-- Subscribe Start -->
-        <div class="subscribe-area pt-58 pb-70">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-8 col-md-offset-2">
-                        <div class="subscribe-content section-title text-center">
-                            <h2>subscribe our newsletter</h2>
-                            <p>I must explain to you how all this mistaken idea </p>
-                        </div>
-                        <div class="newsletter-form mc_embed_signup">
-                            <form action="http://devitems.us11.list-manage.com/subscribe/post?u=6bbb9b6f5827bd842d9640c82&amp;id=05d85f18ef" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
-                                <div id="mc_embed_signup_scroll" class="mc-form">
-                                    <input type="email" value="" name="EMAIL" class="email" id="mce-EMAIL" placeholder="Enter your e-mail address" required>
-                                    <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
-                                    <div class="mc-news" aria-hidden="true"><input type="text" name="b_6bbb9b6f5827bd842d9640c82_05d85f18ef" tabindex="-1" value=""></div>
-                                    <button id="mc-embedded-subscribe" class="default-btn" type="submit" name="subscribe"><span>subscribe</span></button>
-                                </div>
-                            </form>
-                            <!-- mailchimp-alerts Start -->
-                            <div class="mailchimp-alerts">
-                                <div class="mailchimp-submitting"></div><!-- mailchimp-submitting end -->
-                                <div class="mailchimp-success"></div><!-- mailchimp-success end -->
-                                <div class="mailchimp-error"></div><!-- mailchimp-error end -->
+    <!-- Subscribe Start -->
+    <div class="subscribe-area pt-60 pb-70">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8 col-md-offset-2">
+                    <div class="subscribe-content section-title text-center">
+                        <h2>Subscribe to our newsletter</h2>
+                        <p>Stay updated with our latest news and offers.</p>
+                    </div>
+                    <div class="newsletter-form">
+                        <form action="/subscribe" method="post" id="subscribe-form" novalidate>
+                            <div id="subscribe-form-content" class="mc-form">
+                                <input type="email" name="Email" class="email" placeholder="Enter your e-mail address" required>
+                                <button class="default-btn" type="submit"><span>Subscribe</span></button>
                             </div>
-                            <!-- mailchimp-alerts end -->
-                        </div>
+                        </form>
+                        
                     </div>
                 </div>
             </div>
         </div>
-        <!-- Subscribe End -->
+    </div>
+
+    <!-- Subscribe End -->
 </body>

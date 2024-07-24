@@ -1,0 +1,20 @@
+﻿@model IEnumerable<Testimonial>
+@foreach (var testimonial in Model)
+{
+    <div class="testimonial-owl owl-theme owl-carousel">
+        <div class="col-md-8 col-md-offset-2 col-sm-12">
+            <div class="single-testimonial">
+                <div class="testimonial-info">
+                    <div class="testimonial-img">
+                        <img src="~/img/testimonial/@testimonial.ImgUrl" alt="testimonial">
+                    </div>
+                    <div class="testimonial-content">
+                        <p>@testimonial.Desc</p>
+                        <h4>@testimonial.Name</h4>
+                        <h5>@testimonial.Work</h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}

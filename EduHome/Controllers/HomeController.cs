@@ -3,7 +3,7 @@ using EduHome.Models;
 using EduHome.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-
+using System.ComponentModel.DataAnnotations;
 
 namespace EduHome.Controllers
 {
@@ -43,24 +43,31 @@ namespace EduHome.Controllers
         [Route("subscribe")]
         public async Task<IActionResult> Subscribe(string email)
         {
-            if (ModelState.IsValid)
+            if (string.IsNullOrWhiteSpace(email) || !IsValidEmail(email))
             {
-                var existingSubscription = await _context.Subscriptions
-                    .AsNoTracking()
-                    .FirstOrDefaultAsync(s => s.Email == email);
-
-                if (existingSubscription != null)
-                {
-                    return Json(new { success = false, message = "Bu email artiq subscribe olunmushdur!" });
-                }
-
-                var subscription = new Subscription { Email = email };
-                _context.Subscriptions.Add(subscription);
-                await _context.SaveChangesAsync();
-                return Json(new {message="Subscribe Ugurlu!" });
+                return Json(new { success = false, message = "Invalid email address!" });
             }
 
-            return Json(new {message = "Invalid Email Adress!" });
+            var existingSubscription = await _context.Subscriptions
+                .AsNoTracking()
+                .FirstOrDefaultAsync(s => s.Email == email);
+
+            if (existingSubscription != null)
+            {
+                return Json(new { success = false, message = "This email is already subscribed!" });
+            }
+
+            var subscription = new Subscription { Email = email };
+            _context.Subscriptions.Add(subscription);
+            await _context.SaveChangesAsync();
+            return Json(new { success = true, message = "Subscription Success!" });
+        }
+
+        private bool IsValidEmail(string email)
+        {
+            var emailAttribute = new EmailAddressAttribute();
+            return emailAttribute.IsValid(email);
         }
     }
-}
+    }
+
