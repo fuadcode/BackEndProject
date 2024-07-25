@@ -11,7 +11,7 @@ namespace EduHome
         public static void Register(this IServiceCollection services, IConfiguration config)
         {
             services.AddControllersWithViews();
-            services.AddDbContext<EduHomeDbContext>(options =>
+            services.AddDbContext<EduDbContext>(options =>
             {
                 options.UseSqlServer(config.GetConnectionString("DefaultConnection"));
             });
@@ -35,7 +35,7 @@ namespace EduHome
 
                 options.User.RequireUniqueEmail = true;
 
-            }).AddDefaultTokenProviders().AddEntityFrameworkStores<EduHomeDbContext>();
+            }).AddDefaultTokenProviders().AddEntityFrameworkStores<EduDbContext>();
         }
     }
 }

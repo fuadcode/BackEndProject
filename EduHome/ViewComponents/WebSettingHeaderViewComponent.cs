@@ -7,12 +7,12 @@ namespace EduHome.ViewComponents
 {
     public class WebSettingHeaderViewComponent : ViewComponent
     {
-        private readonly EduHomeDbContext _dbContext;
+        private readonly EduDbContext _dbContext;
         private readonly UserManager<AppUser> _userManager;
 
 
 
-        public WebSettingHeaderViewComponent(EduHomeDbContext dbContext, UserManager<AppUser> userManager)
+        public WebSettingHeaderViewComponent(EduDbContext dbContext, UserManager<AppUser> userManager)
         {
             _dbContext = dbContext;
             _userManager = userManager;

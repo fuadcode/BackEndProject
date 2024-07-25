@@ -2,14 +2,12 @@
 using EduHome.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using System.Collections.Generic;
-using System.Linq;
 
 public class CourseController : Controller
 {
-    private readonly EduHomeDbContext _context;
+    private readonly EduDbContext _context;
 
-    public CourseController(EduHomeDbContext context)
+    public CourseController(EduDbContext context)
     {
         _context = context;
     }
@@ -23,15 +21,21 @@ public class CourseController : Controller
     public IActionResult Detail(int? id)
     {
         if (id is null) return BadRequest();
-      
+
+        var course = _context.Courses.AsNoTracking().ToList();
+        var blogs = _context.Blogs.AsNoTracking().ToList();
+       
 
         CourseVM courseVM = new()
         {
-          
+            //Courses=course,
+            Blogs = blogs,
+            
+            
+
+
         };
         return View(courseVM);
     }
-
+ 
 }
-
-   

@@ -9,9 +9,9 @@ namespace EduHome.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly EduHomeDbContext _context;
+        private readonly EduDbContext _context;
 
-        public HomeController(EduHomeDbContext context)
+        public HomeController(EduDbContext context)
         {
             _context = context;
         }

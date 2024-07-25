@@ -10,7 +10,7 @@ namespace EduHome.Services
         public void SendEmail(List<string> emails, string body, string title, string subject)
         {
             MailMessage mail = new();
-            mail.From = new MailAddress("fuadgi@code.edu.az", "EduHomeContext");
+            mail.From = new MailAddress("fuadgi@code.edu.az", "EduHomeCompany");
             foreach (var email in emails)
             {
                 mail.To.Add(new MailAddress(email));
@@ -24,7 +24,7 @@ namespace EduHome.Services
                 Host = "smtp.gmail.com",
                 Port = 587,
                 EnableSsl = true,
-                Credentials = new NetworkCredential("fuadgi@code.edu.az", "mhjk wakl nhvu izhn"),
+                Credentials = new NetworkCredential("fuadgi@code.edu.az", "mhjk wakl nhvu izhn")
             };
             smtpClient.Send(mail);
         }

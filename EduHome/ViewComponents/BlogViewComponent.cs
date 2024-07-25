@@ -5,9 +5,9 @@ namespace EduHome.ViewComponents
 {
     public class BlogViewComponent : ViewComponent
     {
-        private readonly EduHomeDbContext _dbContext;
+        private readonly EduDbContext _dbContext;
 
-        public BlogViewComponent(EduHomeDbContext dbContext)
+        public BlogViewComponent(EduDbContext dbContext)
         {
             _dbContext = dbContext;
         }

@@ -6,9 +6,9 @@ namespace EduHome.Services
 {
     public class LayoutService : ILayoutService
     {
-        private readonly EduHomeDbContext _dbContext;
+        private readonly EduDbContext _dbContext;
 
-        public LayoutService(EduHomeDbContext dbContext)
+        public LayoutService(EduDbContext dbContext)
         {
             _dbContext = dbContext;
         }

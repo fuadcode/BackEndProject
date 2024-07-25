@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace EduHome.Migrations
 {
-    [DbContext(typeof(EduHomeDbContext))]
+    [DbContext(typeof(EduDbContext))]
     [Migration("20240724093433_Teachers")]
     partial class Teachers
     {

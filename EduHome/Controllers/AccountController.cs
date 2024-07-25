@@ -4,7 +4,6 @@ using EduHome.Services.Interfaces;
 using EduHome.ViewModels;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-
 using SignInResult = Microsoft.AspNetCore.Identity.SignInResult;
 
 namespace EduHome.Controllers
@@ -77,7 +76,7 @@ namespace EduHome.Controllers
         }
         [HttpPost]
 
-        public async Task<IActionResult> Login(LoginVM loginVM, string? ReturnUrl)
+        public async Task<IActionResult> Login(LoginVM loginVM)
         {
             if (!ModelState.IsValid) return View(loginVM);
             var user = await _userManager.FindByEmailAsync(loginVM.UserNameOrEmail);
@@ -86,8 +85,7 @@ namespace EduHome.Controllers
                 user = await _userManager.FindByNameAsync(loginVM.UserNameOrEmail);
                 if (user == null)
                 {
-                    ModelState.AddModelError("", "Username or Email is wrong..." +
-                        "Please try again...");
+                    ModelState.AddModelError("", "Username or Email is wrong...");
                     return View(loginVM);
 
                 }
