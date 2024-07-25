@@ -44,7 +44,7 @@
                                         <a asp-controller="course" asp-action="Index">courses</a>
                                         <ul>
                                             <li><a asp-controller="course" asp-action="Index">courses</a></li>
-                                            <li><a asp-controller="Course" asp-action="details" asp-route-id="1">Course Details</a></li>
+                                            <li><a asp-controller="course" asp-action="detail" asp-route-id="1">courses details</a></li>
 
                                         </ul>
                                     </li>
@@ -52,24 +52,24 @@
                                         <a asp-controller="event" asp-action="Index">event</a>
                                         <ul>
                                             <li><a asp-controller="event" asp-action="Index">event</a></li>
-                                            <li><a asp-controller="event" asp-action="Index">event details</a></li>
+                                            <li><a asp-controller="event" asp-action="detail" asp-route-id="1">events details</a></li>
                                         </ul>
                                     </li>
                                     <li class="hidden-sm">
                                         <a asp-controller="teacher" asp-action="Index">teacher</a>
                                         <ul>
                                             <li><a asp-controller="teacher" asp-action="Index">teacher</a></li>
-                                            <li><a href="teacher-details.html">teacher details</a></li>
+                                            <li><a href="/teacher/detail/1">teacher details</a></li>
                                         </ul>
                                     </li>
                                     <li>
                                         <a asp-controller="blog" asp-action="Index">blog</a>
                                         <ul>
                                             <li><a asp-controller="blog" asp-action="Index">blog</a></li>
-                                            <li><a href="blog-details.html">blog details</a></li>
+                                            <li><a asp-controller="blog" asp-action="Detail" asp-route-id="1">blog details</a></li>
                                         </ul>
                                     </li>
-                                    <li><a asp-controller="contact" asp-action="index">Contact</a></li>
+                                    <li><a asp-controller="contact" asp-action="Index">Contact</a></li>
                                     <li><a href="#">Buy Now</a>
                                 </ul>
                             </nav>

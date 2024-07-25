@@ -7,6 +7,5 @@
         public DateTime Time { get; set; }
         public string Area { get; set; }
         public string Desc { get; set; }
-      
     }
 }

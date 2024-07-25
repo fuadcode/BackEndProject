@@ -1,12 +1,27 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using EduHome.Data;
+using Microsoft.AspNetCore.Mvc;
 
 namespace EduHome.Controllers
 {
     public class TeacherController : Controller
     {
+        private readonly EduCompaniesDbContext _dbContext;
+
+        public TeacherController(EduCompaniesDbContext dbContext)
+        {
+            _dbContext = dbContext;
+        }
+
         public IActionResult Index()
         {
             return View();
+        }
+        public IActionResult Detail(int? id)
+        {
+            if (id is null) return BadRequest();
+            var teacher = _dbContext.Teachers.FirstOrDefault(b => b.Id == id);
+            if (teacher == null) return NotFound();
+            return View(teacher);
         }
     }
 }

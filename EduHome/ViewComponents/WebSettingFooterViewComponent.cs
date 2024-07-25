@@ -5,9 +5,9 @@ namespace EduHome.ViewComponents
 {
     public class WebSettingFooterViewComponent : ViewComponent
     {
-        private readonly EduDbContext _dbContext;
+        private readonly EduCompaniesDbContext _dbContext;
 
-        public WebSettingFooterViewComponent(EduDbContext dbContext)
+        public WebSettingFooterViewComponent(EduCompaniesDbContext dbContext)
         {
             _dbContext = dbContext;
         }

@@ -5,9 +5,9 @@ using Microsoft.EntityFrameworkCore;
 
 public class CourseController : Controller
 {
-    private readonly EduDbContext _context;
+    private readonly EduCompaniesDbContext _context;
 
-    public CourseController(EduDbContext context)
+    public CourseController(EduCompaniesDbContext context)
     {
         _context = context;
     }
@@ -24,16 +24,15 @@ public class CourseController : Controller
 
         var course = _context.Courses.AsNoTracking().ToList();
         var blogs = _context.Blogs.AsNoTracking().ToList();
-       
+        var features = _context.Features.AsNoTracking().ToList();
+
 
         CourseVM courseVM = new()
         {
-            //Courses=course,
+          
+            Courses =course,
             Blogs = blogs,
-            
-            
-
-
+            Features=features,
         };
         return View(courseVM);
     }

@@ -6,9 +6,9 @@ namespace EduHome.ViewComponents
 {
     public class EventViewComponent : ViewComponent
     {
-        private readonly EduDbContext _dbContext;
+        private readonly EduCompaniesDbContext _dbContext;
 
-        public EventViewComponent(EduDbContext dbContext)
+        public EventViewComponent(EduCompaniesDbContext dbContext)
         {
             _dbContext = dbContext;
         }

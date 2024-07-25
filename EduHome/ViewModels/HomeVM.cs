@@ -12,5 +12,6 @@ namespace EduHome.ViewModels
         public IEnumerable<Testimonial> Testimonials { get; set; }
         public IEnumerable<Blog> Blogs { get; set; }
         public Subscription Subscriptions { get; set; }
+        public IEnumerable<Teacher> Teachers { get; set; }
     }
 }
