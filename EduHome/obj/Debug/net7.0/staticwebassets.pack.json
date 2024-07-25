@@ -509,6 +509,14 @@
       "PackagePath": "staticwebassets\\js\\vendor\\modernizr-2.8.3.min.js"
     },
     {
+      "Id": "C:\\Users\\Feteli Isgenderov\\Desktop\\EduHome\\EduHome\\wwwroot\\templates\\emailTemplate\\emailConfirm.html",
+      "PackagePath": "staticwebassets\\templates\\emailTemplate\\emailConfirm.html"
+    },
+    {
+      "Id": "C:\\Users\\Feteli Isgenderov\\Desktop\\EduHome\\EduHome\\wwwroot\\templates\\forgetpasswordTemplate\\forgotpassword.html",
+      "PackagePath": "staticwebassets\\templates\\forgetpasswordTemplate\\forgotpassword.html"
+    },
+    {
       "Id": "obj\\Debug\\net7.0\\staticwebassets\\msbuild.EduHome.Microsoft.AspNetCore.StaticWebAssets.props",
       "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
     },

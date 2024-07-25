@@ -1,0 +1,29 @@
+﻿@using System.Globalization;
+@model IEnumerable<Blog>
+@{
+    CultureInfo englishCulture = new CultureInfo("en-US");
+}
+@foreach (var blog in Model)
+{
+    <div class="col-md-4 col-sm-6 col-xs-12">
+        <div class="single-blog">
+            <div class="blog-img">
+                <a asp-controller ="blog" asp-action="detail" asp-route-id="@blog.Id">
+                    <img src="~/img/blog/@blog.ImgUrl" alt="blog"></a>
+                <div class="blog-hover">
+                    <a asp-controller="blog" asp-action="detail" asp-route-id="@blog.Id"><i class="fa fa-link"></i></a>
+                </div>
+            </div>
+            <div class="blog-content">
+                <div class="blog-top">
+                    <p>@blog.Name  /  @blog.Time.ToString("MMM dd, yyyy",englishCulture)  /  <i class="fa fa-comments-o"></i> @blog.Comment</p>
+                </div>
+                <div class="blog-bottom">
+                    <h2><a >@blog.Desc</a></h2>
+                    <a asp-controller="blog" asp-action="detail" asp-route-id="@blog.Id">read more</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+}

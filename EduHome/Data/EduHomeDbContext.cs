@@ -1,10 +1,10 @@
-﻿
-using EduHome.Models;
+﻿using EduHome.Models;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 namespace EduHome.Data
 {
-    public class EduHomeDbContext : DbContext
+    public class EduHomeDbContext : IdentityDbContext<AppUser>
     {
         public DbSet<WebSetting> WebSettings { get; set; }
         public DbSet<Slider> Sliders { get; set; }
@@ -15,10 +15,6 @@ namespace EduHome.Data
         public DbSet<Subscription> Subscriptions { get; set; }
         public DbSet<CourseView> CourseViews { get; set; }
         public DbSet<Teacher> Teachers { get; set; }
-
-
-
-
 
 
         public EduHomeDbContext() { }

@@ -1,0 +1,84 @@
+﻿ @model LoginVM
+   <!-- Banner Area Start -->
+<div class="banner-area-wrapper">
+    <div class="banner-area text-center">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="banner-content-wrapper">
+                        <div class="banner-content">
+                            <h2>login</h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Banner Area End -->
+<!-- Login start -->
+<div class="login-area pt-150 pb-150">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 col-md-offset-3 text-center">
+                <div class="login">
+                    <div class="login-form-container">
+                        <div class="login-text">
+                            <h2>login</h2>
+                            <span>Please login using account detail bellow.</span>
+                            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                        </div>
+                        <div class="login-form">
+                            <form  method="post">
+                                <input asp-for="UserNameOrEmail" placeholder="Username or Email">
+                                <span asp-validation-for="UserNameOrEmail" class="text-danger"></span>
+
+                                <input  asp-for="Password" placeholder="Password">
+                                <span asp-validation-for="Password" class="text-danger"></span>
+
+                                <div class="button-box">
+                                    <div class="login-toggle-btn">
+                                        <input type="checkbox" asp-for="RememberMe" class="form-check-input">
+
+                                        <label asp-for="RememberMe" class="form-check-label text-muted">
+                                        </label>
+
+                                        <a asp-action="ForgetPassword">Forget Password?</a>
+                                    </div>
+
+                                    <button type="submit" class="btn-block default-btn " asp-action="login">Login</button>
+                                    <button type="submit" class="btn-block default-btn " asp-action="register">Register</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Login end -->
+<!-- Subscribe Start -->
+<div class="subscribe-area pt-60 pb-70">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <div class="subscribe-content section-title text-center">
+                    <h2>Subscribe to our newsletter</h2>
+                    <p>Stay updated with our latest news and offers.</p>
+                </div>
+                <div class="newsletter-form">
+                    <form action="/subscribe" method="post" id="subscribe-form" novalidate>
+                        <div id="subscribe-form-content" class="mc-form">
+                            <input type="email" name="Email" class="email" placeholder="Enter your e-mail address" required>
+                            <button class="default-btn" type="submit"><span>Subscribe</span></button>
+                        </div>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Subscribe End -->

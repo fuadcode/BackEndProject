@@ -1,0 +1,80 @@
+﻿@model RegisterVM
+
+<!-- Banner Area Start -->
+
+<!-- Banner Area End -->
+<!-- Register start -->
+<div class="register-area pt-150 pb-150">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 col-md-offset-3 text-center">
+                <div class="login">
+                    <div class="login-form-container">
+                        <div class="login-text">
+                            <h2>sign up</h2>
+                            <span>Please login using account detail bellow.</span>
+                            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                        </div>
+                        <div class="login-form">
+                            <form  method="post">
+                                <input type="text" asp-for="UserName"  placeholder="Username">
+                                <span asp-validation-for="UserName" class="text-danger"></span>
+
+                                <input type="text"  asp-for="FullName" placeholder="FullName">
+                                <span asp-validation-for="FullName" class="text-danger"></span>
+
+                                <input type="text" asp-for="Email" placeholder="Email">
+                                <span asp-validation-for="Email" class="text-danger"></span>
+
+                                <input type="password"  asp-for="Password" placeholder="Password">
+                                <span asp-validation-for="Password" class="text-danger"></span>
+
+
+                                <input type="password" asp-for="RePassword" placeholder="RePassword">
+                                <span asp-validation-for="RePassword" class="text-danger"></span>                       
+
+
+
+                                <div class="button-box">
+                                    <div class="login-toggle-btn">
+                                        <span href="#">Allready have account?</span>
+                                        <a asp-action="login" class="text-primary">Login</a>
+                                   
+                                    </div>
+                                    <div class="mt-3">
+                                        <button class="btn btn-block default-btn font-weight-medium auth-form-btn" asp-action="register" type="submit">Register</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Register end -->
+<!-- Subscribe Start -->
+<div class="subscribe-area pt-60 pb-70">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <div class="subscribe-content section-title text-center">
+                    <h2>Subscribe to our newsletter</h2>
+                    <p>Stay updated with our latest news and offers.</p>
+                </div>
+                <div class="newsletter-form">
+                    <form action="/subscribe" method="post" id="subscribe-form" novalidate>
+                        <div id="subscribe-form-content" class="mc-form">
+                            <input type="email" name="Email" class="email" placeholder="Enter your e-mail address" required>
+                            <button class="default-btn" type="submit"><span>Subscribe</span></button>
+                        </div>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Subscribe End -->
