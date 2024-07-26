@@ -10,6 +10,7 @@
         public int StudentCount { get; set; }
         public string Assesment { get; set; }
         public int? Price { get; set; }
+    
 
     }
 }

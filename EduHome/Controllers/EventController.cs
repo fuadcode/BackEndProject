@@ -20,11 +20,11 @@ namespace EduHome.Controllers
         }
         public IActionResult Detail(int? id)
         {
-          
+         
 
             EventVM eventVM = new()
             {
-              
+                
             };
             return View(eventVM);
         }

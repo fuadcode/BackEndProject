@@ -5,7 +5,7 @@ namespace EduHome.ViewModels
 {
     public class HomeVM
     {
-        public Dictionary<string,string> WebSettings { get; set; }
+        public Dictionary<string, string> WebSettings { get; set; }
         public IEnumerable<Slider> Sliders { get; set; }
         public IEnumerable<Event> Events { get; set; }
         public IEnumerable<Course> Courses { get; set; }

@@ -29,12 +29,12 @@ public class CourseController : Controller
 
         CourseVM courseVM = new()
         {
-          
-            Courses =course,
+
+            Courses = course,
             Blogs = blogs,
-            Features=features,
+            Features = features,
         };
         return View(courseVM);
     }
- 
+
 }

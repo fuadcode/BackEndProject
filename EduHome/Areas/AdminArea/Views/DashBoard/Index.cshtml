@@ -1,1 +1,24 @@
-﻿Dashboard
+﻿@{
+    ViewData["Title"] = "Dashboard";
+}
+
+<h2>Dashboard</h2>
+
+<div class="row">
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">TotalUserCount</h5>
+                <p class="card-text">@ViewBag.UserCount</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">TotalSubscriptionCount</h5>
+                <p class="card-text">@ViewBag.SubscriptionCount</p>
+            </div>
+        </div>
+    </div>
+</div>
