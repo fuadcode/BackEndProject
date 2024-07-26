@@ -18,13 +18,7 @@ namespace EduHome.Areas.AdminArea.Controllers
 
         public async Task<IActionResult> Index()
         {
-            var userCount = await _context.Users.CountAsync();
-            var subscriptionCount = await _context.Users
-                .Where(u => u.SubscriptionType != null)
-                .CountAsync();
-
-            ViewBag.UserCount = userCount;
-            ViewBag.SubscriptionCount = subscriptionCount;
+           
 
             return View();
         }

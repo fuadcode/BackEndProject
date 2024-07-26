@@ -1,6 +1,8 @@
 ﻿
 using EduHome.Data;
 using EduHome.Models;
+using EduHome.Services.Interfaces;
+using EduHome.Services;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
@@ -18,9 +20,12 @@ namespace EduHome
             services.AddSession(options =>
             {
                 options.IdleTimeout = TimeSpan.FromSeconds(10);
+             
             });
             services.AddHttpContextAccessor();
+            services.AddScoped<IEmailService, EmailService>();
             services.AddIdentity<AppUser,IdentityRole>(options =>
+
             {
                 options.Password.RequiredLength = 8;
                 options.Password.RequireUppercase = true;

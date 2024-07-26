@@ -11,8 +11,10 @@
                 <div class="col-md-4 col-sm-4 col-xs-12">
                     <div class="header-top-right text-right">
                         <ul>
-                            <li><a asp-controller="account" asp-action="Login">login</a></li>
-                            <li><a asp-controller="account" asp-action="Register">signup</a></li>
+                            <li>
+
+                            </li>
+                            
                         </ul>
                     </div>
                 </div>
@@ -71,28 +73,20 @@
                                     </li>
                                     <li><a asp-controller="contact" asp-action="Index">Contact</a></li>
                                     <li><a href="#">Buy Now</a>
+                                        @if (User.Identity.IsAuthenticated)
+                                        {
+                                        <li>@ViewBag.FullName</li>
+                                        <a href="/account/logout">Log out</a>
+                                        }
+                                        else
+                                        {
+                                        <li><a href="/account/login">login</a></li>
+                                      
+                                        }
                                 </ul>
                             </nav>
                         </div>
-                        <!--Search Form Start-->
-                        <div class="search-btn">
-                            <ul data-toggle="dropdown" class="header-search search-toggle">
-                                <li class="search-menu">
-                                    <i class="fa fa-search"></i>
-                                </li>
-                            </ul>
-                            <div class="search">
-                                <div class="search-form">
-                                    <form id="search-form" action="#">
-                                        <input type="search" placeholder="Search here..." name="search" />
-                                        <button type="submit">
-                                            <span><i class="fa fa-search"></i></span>
-                                        </button>
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
-                        <!--End of Search Form-->
+                      
                         <!-- Main Menu End -->
                     </div>
                 </div>

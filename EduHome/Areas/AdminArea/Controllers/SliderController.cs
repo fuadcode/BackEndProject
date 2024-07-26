@@ -117,7 +117,7 @@ namespace EduHome.Areas.AdminArea.Controllers
             var slider = await _dbContext.Sliders.FirstOrDefaultAsync(s => s.Id == id);
             if (slider == null) return NotFound();
 
-            if (!ModelState.IsValid)
+            if (ModelState.IsValid)
             {
                 sliderUpdateVM.ImageUrl = slider.ImgUrl;
                 return View(sliderUpdateVM);

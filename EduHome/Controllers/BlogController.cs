@@ -20,8 +20,6 @@ namespace EduHome.Controllers
         }
         public IActionResult Detail(int? id)
         {
-           
-
             BlogVM blogVM = new()
             {
                

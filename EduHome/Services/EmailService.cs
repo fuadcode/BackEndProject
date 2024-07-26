@@ -24,7 +24,7 @@ namespace EduHome.Services
                 Host = "smtp.gmail.com",
                 Port = 587,
                 EnableSsl = true,
-                Credentials = new NetworkCredential("fuadgi@code.edu.az", "mhjk wakl nhvu izhn")
+                Credentials = new NetworkCredential("fuadgi@code.edu.az", "kbog wpzj yewe hoin")
             };
             smtpClient.Send(mail);
         }
