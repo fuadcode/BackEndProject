@@ -1,0 +1,29 @@
+﻿@using EduHome.Areas.AdminArea.ViewModels.RoleVMs
+@model UpdateRoleVM
+
+@{
+    Layout = "~/Areas/AdminArea/Views/Shared/_AdminLayout.cshtml";
+}
+<div class="container">
+    <div class="row">
+        <div class="col-md-8 offset-md-2">
+            <div class="card">
+                <div class="card-body">
+                   
+                    <h4 class="card-title text-center mb-4">Slider Update Form</h4>
+                    <form enctype="multipart/form-data" asp-action="update" method="post" class="forms-sample">
+                        <div class="form-group">
+                            <label asp-for="RoleName"></label>
+                            <input asp-for="RoleName" class="form-control" placeholder="Enter Title" />
+                            <span class="text-danger" asp-validation-for="RoleName"></span>
+                        </div>
+                        
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@section Scripts {
+    <script src="~/js/validation.js"></script>
+}

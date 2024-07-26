@@ -1,8 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using EduHome.Data;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.EntityFrameworkCore;
+
 
 namespace EduHome.Areas.AdminArea.Controllers
 {
@@ -18,8 +16,7 @@ namespace EduHome.Areas.AdminArea.Controllers
 
         public async Task<IActionResult> Index()
         {
-           
-
+          
             return View();
         }
     }

@@ -18,6 +18,7 @@
     <link rel="stylesheet" href="~/admin/css/style.css">
     <!-- endinject -->
     <link rel="shortcut icon" href="~/admin/images/favicon.png" />
+
 </head>
 <body>
     <div class="container-scroller">
@@ -217,8 +218,8 @@
                             <span class="menu-title">Event</span>
                         </a>
                     </li>
-                   
-                  
+
+
                 </ul>
             </nav>
             <!-- partial -->
@@ -259,9 +260,8 @@
     <script src="~/Admin/js/data-table.js"></script>
     <script src="~/Admin/js/jquery.dataTables.js"></script>
     <script src="~/Admin/js/dataTables.bootstrap4.js"></script>
-    @RenderSection("script", false)
+    @RenderSection("Scripts", required: false)
 
     <!-- End custom js for this page-->
 </body>
 </html>
-

@@ -1,40 +1,44 @@
 ﻿@using EduHome.Areas.AdminArea.ViewModels.SliderVMs
 @model SliderUpdateVM
+
+@{
+    Layout = "~/Areas/AdminArea/Views/Shared/_AdminLayout.cshtml";
+}
 <div class="container">
     <div class="row">
-        <div class="card">
-            <div class="card-body">
-                <img src="~/img/slider/@Model.ImageUrl" width="500" height="300" alt="" />
-                <h4 class="card-title">Slider Update form</h4>
-                <form enctype="multipart/form-data" asp-action="update" method="post" class="forms-sample">
-
-
-                    <div class="form-group">
-                        <label asp-for="Title"></label>
-                        <input asp-for="Title" class="form-control" placeholder="Description">
-                        <span class="text-danger" asp-validation-for="Title"></span> 
-
+        <div class="col-md-8 offset-md-2">
+            <div class="card">
+                <div class="card-body">
+                    <div class="text-center mb-3">
+                        <img src="~/img/slider/@Model.ImageUrl" class="img-thumbnail" width="500" height="300" alt="Slider Image" />
                     </div>
-                    <div class="form-group">
-                        <label asp-for="Description"></label>
-                        <input asp-for="Description" class="form-control" placeholder="Description">
-                        <span class="text-danger" asp-validation-for="Description"></span> 
-
-                    </div>
-                    <div class="form-group">
-                        <label asp-for="Photo"></label>
-                        <input asp-for="Photo" class="form-control" placeholder="Description">
-                        <span class="text-danger" asp-validation-for="Photo"></span> 
-
-                    </div>
-
-                    <button type="submit" class="btn btn-primary mr-2">Update</button>
-                    <a asp-action="index" class="btn btn-light">Go Back</a>
-                </form>
+                    <h4 class="card-title text-center mb-4">Slider Update Form</h4>
+                    <form enctype="multipart/form-data" asp-action="update" method="post" class="forms-sample">
+                        <div class="form-group">
+                            <label asp-for="Title"></label>
+                            <input asp-for="Title" class="form-control" placeholder="Enter Title" />
+                            <span class="text-danger" asp-validation-for="Title"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="Description"></label>
+                            <textarea asp-for="Description" class="form-control" placeholder="Enter Description"></textarea>
+                            <span class="text-danger" asp-validation-for="Description"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="Photo"></label>
+                            <input type="file" asp-for="Photo" class="form-control-file" />
+                            <span class="text-danger" asp-validation-for="Photo"></span>
+                        </div>
+                        <div class="text-center">
+                            <button type="submit" class="btn btn-primary">Update</button>
+                            <a asp-action="index" class="btn btn-light ml-2">Go Back</a>
+                        </div>
+                    </form>
+                </div>
             </div>
         </div>
     </div>
 </div>
-@section script {
-    <partial name="_ValidationPartial"></partial>
+@section Scripts {
+    <script src="~/js/validation.js"></script>
 }
