@@ -1,27 +1,26 @@
 ﻿
 using EduHome.Areas.AdminArea.ViewModels.UserVms;
-using EduHome.Helpers;
 using EduHome.Models;
-using EduHome.Services;
 using EduHome.Services.Interfaces;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using SignInResult = Microsoft.AspNetCore.Identity.SignInResult;
 namespace EduHome.Areas.AdminArea.Controllers
 {
     [Area("AdminArea")]
     public class UserController : Controller
     {
         private readonly UserManager<AppUser> _userManager;
-     
+        private readonly IUserService _userService;
 
 
 
-        public UserController(UserManager<AppUser> userManager)
+
+        public UserController(UserManager<AppUser> userManager, IUserService userService)
         {
             _userManager = userManager;
-           
+            _userService = userService;
+
         }
 
         public async Task<IActionResult> Index(string searchText)
@@ -32,10 +31,31 @@ namespace EduHome.Areas.AdminArea.Controllers
 
             return View(users);
         }
+        public IActionResult Create()
+        {
+            return View();
+        }
 
-       
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Create(CreateUserVM model)
+        {
+            if (ModelState.IsValid)
+            {
+                if (model.Password != model.RePassword)
+                {
+                    ModelState.AddModelError(string.Empty, "Şifreler uyuşmuyor.");
+                    return View(model);
+                }
 
-        public async Task<IActionResult> ChangeStatus(string id)
+                // Kullanıcı oluşturma işlemi...
+                return RedirectToAction("Index"); // Başarı durumunda yönlendirme
+            }
+
+            return View(model); // Model hatalıysa formu yeniden göster
+        }
+    
+    public async Task<IActionResult> ChangeStatus(string id)
         {
             if (id is null) return BadRequest();
             var user = await _userManager.FindByIdAsync(id);

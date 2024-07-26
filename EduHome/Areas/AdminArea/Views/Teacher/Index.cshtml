@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Slider>
+﻿@model IEnumerable<Teacher>
 <div class="container">
     <div class="row">
         <div class="col-lg-12 grid-margin stretch-card">
@@ -13,25 +13,27 @@
                             <thead>
                                 <tr>
                                     <th>Image</th>
-                                    <th>Title</th>
-                                    <th>Description</th>
+                                    <th>CreateTime</th>
+                                    <th>Name</th>
+                                    <th>Position</th>
                                     <th>Settings</th>
                                 </tr>
                             </thead>
                             <tbody>
 
-                                @foreach (var slider in Model)
+                                @foreach (var teacher in Model)
                                 {
                                     <tr>
                                         <td>
-                                            <img src="~/img/slider/@slider.ImgUrl"  class="rounded-0" style="width:120px ; height:120px"  alt="" />
+                                            <img src="~/img/teacher/@teacher.ImgUrl" class="rounded-0" style="width:120px ; height:120px" alt="" />
                                         </td>
-                                        <td>@slider.Title</td>
-                                        <td>@slider.Desc</td>
+                                        <td>@teacher.CreatedDate?.ToString("dd.MM.yyyy")</td>
+                                        <td>@teacher.Name</td>
+                                        <td>@teacher.Position</td>
                                         <td>
-                                            <a class="btn btn-outline-facebook" asp-action="detail" asp-route-id="@slider.Id"><i class="mdi mdi-account-card-details"></i></a>
-                                            <a class="btn btn-outline-primary" asp-action="update" asp-route-id="@slider.Id"><i class="mdi mdi-settings"></i></a>
-                                            <a class="btn btn-outline-danger" asp-action="delete" asp-route-id="@slider.Id"><i class="mdi mdi-delete"></i></a>
+                                            <a class="btn btn-outline-facebook" asp-action="detail" asp-route-id="@teacher.Id"><i class="mdi mdi-account-card-details"></i></a>
+                                            <a class="btn btn-outline-primary" asp-action="update" asp-route-id="@teacher.Id"><i class="mdi mdi-settings"></i></a>
+                                            <a class="btn btn-outline-danger" asp-action="delete" asp-route-id="@teacher.Id"><i class="mdi mdi-delete"></i></a>
                                         </td>
                                     </tr>
                                 }

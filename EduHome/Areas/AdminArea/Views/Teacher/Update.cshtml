@@ -1,0 +1,44 @@
+﻿@using EduHome.Areas.AdminArea.ViewModels.TeacherVMs
+@model TeacherUpdateVM
+
+@{
+    Layout = "~/Areas/AdminArea/Views/Shared/_AdminLayout.cshtml";
+}
+<div class="container">
+    <div class="row">
+        <div class="col-md-8 offset-md-2">
+            <div class="card">
+                <div class="card-body">
+                    <div class="text-center mb-3">
+                        <img src="~/img/teacher/@Model.ImgUrl" class="img-thumbnail" width="500" height="300" alt="Slider Image" />
+                    </div>
+                    <h4 class="card-title text-center mb-4">Teacher Update Form</h4>
+                    <form enctype="multipart/form-data" asp-action="update" method="post" class="forms-sample">
+                        <div class="form-group">
+                            <label asp-for="Name"></label>
+                            <input asp-for="Name" class="form-control" placeholder="Enter Name" />
+                            <span class="text-danger" asp-validation-for="Name"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="Position"></label>
+                            <textarea asp-for="Position" class="form-control" placeholder="Enter Description"></textarea>
+                            <span class="text-danger" asp-validation-for="Position"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="Photo"></label>
+                            <input type="file" asp-for="Photo" class="form-control-file" />
+                            <span class="text-danger" asp-validation-for="Photo"></span>
+                        </div>
+                        <div class="text-center">
+                            <button type="submit" class="btn btn-primary">Update</button>
+                            <a asp-action="index" class="btn btn-light ml-2">Go Back</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@section Scripts {
+    <script src="~/js/validation.js"></script>
+}

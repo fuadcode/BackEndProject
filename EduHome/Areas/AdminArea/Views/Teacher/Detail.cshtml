@@ -1,0 +1,37 @@
+﻿@using EduHome.Areas.AdminArea.ViewModels.TeacherVMs
+@model TeacherListVM
+
+@{
+    Layout = "~/Areas/AdminArea/Views/Shared/_AdminLayout.cshtml";
+}
+<div class="container mt-4">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header">
+                    <h3>User Details</h3>
+                </div>
+                <div class="card-body">
+                    <img src="~/img/teacher/@Model.ImgUrl" class="card-img-top" alt="Teacher Image" style="height:500px; width=:100px; object-fit: cover;" />
+                    <div class="row mb-3">
+                        <div class="col-sm-4 font-weight-bold">Name:</div>
+                        <div class="col-sm-8">@Model.Name</div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-sm-4 font-weight-bold">Position:</div>
+                        <div class="col-sm-8">@Model.Position</div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-sm-4 font-weight-bold">CreateDate:</div>
+                        <div class="col-sm-8">@Model.CreatedDate.ToString("dd.MM.yyyy")</div>
+                    </div>
+                    <a asp-action="index" class="btn btn-outline-dark">Go Back</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script src="~/js/validation.js"></script>
+}

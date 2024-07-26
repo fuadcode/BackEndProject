@@ -85,14 +85,49 @@ namespace EduHome.Areas.AdminArea.Controllers
             return RedirectToAction("index", "user");
         }
 
-        public async Task<IActionResult> RoleUpdate()
+        public async Task<IActionResult> Update(string id)
         {
-            return View();
+            if (id is null) return BadRequest();
+            var role = await _roleManager.FindByIdAsync(id);
+            if (role is null) return NotFound();
+
+            var viewModel = new UpdateRoleVM
+            {
+                RoleId = role.Id,
+                RoleName = role.Name
+            };
+
+            return View(viewModel);
         }
 
+        [HttpPost]
+        public async Task<IActionResult> Update(UpdateRoleVM model)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(model);
+            }
 
+            var role = await _roleManager.FindByIdAsync(model.RoleId);
+            if (role == null) return NotFound();
 
+            role.Name = model.RoleName;
+            var result = await _roleManager.UpdateAsync(role);
 
+            if (result.Succeeded)
+            {
+                return RedirectToAction("Index");
+            }
 
+            foreach (var error in result.Errors)
+            {
+                ModelState.AddModelError(string.Empty, error.Description);
+            }
+
+            return View(model);
+        }
     }
 }
+
+
+
