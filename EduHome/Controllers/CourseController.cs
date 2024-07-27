@@ -1,4 +1,5 @@
 ﻿using EduHome.Data;
+using EduHome.Models;
 using EduHome.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -18,6 +19,23 @@ public class CourseController : Controller
 
         return View();
     }
+
+    [HttpGet("Search")]
+    public IActionResult Search(string search)
+    {
+        var searchResults = new List<Course>();
+
+        if (!string.IsNullOrEmpty(search))
+        {
+            searchResults = _context.Courses
+                .Where(c => c.Name.Contains(search))
+                .ToList();
+        }
+
+        return View(searchResults);
+    }
+
+
     public IActionResult Detail(int? id)
     {
         if (id is null) return BadRequest();

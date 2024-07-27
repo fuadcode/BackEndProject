@@ -18,7 +18,7 @@
                                     <div class="slide-content">
                                         <h3>@img.Title </h3>
                                         <p>@img.Desc</p>
-                                        <a class="default-btn" href="about.html">Learn more</a>
+                                        <a class="default-btn" asp-controller="about" asp-action="Index">Learn more</a>
                                     </div>
                                 </div>
                             </div>
@@ -77,7 +77,7 @@
                     <h2>@Model.WebSettings.FirstOrDefault(s=>s.Key=="CourseTitle").Value</h2>
                     <p>@Model.WebSettings.FirstOrDefault(s=>s.Key=="CourseDesc").Value</p>
                     <p class="choose-option">@Model.WebSettings.FirstOrDefault(s=>s.Key=="CourseDescNext").Value</p>
-                    <a class="default-btn" href="course-details.html">view courses</a>
+                    <a class="default-btn" asp-controller="course" asp-action="detail" asp-route-id="1">view courses</a>
                 </div>
             </div>
         </div>
@@ -111,7 +111,7 @@
                         <div class="course-content">
                             <h3><a href="course-details.html">@item.Name</a></h3>
                             <p>@item.Desc</p>
-                            <a class="default-btn" href="course-details.html">read more</a>
+                            <a class="default-btn" asp-controller="course" asp-action="detail" asp-route-id="1">read more</a>
                         </div>
                     </div>
                 </div>
@@ -149,7 +149,7 @@
                             </ul>
                         </div>
                         <div class="event-content-right">
-                            <a class="default-btn" href="event-details.html">join now</a>
+                                <a class="default-btn" asp-controller="event" asp-action="detail" asp-route-id="1">join now</a>
                         </div>
                     </div>
                 </div>
@@ -206,9 +206,9 @@
                 <div class="col-md-4 col-sm-6 col-xs-12">
                     <div class="single-blog">
                         <div class="blog-img">
-                            <a href="blog-details.html"><img src="~/img/blog/@item.ImgUrl" alt="blog"></a>
+                            <a asp-controller="blog" asp-action="detail" asp-route-id="1"><img src="~/img/blog/@item.ImgUrl" alt="blog"></a>
                             <div class="blog-hover">
-                                <a href="blog-details.html"><i class="fa fa-link"></i></a>
+                                <a asp-controller="blog" asp-action="detail" asp-route-id="1"><i class="fa fa-link"></i></a>
                             </div>
                         </div>
                         <div class="blog-content">
@@ -216,8 +216,8 @@
                                 <p>@item.Name  /  @item.Time.ToString("MMM dd, yyyy",englishCulture)  /  <i class="fa fa-comments-o"></i> @item.Comment</p>
                             </div>
                             <div class="blog-bottom">
-                                <h2><a href="blog-details.html">@item.Desc </a></h2>
-                                <a href="blog-details.html">read more</a>
+                                <h2><a asp-controller="blog" asp-action="detail" asp-route-id="1">@item.Desc </a></h2>
+                                <a asp-controller="blog" asp-action="detail" asp-route-id="1">read more</a>
                             </div>
                         </div>
                     </div>

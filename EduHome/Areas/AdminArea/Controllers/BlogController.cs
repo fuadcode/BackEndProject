@@ -133,7 +133,8 @@ namespace EduHome.Areas.AdminArea.Controllers
             {
                 ImgUrl = blog.ImgUrl,
                 Name = blog.Name,
-                Desc = blog.Desc
+                Desc = blog.Desc,
+                Comment= blog.Comment,
             };
 
             return View(viewModel);

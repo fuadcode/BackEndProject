@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
+
 namespace EduHome.Data
 {
     public class EduCompaniesDbContext : IdentityDbContext<AppUser>
@@ -17,7 +18,7 @@ namespace EduHome.Data
         public DbSet<Teacher> Teachers { get; set; }
         public DbSet<TeacherDetail> TeacherDetails { get; set; }
         public DbSet<Features> Features { get; set; }
-        public DbSet<MessageUsers> MessageUsers { get; set; }
+        public DbSet<Message> Messages { get; set; }
         public DbSet<Speaker> Speakers { get; set; }
 
        

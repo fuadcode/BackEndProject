@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "yVrA/Dn+eUa+8ciJDxEEKlz6gQCFaYRyqmtsJ8vQLfU=",
+  "Hash": "MtzfVkf2sAKSAdqcooLciVZyQyb8NRGSJJjWClw3UGY=",
   "Source": "EduHome",
   "BasePath": "_content/EduHome",
   "Mode": "Default",
@@ -2856,6 +2856,23 @@
       "OriginalItemSpec": "wwwroot\\img\\blog\\9sgt6dzvffd41.jpg"
     },
     {
+      "Identity": "C:\\Users\\Feteli Isgenderov\\Desktop\\EduHome\\EduHome\\wwwroot\\img\\blog\\banner.jpg",
+      "SourceId": "EduHome",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Feteli Isgenderov\\Desktop\\EduHome\\EduHome\\wwwroot\\",
+      "BasePath": "_content/EduHome",
+      "RelativePath": "img/blog/banner.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\img\\blog\\banner.jpg"
+    },
+    {
       "Identity": "C:\\Users\\Feteli Isgenderov\\Desktop\\EduHome\\EduHome\\wwwroot\\img\\blog\\blog1.jpg",
       "SourceId": "EduHome",
       "SourceType": "Discovered",
@@ -4061,6 +4078,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\img\\teacher\\9sgt6dzvffd41.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\Feteli Isgenderov\\Desktop\\EduHome\\EduHome\\wwwroot\\img\\teacher\\banner.jpg",
+      "SourceId": "EduHome",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Feteli Isgenderov\\Desktop\\EduHome\\EduHome\\wwwroot\\",
+      "BasePath": "_content/EduHome",
+      "RelativePath": "img/teacher/banner.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\img\\teacher\\banner.jpg"
     },
     {
       "Identity": "C:\\Users\\Feteli Isgenderov\\Desktop\\EduHome\\EduHome\\wwwroot\\img\\teacher\\home.png",

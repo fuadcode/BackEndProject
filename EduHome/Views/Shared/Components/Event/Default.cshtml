@@ -8,7 +8,7 @@
     <div class="col-md-4 col-sm-6 col-xs-12">
         <div class="single-event mb-60">
             <div class="event-img">
-                <a href="event-details.html">
+                <a asp-controller="event" asp-action="detail" asp-route-id="1">
                     <img src="~/img/event/@item.ImgUrl" alt="event" >
                     <div class="course-hover">
                         <i class="fa fa-link"></i>
@@ -19,7 +19,7 @@
                 </div>
             </div>
             <div class="event-content text-left">
-                <h4><a href="event-details.html">@item.Name</a></h4>
+                <h4><a asp-controller="event" asp-action="detail" asp-route-id="1">@item.Name</a></h4>
                 <ul>
                     <li><span>Time: </span>@item.Time.ToString("h:mm tt")</li>
                     <li><span>Venue: </span>@item.Area</li>

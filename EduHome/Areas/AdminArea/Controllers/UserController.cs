@@ -1,6 +1,6 @@
 ﻿
-using EduHome.Areas.AdminArea.ViewModels.BlogVMs;
 using EduHome.Areas.AdminArea.ViewModels.UserVms;
+using EduHome.Helpers;
 using EduHome.Models;
 using EduHome.Services.Interfaces;
 using EduHome.ViewModels;
@@ -13,12 +13,14 @@ namespace EduHome.Areas.AdminArea.Controllers
     public class UserController : Controller
     {
         private readonly UserManager<AppUser> _userManager;
-        private readonly IUserService _userService;
+        private readonly SignInManager<AppUser> _signInManager;
+        private readonly IEmailService _emailService;
 
-        public UserController(UserManager<AppUser> userManager, IUserService userService)
+        public UserController(UserManager<AppUser> userManager, SignInManager<AppUser> signInManager, IEmailService emailService)
         {
             _userManager = userManager;
-            _userService = userService;
+            _signInManager = signInManager;
+            _emailService = emailService;
 
         }
      
@@ -39,25 +41,49 @@ namespace EduHome.Areas.AdminArea.Controllers
         }
 
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create(CreateUserVM model) //Tam islemir
+
+        public async Task<IActionResult> Create(CreateUserVM createUserVM)
         {
-            if (ModelState.IsValid)
+            if (!ModelState.IsValid) return View(createUserVM);
+            AppUser user = new()
             {
-                if (model.Password != model.RePassword)
-                {
-                    ModelState.AddModelError(string.Empty, "Password Not same.");
-                    return View(model);
-                }
-
-            
-                return RedirectToAction("Index");
+                FullName = createUserVM.FullName,
+                UserName = createUserVM.UserName,
+                Email = createUserVM.Email,
+            };
+            IdentityResult result = await _userManager.CreateAsync(user, createUserVM.Password);
+        if (!result.Succeeded)
+        {
+            foreach (var error in result.Errors)
+            {
+                ModelState.AddModelError("", error.Description);
             }
+            return View(createUserVM);
 
-            return View(model); 
         }
 
-        public async Task<IActionResult> ChangeStatus(string id)
+        await _userManager.AddToRoleAsync(user, nameof(RolesEnum.Member));
+
+
+        string token = await _userManager.GenerateEmailConfirmationTokenAsync(user);
+        string link = Url.Action(nameof(VerifyEmail), "Account", new { email = user.Email, token },
+            Request.Scheme, Request.Host.ToString());
+
+        string body = string.Empty;
+        using (StreamReader reader = new StreamReader("wwwroot/templates/emailTemplate/emailConfirm.html"))
+        {
+            body = reader.ReadToEnd();
+        };
+        body = body.Replace("{{link}}", link);
+        body = body.Replace("{{username}}", user.UserName);
+        _emailService.SendEmail(new() { user.Email }, body, "Email verification", "Verify email");
+
+        await _userManager.AddToRoleAsync(user, RolesEnum.Member.ToString());
+        return RedirectToAction("index", "user");
+    }
+
+
+    public async Task<IActionResult> ChangeStatus(string id)
         {
             if (id is null) return BadRequest();
             var user = await _userManager.FindByIdAsync(id);
@@ -156,6 +182,15 @@ namespace EduHome.Areas.AdminArea.Controllers
 
             return View(model);
         }
+
+             public async Task<IActionResult> VerifyEmail(string email, string token)
+{
+             AppUser user = await _userManager.FindByEmailAsync(email);
+             if (user is null) return BadRequest();
+             await _userManager.ConfirmEmailAsync(user, token);
+             await _signInManager.SignInAsync(user, true);
+             return RedirectToAction("index", "home");
+}
         
     }
 }

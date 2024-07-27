@@ -26,11 +26,14 @@
                     <h3>search courses</h3>
                 </div>
                 <div class="course-form">
-                    <form id="search" action="#">
+                    <form id="search" asp-action="Search" asp-controller="Course" method="get">
                         <input type="search" placeholder="Search..." name="search" />
-                        <button type="submit">search</button>
+                        <button type="submit">Search</button>
                     </form>
                 </div>
+
+
+
             </div>
         </div>
         <input id="CourseCount" type="hidden" value="@ViewBag.CourseCounts"></input>
