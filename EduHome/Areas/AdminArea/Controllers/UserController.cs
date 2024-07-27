@@ -1,7 +1,9 @@
 ﻿
+using EduHome.Areas.AdminArea.ViewModels.BlogVMs;
 using EduHome.Areas.AdminArea.ViewModels.UserVms;
 using EduHome.Models;
 using EduHome.Services.Interfaces;
+using EduHome.ViewModels;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -19,14 +21,17 @@ namespace EduHome.Areas.AdminArea.Controllers
             _userService = userService;
 
         }
+     
 
-        public async Task<IActionResult> Index(string searchText)
+        public async Task<IActionResult> Index(string searchText, int stage = 1)
         {
             var users = string.IsNullOrEmpty(searchText) ? await _userManager.Users.ToListAsync()
                    : await _userManager.Users.Where(u => u.UserName.ToLower().Contains(searchText.ToLower()) ||
                 u.FullName.ToLower().Contains(searchText.ToLower())).ToListAsync();
 
             return View(users);
+           
+
         }
         public IActionResult Create()
         {

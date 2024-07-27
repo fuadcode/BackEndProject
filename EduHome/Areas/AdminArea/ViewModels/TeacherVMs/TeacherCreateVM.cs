@@ -10,5 +10,6 @@ namespace EduHome.Areas.AdminArea.ViewModels.TeacherVMs
         public string Name { get; set; }
         [Required]
         public string Position { get; set; }
+        public DateTime? CreatedDate { get; set; }
     }
 }

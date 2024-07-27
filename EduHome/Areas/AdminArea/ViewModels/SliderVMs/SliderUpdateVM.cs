@@ -1,6 +1,6 @@
 ﻿namespace EduHome.Areas.AdminArea.ViewModels.SliderVMs
 {
-    public class BlogUpdateVM
+    public class SliderUpdateVM
     {
         public IFormFile Photo { get; set; }
         public string ImageUrl { get; set; }

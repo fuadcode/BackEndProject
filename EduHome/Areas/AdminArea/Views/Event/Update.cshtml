@@ -1,5 +1,5 @@
-﻿@using EduHome.Areas.AdminArea.ViewModels.SliderVMs
-@model SliderUpdateVM
+﻿@using EduHome.Areas.AdminArea.ViewModels.EventVMs
+@model EventUpdateVM
 
 @{
     Layout = "~/Areas/AdminArea/Views/Shared/_AdminLayout.cshtml";
@@ -10,19 +10,24 @@
             <div class="card">
                 <div class="card-body">
                     <div class="text-center mb-3">
-                        <img src="~/img/slider/@Model.ImageUrl" class="img-thumbnail" width="500" height="300" alt="Slider Image" />
+                        <img src="~/img/event/@Model.ImageUrl" class="img-thumbnail" width="500" height="300" alt="Event Image" />
                     </div>
-                    <h4 class="card-title text-center mb-4">Slider Update Form</h4>
+                    <h4 class="card-title text-center mb-4">Teacher Update Form</h4>
                     <form enctype="multipart/form-data" asp-action="update" method="post" class="forms-sample">
                         <div class="form-group">
-                            <label asp-for="Title"></label>
-                            <input asp-for="Title" class="form-control" placeholder="Enter Title" />
-                            <span class="text-danger" asp-validation-for="Title"></span>
+                            <label asp-for="Name"></label>
+                            <input asp-for="Name" class="form-control" placeholder="Enter Name" />
+                            <span class="text-danger" asp-validation-for="Name"></span>
                         </div>
                         <div class="form-group">
-                            <label asp-for="Description"></label>
-                            <textarea asp-for="Description" class="form-control" placeholder="Enter Description"></textarea>
-                            <span class="text-danger" asp-validation-for="Description"></span>
+                            <label asp-for="Desc"></label>
+                            <textarea asp-for="Desc" class="form-control" placeholder="Enter Desc"></textarea>
+                            <span class="text-danger" asp-validation-for="Desc"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="Area"></label>
+                            <textarea asp-for="Area" class="form-control" placeholder="Enter Area"></textarea>
+                            <span class="text-danger" asp-validation-for="Area"></span>
                         </div>
                         <div class="form-group">
                             <label asp-for="Photo"></label>

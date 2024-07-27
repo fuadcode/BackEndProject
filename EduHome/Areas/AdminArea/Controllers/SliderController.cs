@@ -1,9 +1,9 @@
 ﻿
 using EduHome.Areas.AdminArea.ViewModels.SliderVMs;
-using EduHome.Areas.AdminArea.ViewModels.TeacherVMs;
 using EduHome.Data;
 using EduHome.Extensions;
 using EduHome.Models;
+using EduHome.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -20,12 +20,21 @@ namespace EduHome.Areas.AdminArea.Controllers
             _dbContext = dbContext;
         }
 
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(int stage = 1)
         {
-            var slider = await _dbContext.Sliders
-                .ToListAsync();
-            return View(slider);
+            var query = _dbContext.Sliders
+                .AsNoTracking()
+                .Select(m => new SliderListVM()
+                {
+                    Id = m.Id,
+                    ImgUrl = m.ImgUrl,
+                    Desc = m.Desc,
+                    Title = m.Title,
+                });
+
+            return View(await PaginationVM<SliderListVM>.CreateVM(query, stage, 2));
         }
+
         public async Task<IActionResult> Detail(int? id)
         {
             var slider = await _dbContext.Sliders
@@ -101,7 +110,7 @@ namespace EduHome.Areas.AdminArea.Controllers
             var slider = await _dbContext.Sliders.FirstOrDefaultAsync(s => s.Id == id);
             if (slider is null) return NotFound();
 
-            var viewModel = new BlogUpdateVM
+            var viewModel = new SliderUpdateVM
             {
                 ImageUrl = slider.ImgUrl,
                 Title = slider.Title,
@@ -113,7 +122,7 @@ namespace EduHome.Areas.AdminArea.Controllers
 
         [HttpPost]
         [AutoValidateAntiforgeryToken]
-        public async Task<IActionResult> Update(int? id, BlogUpdateVM sliderUpdateVM)
+        public async Task<IActionResult> Update(int? id, SliderUpdateVM sliderUpdateVM)
         {
             if (id == null) return BadRequest();
             var slider = await _dbContext.Sliders.FirstOrDefaultAsync(s => s.Id == id);

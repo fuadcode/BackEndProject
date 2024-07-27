@@ -22,20 +22,20 @@ namespace EduHome.Areas.AdminArea.Controllers
         public async Task<IActionResult> Index(int stage = 1)
         {
             var query = _dbContext.Blogs
-                 .AsNoTracking()
-                 .Select(m => new BlogListVM()
-                 {
-                     Id = m.Id,
-                     ImgUrl = m.ImgUrl,
-                     Desc = m.Desc,
-                     Name = m.Name,
-                     Comment = m.Comment,
-                     Time = m.Time,
-                 });
+                .AsNoTracking()
+                .Select(m => new BlogListVM()
+                {
+                    Id = m.Id,
+                    ImgUrl = m.ImgUrl,
+                    Desc = m.Desc,
+                    Name = m.Name,
+                    Comment = m.Comment,
+                    Time = m.Time,
+                });
 
             return View(await PaginationVM<BlogListVM>.CreateVM(query, stage, 2));
-
         }
+
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null) return BadRequest();

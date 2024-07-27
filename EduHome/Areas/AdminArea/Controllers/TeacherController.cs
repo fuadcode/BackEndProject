@@ -1,10 +1,13 @@
 ﻿
+
 using EduHome.Areas.AdminArea.ViewModels.TeacherVMs;
 using EduHome.Data;
 using EduHome.Extensions;
 using EduHome.Models;
+using EduHome.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+
 
 namespace EduHome.Areas.AdminArea.Controllers
 {
@@ -18,22 +21,32 @@ namespace EduHome.Areas.AdminArea.Controllers
             _dbContext = dbContext;
         }
 
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(int stage = 1)
         {
-            var teacher = await _dbContext.Teachers
-                .ToListAsync();
-            return View(teacher);
-        }
-        public async Task<IActionResult> Detail(int? id)
-        {
-            var teachers = await _dbContext.Teachers
+            var query = _dbContext.Teachers
                 .AsNoTracking()
-                .Select(m => new CourseListVM()
+                .Select(m => new Teacher()
                 {
                     Id = m.Id,
                     ImgUrl = m.ImgUrl,
                     Position = m.Position,
                     Name = m.Name,
+                    CreatedDate=m.CreatedDate,
+                });
+
+            return View(await PaginationVM<Teacher>.CreateVM(query, stage, 2));
+        }
+        public async Task<IActionResult> Detail(int? id)
+        {
+            var teachers = await _dbContext.Teachers
+                .AsNoTracking()
+                .Select(m => new TeacherListVM()
+                {
+                    Id = m.Id,
+                    ImgUrl = m.ImgUrl,
+                    Position = m.Position,
+                    Name = m.Name,
+                    CreatedDate = m.CreatedDate,
                 }).FirstOrDefaultAsync(m => m.Id == id);
             return View(teachers);
         }
@@ -173,6 +186,7 @@ namespace EduHome.Areas.AdminArea.Controllers
             {
                 Name = teacherCreateVM.Name,
                 Position = teacherCreateVM.Position,
+                CreatedDate = teacherCreateVM.CreatedDate,
                 ImgUrl = await SaveFilesAsync(file)
             };
             await _dbContext.Teachers.AddAsync(teacher);

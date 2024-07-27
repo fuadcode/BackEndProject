@@ -1,7 +1,9 @@
-﻿using EduHome.Areas.AdminArea.ViewModels.CourseVMs;
+﻿
+using EduHome.Areas.AdminArea.ViewModels.CourseVMs;
 using EduHome.Data;
 using EduHome.Extensions;
 using EduHome.Models;
+using EduHome.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -18,11 +20,19 @@ namespace EduHome.Areas.AdminArea.Controllers
             _dbContext = dbContext;
         }
 
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(int stage= 1)
         {
-            var course = await _dbContext.Courses
-                .ToListAsync();
-            return View(course);
+            var query = _dbContext.Courses
+               .AsNoTracking()
+               .Select(m => new CourseListVM()
+               {
+                   Id = m.Id,
+                   ImgUrl = m.ImgUrl,
+                   Desc = m.Desc,
+                   Name = m.Name,
+               });
+
+            return View(await PaginationVM<CourseListVM>.CreateVM(query, stage, 2));
         }
 
         public async Task<IActionResult> Create()
@@ -63,6 +73,7 @@ namespace EduHome.Areas.AdminArea.Controllers
             return RedirectToAction("Index");
 
         }
+
         public async Task<string> SaveFilesAsync(IFormFile file)
         {
             var directory = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "img", "course");
@@ -109,6 +120,8 @@ namespace EduHome.Areas.AdminArea.Controllers
                 }).FirstOrDefaultAsync(m => m.Id == id);
             return View(course);
         }
+
+
         public async Task<IActionResult> Update(int? id)
         {
             if (id is null) return BadRequest();

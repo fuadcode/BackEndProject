@@ -1,11 +1,11 @@
-﻿@using EduHome.Areas.AdminArea.ViewModels.TeacherVMs
-@model TeacherCreateVM
+﻿@using EduHome.Areas.AdminArea.ViewModels.EventVMs
+@model EventCreateVM
 
 <div class="container">
     <div class="row">
         <div class="card">
             <div class="card-body">
-                <h4 class="card-title">Teacher Create form</h4>
+                <h4 class="card-title">Event Create form</h4>
                 <form enctype="multipart/form-data" asp-action="create" method="post" class="forms-sample">
 
                     <div class="form-group">
@@ -15,16 +15,21 @@
 
                     </div>
                     <div class="form-group">
-                        <label asp-for="Name"></label>
-                        <input asp-for="Name" class="form-control" placeholder="Name">
-                        <span class="text-danger" asp-validation-for="Name"></span> 
+                        <label asp-for="Title"></label>
+                        <input asp-for="Title" class="form-control" placeholder="Title">
+                        <span class="text-danger" asp-validation-for="Title"></span> 
 
                     </div>
                     <div class="form-group">
-                        <label asp-for="Position"></label>
-                        <input asp-for="Position" class="form-control" placeholder="Position">
-                        <span class="text-danger" asp-validation-for="Position"></span> 
+                        <label asp-for="Desc"></label>
+                        <input asp-for="Desc" class="form-control" placeholder="Description">
+                        <span class="text-danger" asp-validation-for="Desc"></span> 
 
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Area"></label>
+                        <input asp-for="Area" class="form-control" placeholder="Area">
+                        <span class="text-danger" asp-validation-for="Area"></span>
                     </div>
 
                     <div class="form-group">
@@ -33,7 +38,7 @@
                         <span class="text-danger" asp-validation-for="CreatedDate"></span>
 
                     </div>
-                    <button type="submit" class="btn btn-primary mr-2">Create</button>
+                        <button type="submit" class="btn btn-primary mr-2">Create</button>
                     <a asp-action="index" class="btn btn-light">Go Back</a>
                 </form>
             </div>
