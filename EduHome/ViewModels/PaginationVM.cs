@@ -30,22 +30,23 @@ namespace EduHome.ViewModels
         public bool HasPrev => CurrentPage > 1;
         public int Start { get; set; }
         public int End { get; set; }
-        public static async Task<PaginationVM<T>> CreateVM(IQueryable<T> query, int page, int take)
+        public static async Task<PaginationVM<T>> CreateVM(IQueryable<T> query, int stage, int take)
         {
-            if (page <= 0)
+            if (stage <= 0)
             {
-                page = 1;
+                stage = 1;
             }
             var data = await query
-                .Skip((page - 1) * take)
+                .Skip((stage - 1) * take)
                 .Take(take)
                 .ToListAsync();
             var totalPage = (int)Math.Ceiling((decimal)query.Count() / take);
-            if (page > totalPage)
+            if (stage > totalPage)
             {
-                page = totalPage;
+                stage = totalPage;
             }
-            return new PaginationVM<T>(data, page, totalPage);
+            return new PaginationVM<T>(data, stage, totalPage);
         }
     }
 }
+//pagination

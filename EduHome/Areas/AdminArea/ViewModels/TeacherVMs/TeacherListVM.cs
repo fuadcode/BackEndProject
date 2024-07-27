@@ -2,7 +2,7 @@
 
 namespace EduHome.Areas.AdminArea.ViewModels.TeacherVMs
 {
-    public class TeacherListVM
+    public class CourseListVM
     {
         public int Id { get; set; }
         public string ImgUrl { get; set; }

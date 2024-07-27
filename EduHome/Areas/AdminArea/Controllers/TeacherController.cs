@@ -28,7 +28,7 @@ namespace EduHome.Areas.AdminArea.Controllers
         {
             var teachers = await _dbContext.Teachers
                 .AsNoTracking()
-                .Select(m => new TeacherListVM()
+                .Select(m => new CourseListVM()
                 {
                     Id = m.Id,
                     ImgUrl = m.ImgUrl,

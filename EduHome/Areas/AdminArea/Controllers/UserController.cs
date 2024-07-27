@@ -13,9 +13,6 @@ namespace EduHome.Areas.AdminArea.Controllers
         private readonly UserManager<AppUser> _userManager;
         private readonly IUserService _userService;
 
-
-
-
         public UserController(UserManager<AppUser> userManager, IUserService userService)
         {
             _userManager = userManager;
@@ -38,24 +35,24 @@ namespace EduHome.Areas.AdminArea.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create(CreateUserVM model)
+        public async Task<IActionResult> Create(CreateUserVM model) //Tam islemir
         {
             if (ModelState.IsValid)
             {
                 if (model.Password != model.RePassword)
                 {
-                    ModelState.AddModelError(string.Empty, "Şifreler uyuşmuyor.");
+                    ModelState.AddModelError(string.Empty, "Password Not same.");
                     return View(model);
                 }
 
-                // Kullanıcı oluşturma işlemi...
-                return RedirectToAction("Index"); // Başarı durumunda yönlendirme
+            
+                return RedirectToAction("Index");
             }
 
-            return View(model); // Model hatalıysa formu yeniden göster
+            return View(model); 
         }
-    
-    public async Task<IActionResult> ChangeStatus(string id)
+
+        public async Task<IActionResult> ChangeStatus(string id)
         {
             if (id is null) return BadRequest();
             var user = await _userManager.FindByIdAsync(id);
@@ -65,6 +62,8 @@ namespace EduHome.Areas.AdminArea.Controllers
             await _userManager.UpdateAsync(user);
             return RedirectToAction("index");
         }
+
+
 
         public async Task<IActionResult> Detail(string id)
         {

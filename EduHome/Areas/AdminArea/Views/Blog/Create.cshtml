@@ -1,0 +1,46 @@
+﻿@using EduHome.Areas.AdminArea.ViewModels.BlogVMs
+@model BlogCreateVM
+
+<div class="container">
+    <div class="row">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Blogs Create form</h4>
+                <form enctype="multipart/form-data" asp-action="create" method="post" class="forms-sample">
+
+                    <div class="form-group">
+                        <label asp-for="Photo"></label>
+                        <input asp-for="Photo" class="form-control" placeholder="Photo">
+                        <span class="text-danger" asp-validation-for="Photo"></span> 
+
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Name"></label>
+                        <input asp-for="Name" class="form-control" placeholder="Description">
+                        <span class="text-danger" asp-validation-for="Name"></span> 
+
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Desc"></label>
+                        <input asp-for="Desc" class="form-control" placeholder="Description">
+                        <span class="text-danger" asp-validation-for="Desc"></span> 
+
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Comment"></label>
+                        <input asp-for="Comment" class="form-control" placeholder="Comment">
+                        <span class="text-danger" asp-validation-for="Comment"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label asp-for="Time"></label>
+                        <input asp-for="Time" class="form-control" placeholder="Time">
+                        <span class="text-danger" asp-validation-for="Time"></span>
+                    </div>
+                        <button type="submit" class="btn btn-primary mr-2">Create</button>
+                    <a asp-action="index" class="btn btn-light">Go Back</a>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

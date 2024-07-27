@@ -129,24 +129,30 @@ namespace EduHome.Controllers
         [HttpPost]
         public async Task<IActionResult> ForgetPassword(string email)
         {
+            if (string.IsNullOrWhiteSpace(email))
+            {
+                ModelState.AddModelError("", "Email is required");
+                return View();
+            }
+
             AppUser user = await _userManager.FindByEmailAsync(email);
-            if (user is null)
+            if (user == null)
             {
                 ModelState.AddModelError("", "Given email does not exist");
                 return View();
             }
+
             string token = await _userManager.GeneratePasswordResetTokenAsync(user);
             string url = Url.Action(nameof(ResetPassword), "Account"
                 , new { email = user.Email, token = token }
                 , Request.Scheme
                 , Request.Host.ToString());
 
-
-            string body = string.Empty;
+            string body;
             using (StreamReader reader = new StreamReader("wwwroot/templates/forgetpasswordTemplate/forgotpassword.html"))
             {
-                body = reader.ReadToEnd();
-            };
+                body = await reader.ReadToEndAsync();
+            }
             body = body.Replace("{{link}}", url);
             body = body.Replace("{{username}}", user.UserName);
 
@@ -155,13 +161,14 @@ namespace EduHome.Controllers
             return RedirectToAction("index", "home");
         }
 
+
         public async Task<IActionResult> ResetPassword(string email, string token)
         {
             var existUser = await _userManager.FindByEmailAsync(email);
             if (existUser is null) return NotFound();
             bool result = await _userManager
                 .VerifyUserTokenAsync(existUser, _userManager.Options.Tokens.PasswordResetTokenProvider, "ResetPassword", token);
-            if (result is false) return Content("Token expired");
+            if (result is false) return Content("Yalnız Birdəfə İstifadə oluna bilər.. (Token Expired)");
             return View();
         }
 

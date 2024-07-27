@@ -1,4 +1,6 @@
-﻿using EduHome.Areas.AdminArea.ViewModels.SliderVMs;
+﻿
+using EduHome.Areas.AdminArea.ViewModels.SliderVMs;
+using EduHome.Areas.AdminArea.ViewModels.TeacherVMs;
 using EduHome.Data;
 using EduHome.Extensions;
 using EduHome.Models;
@@ -99,7 +101,7 @@ namespace EduHome.Areas.AdminArea.Controllers
             var slider = await _dbContext.Sliders.FirstOrDefaultAsync(s => s.Id == id);
             if (slider is null) return NotFound();
 
-            var viewModel = new SliderUpdateVM
+            var viewModel = new BlogUpdateVM
             {
                 ImageUrl = slider.ImgUrl,
                 Title = slider.Title,
@@ -111,7 +113,7 @@ namespace EduHome.Areas.AdminArea.Controllers
 
         [HttpPost]
         [AutoValidateAntiforgeryToken]
-        public async Task<IActionResult> Update(int? id, SliderUpdateVM sliderUpdateVM)
+        public async Task<IActionResult> Update(int? id, BlogUpdateVM sliderUpdateVM)
         {
             if (id == null) return BadRequest();
             var slider = await _dbContext.Sliders.FirstOrDefaultAsync(s => s.Id == id);
@@ -182,5 +184,6 @@ namespace EduHome.Areas.AdminArea.Controllers
             }
             return file.FileName;
         }
+
     }
 }

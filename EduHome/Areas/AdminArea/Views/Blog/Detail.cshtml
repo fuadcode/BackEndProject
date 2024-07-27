@@ -1,0 +1,30 @@
+﻿@using EduHome.Areas.AdminArea.ViewModels.BlogVMs
+@model BlogListVM
+
+@{
+    Layout = "~/Areas/AdminArea/Views/Shared/_AdminLayout.cshtml";
+}
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card">
+                <img src="~/img/blog/@Model.ImgUrl" class="card-img-top" alt="Blog Image" style="height: 300px; object-fit: cover;" />
+                <div class="card-body">
+                    <h4 class="card-title">Name:</h4> 
+                    <p class="card-text">@Model.Name</p>
+                    <h4 class="card-subtitle mb-2 text-muted">Description:</h4>
+                    <p class="card-text">@Model.Desc</p>
+                    <h4 class="card-subtitle mb-2 text-muted">Comment:</h4>
+                    <p class="card-text">@Model.Comment</p>
+                    <div class="col-sm-4 font-weight-bold">CreateDate:</div>
+                    <div class="col-sm-8">@Model.Time.ToString("dd.MM.yyyy")</div>
+                    <a asp-action="index" class="btn btn-outline-dark">Go Back</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script src="~/js/validation.js"></script>
+}

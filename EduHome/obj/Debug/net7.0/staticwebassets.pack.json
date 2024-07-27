@@ -661,6 +661,10 @@
       "PackagePath": "staticwebassets\\img\\banner\\download.jpg"
     },
     {
+      "Id": "C:\\Users\\Feteli Isgenderov\\Desktop\\EduHome\\EduHome\\wwwroot\\img\\blog\\9sgt6dzvffd41.jpg",
+      "PackagePath": "staticwebassets\\img\\blog\\9sgt6dzvffd41.jpg"
+    },
+    {
       "Id": "C:\\Users\\Feteli Isgenderov\\Desktop\\EduHome\\EduHome\\wwwroot\\img\\blog\\blog-detail.jpg",
       "PackagePath": "staticwebassets\\img\\blog\\blog-detail.jpg"
     },
@@ -705,6 +709,10 @@
       "PackagePath": "staticwebassets\\img\\blog\\blog9.jpg"
     },
     {
+      "Id": "C:\\Users\\Feteli Isgenderov\\Desktop\\EduHome\\EduHome\\wwwroot\\img\\blog\\home.png",
+      "PackagePath": "staticwebassets\\img\\blog\\home.png"
+    },
+    {
       "Id": "C:\\Users\\Feteli Isgenderov\\Desktop\\EduHome\\EduHome\\wwwroot\\img\\choose\\choose-bd.jpg",
       "PackagePath": "staticwebassets\\img\\choose\\choose-bd.jpg"
     },
@@ -723,6 +731,14 @@
     {
       "Id": "C:\\Users\\Feteli Isgenderov\\Desktop\\EduHome\\EduHome\\wwwroot\\img\\contact\\contact3.png",
       "PackagePath": "staticwebassets\\img\\contact\\contact3.png"
+    },
+    {
+      "Id": "C:\\Users\\Feteli Isgenderov\\Desktop\\EduHome\\EduHome\\wwwroot\\img\\course\\9sgt6dzvffd41.jpg",
+      "PackagePath": "staticwebassets\\img\\course\\9sgt6dzvffd41.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Feteli Isgenderov\\Desktop\\EduHome\\EduHome\\wwwroot\\img\\course\\banner.jpg",
+      "PackagePath": "staticwebassets\\img\\course\\banner.jpg"
     },
     {
       "Id": "C:\\Users\\Feteli Isgenderov\\Desktop\\EduHome\\EduHome\\wwwroot\\img\\course\\course-bg.jpg",
@@ -767,6 +783,10 @@
     {
       "Id": "C:\\Users\\Feteli Isgenderov\\Desktop\\EduHome\\EduHome\\wwwroot\\img\\course\\courses-details.jpg",
       "PackagePath": "staticwebassets\\img\\course\\courses-details.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Feteli Isgenderov\\Desktop\\EduHome\\EduHome\\wwwroot\\img\\course\\home.png",
+      "PackagePath": "staticwebassets\\img\\course\\home.png"
     },
     {
       "Id": "C:\\Users\\Feteli Isgenderov\\Desktop\\EduHome\\EduHome\\wwwroot\\img\\event\\event-details.jpg",
@@ -895,6 +915,10 @@
     {
       "Id": "C:\\Users\\Feteli Isgenderov\\Desktop\\EduHome\\EduHome\\wwwroot\\img\\slider\\banner.jpg",
       "PackagePath": "staticwebassets\\img\\slider\\banner.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Feteli Isgenderov\\Desktop\\EduHome\\EduHome\\wwwroot\\img\\slider\\course1.jpg",
+      "PackagePath": "staticwebassets\\img\\slider\\course1.jpg"
     },
     {
       "Id": "C:\\Users\\Feteli Isgenderov\\Desktop\\EduHome\\EduHome\\wwwroot\\img\\slider\\home.png",

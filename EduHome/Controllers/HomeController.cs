@@ -57,10 +57,16 @@ namespace EduHome.Controllers
                 return Json(new { success = false, message = "This email is already subscribed!" });
             }
 
-            var subscription = new Subscription { Email = email };
+            var subscription = new Subscription
+            {
+                SubscriptionName = "DefaultSubscription", 
+                Email = email
+            };
+
             _context.Subscriptions.Add(subscription);
             await _context.SaveChangesAsync();
             return Json(new { success = true, message = "Subscription Success!" });
+
         }
 
         private bool IsValidEmail(string email)

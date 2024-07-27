@@ -14,10 +14,16 @@ namespace EduHome.Areas.AdminArea.Controllers
             _context = context;
         }
 
-        public async Task<IActionResult> Index()
+        public IActionResult Index()
         {
-          
+            var userCount = _context.Users.Count();
+            var subscriptionCount = _context.Subscriptions.Count();
+
+            ViewBag.UserCount = userCount;
+            ViewBag.SubscriptionCount = subscriptionCount;
+
             return View();
         }
     }
 }
+
