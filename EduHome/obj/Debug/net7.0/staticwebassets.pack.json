@@ -1073,6 +1073,10 @@
       "PackagePath": "staticwebassets\\templates\\forgetpasswordTemplate\\forgotpassword.html"
     },
     {
+      "Id": "C:\\Users\\Feteli Isgenderov\\Desktop\\EduHome\\EduHome\\wwwroot\\templates\\resetpasswordmessageTemplate\\resetpasswordmessage.html",
+      "PackagePath": "staticwebassets\\templates\\resetpasswordmessageTemplate\\resetpasswordmessage.html"
+    },
+    {
       "Id": "obj\\Debug\\net7.0\\staticwebassets\\msbuild.EduHome.Microsoft.AspNetCore.StaticWebAssets.props",
       "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
     },

@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "MtzfVkf2sAKSAdqcooLciVZyQyb8NRGSJJjWClw3UGY=",
+  "Hash": "TMM2J8dkBC6sakxzYsnb5MRwj3CgxbGdBB6OLb8g3nw=",
   "Source": "EduHome",
   "BasePath": "_content/EduHome",
   "Mode": "Default",
@@ -4588,6 +4588,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\templates\\forgetpasswordTemplate\\forgotpassword.html"
+    },
+    {
+      "Identity": "C:\\Users\\Feteli Isgenderov\\Desktop\\EduHome\\EduHome\\wwwroot\\templates\\resetpasswordmessageTemplate\\resetpasswordmessage.html",
+      "SourceId": "EduHome",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Feteli Isgenderov\\Desktop\\EduHome\\EduHome\\wwwroot\\",
+      "BasePath": "_content/EduHome",
+      "RelativePath": "templates/resetpasswordmessageTemplate/resetpasswordmessage.html",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\templates\\resetpasswordmessageTemplate\\resetpasswordmessage.html"
     }
   ]
 }

@@ -161,16 +161,31 @@ namespace EduHome.Controllers
             return RedirectToAction("index", "home");
         }
 
+        private string GetHtmlTemplate(string filePath)
+        {
+            string fullPath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", filePath);
+            using (StreamReader reader = new StreamReader(fullPath))
+            {
+                return reader.ReadToEnd();
+            }
+        }
 
         public async Task<IActionResult> ResetPassword(string email, string token)
         {
             var existUser = await _userManager.FindByEmailAsync(email);
-            if (existUser is null) return NotFound();
-            bool result = await _userManager
-                .VerifyUserTokenAsync(existUser, _userManager.Options.Tokens.PasswordResetTokenProvider, "ResetPassword", token);
-            if (result is false) return Content("Yalnız Birdəfə İstifadə oluna bilər.. (Token Expired)");
+            if (existUser == null) return NotFound();
+
+            bool result = await _userManager.VerifyUserTokenAsync(existUser, _userManager.Options.Tokens.PasswordResetTokenProvider, "ResetPassword", token);
+
+            if (result == false)
+            {
+                string templateContent = GetHtmlTemplate("templates/resetpasswordmessageTemplate/resetpasswordmessage.html");
+                return Content(templateContent, "text/html");
+            }
+
             return View();
         }
+
 
         [HttpPost]
         public async Task<IActionResult> ResetPassword(string email, string token, ResetPasswordVM request)

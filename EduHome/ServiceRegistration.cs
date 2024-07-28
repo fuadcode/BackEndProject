@@ -5,6 +5,7 @@ using EduHome.Services.Interfaces;
 using EduHome.Services;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.FileProviders;
 
 namespace EduHome
 {
