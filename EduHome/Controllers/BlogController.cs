@@ -27,6 +27,11 @@ namespace EduHome.Controllers
 
             return View(blogVM);
         }
+        public async Task<IActionResult> SearchBlog(string text)
+        {
+            var datas = await _dbContext.Blogs.Where(b => b.Name.ToLower().Contains(text.ToLower())).Take(5).ToListAsync();
+            return PartialView("_SearchPartialView", datas);
+        }
     }
 }
 

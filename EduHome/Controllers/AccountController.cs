@@ -108,7 +108,7 @@ namespace EduHome.Controllers
             }
             if (!result.Succeeded)
             {
-                ModelState.AddModelError("", "Username or Email is wrong ");
+                ModelState.AddModelError("", "Email is Password is wrong.. ");
                 return View(loginVM);
             }
             return RedirectToAction("index", "home");
@@ -120,7 +120,7 @@ namespace EduHome.Controllers
             return RedirectToAction("index", "home");
         }
 
-      
+
         public IActionResult ForgetPassword()
         {
             return View();
@@ -222,7 +222,5 @@ namespace EduHome.Controllers
             return Content("Successfully added the role!");
 
         }
-
-
     }
 }

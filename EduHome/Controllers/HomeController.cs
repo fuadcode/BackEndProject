@@ -2,6 +2,7 @@
 using EduHome.Models;
 using EduHome.ViewModels;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 using System.ComponentModel.DataAnnotations;
 
@@ -59,7 +60,7 @@ namespace EduHome.Controllers
 
             var subscription = new Subscription
             {
-                SubscriptionName = "DefaultSubscription", 
+                SubscriptionName = "UserSubscription",
                 Email = email
             };
 
@@ -74,6 +75,43 @@ namespace EduHome.Controllers
             var emailAttribute = new EmailAddressAttribute();
             return emailAttribute.IsValid(email);
         }
-    }
-    }
 
+
+
+        [HttpPost]
+        public IActionResult SubmitContactFormw(ContactFormModel model)
+        {
+            if (ModelState.IsValid)
+            {
+               
+                return Json(new { success = true });
+            }
+            return Json(new { success = false });
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> SubmitContactForm(ContactFormModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                var contactMessage = new ContactFormModel
+                {
+                    Name = model.Name,
+                    Email = model.Email,
+                    Subject = model.Subject,
+                    Message = model.Message,
+                    CreatedForm = DateTime.UtcNow
+                };
+
+                _context.ContactFormModels.Add(contactMessage);
+                await _context.SaveChangesAsync();
+
+                TempData["Message"] = "Message sent successfully!";
+                return RedirectToAction("ContactForm");
+            }
+
+            TempData["Message"] = "Error sending message. Please try again.";
+            return RedirectToAction("ContactForm");
+        }
+    }
+}

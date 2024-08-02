@@ -1,6 +1,7 @@
 
 using EduHome;
 
+
 var builder = WebApplication.CreateBuilder(args);
 var config = builder.Configuration;
 builder.Services.Register(config);

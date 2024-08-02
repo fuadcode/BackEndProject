@@ -122,8 +122,6 @@ namespace EduHome.Areas.AdminArea.Controllers
             return View(user);
         }
 
-
-
         public async Task<IActionResult> Delete(string id)
         {
             if (id is null) return BadRequest();
@@ -171,7 +169,7 @@ namespace EduHome.Areas.AdminArea.Controllers
                 var result = await _userManager.UpdateAsync(user);
                 if (result.Succeeded)
                 {
-                    return RedirectToAction("Index"); // Admin panel ana sayfasına yönlendirme
+                    return RedirectToAction("Index"); 
                 }
 
                 foreach (var error in result.Errors)

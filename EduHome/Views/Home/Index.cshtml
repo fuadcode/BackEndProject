@@ -138,11 +138,11 @@
                  <div class="col-md-6 col-sm-12 col-xs-12">
                 <div class="single-event mb-35">
                     <div class="event-date">
-                            <h3><a href="event-details.html">@item.Time.ToString("MMM dd",englishCulture)</a></h3>
+                            <h3><a asp-controller="event" asp-action="detail" asp-route-id="1">@item.Time.ToString("MMM dd", englishCulture)</a></h3>
                     </div>
                     <div class="event-content text-left">
                         <div class="event-content-left">
-                            <h4><a href="event-details.html">@item.Name</a></h4>
+                                <h4><a asp-controller="event" asp-action="detail" asp-route-id="1">@item.Name</a></h4>
                             <ul>
                                     <li><i class="fa fa-clock-o"></i>@item.Time.ToString("h:mm tt-h:mm-tt")</li>
                                 <li><i class="fa fa-map-marker"></i>@item.Area</li>

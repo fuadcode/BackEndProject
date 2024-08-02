@@ -13,20 +13,8 @@
       "PackagePath": "staticwebassets\\admin\\css\\style.css"
     },
     {
-      "Id": "C:\\Users\\Feteli Isgenderov\\Desktop\\EduHome\\EduHome\\wwwroot\\admin\\documentation\\.DS_Store",
-      "PackagePath": "staticwebassets\\admin\\documentation\\.DS_Store"
-    },
-    {
       "Id": "C:\\Users\\Feteli Isgenderov\\Desktop\\EduHome\\EduHome\\wwwroot\\admin\\documentation\\documentation.html",
       "PackagePath": "staticwebassets\\admin\\documentation\\documentation.html"
-    },
-    {
-      "Id": "C:\\Users\\Feteli Isgenderov\\Desktop\\EduHome\\EduHome\\wwwroot\\admin\\fonts\\.DS_Store",
-      "PackagePath": "staticwebassets\\admin\\fonts\\.DS_Store"
-    },
-    {
-      "Id": "C:\\Users\\Feteli Isgenderov\\Desktop\\EduHome\\EduHome\\wwwroot\\admin\\fonts\\Roboto\\.DS_Store",
-      "PackagePath": "staticwebassets\\admin\\fonts\\Roboto\\.DS_Store"
     },
     {
       "Id": "C:\\Users\\Feteli Isgenderov\\Desktop\\EduHome\\EduHome\\wwwroot\\admin\\fonts\\Roboto\\Roboto-Black.eot",
@@ -109,14 +97,6 @@
       "PackagePath": "staticwebassets\\admin\\fonts\\Roboto\\Roboto-Regular.woff2"
     },
     {
-      "Id": "C:\\Users\\Feteli Isgenderov\\Desktop\\EduHome\\EduHome\\wwwroot\\admin\\images\\.DS_Store",
-      "PackagePath": "staticwebassets\\admin\\images\\.DS_Store"
-    },
-    {
-      "Id": "C:\\Users\\Feteli Isgenderov\\Desktop\\EduHome\\EduHome\\wwwroot\\admin\\images\\auth\\.DS_Store",
-      "PackagePath": "staticwebassets\\admin\\images\\auth\\.DS_Store"
-    },
-    {
       "Id": "C:\\Users\\Feteli Isgenderov\\Desktop\\EduHome\\EduHome\\wwwroot\\admin\\images\\auth\\lockscreen-bg.jpg",
       "PackagePath": "staticwebassets\\admin\\images\\auth\\lockscreen-bg.jpg"
     },
@@ -127,10 +107,6 @@
     {
       "Id": "C:\\Users\\Feteli Isgenderov\\Desktop\\EduHome\\EduHome\\wwwroot\\admin\\images\\auth\\register-bg.jpg",
       "PackagePath": "staticwebassets\\admin\\images\\auth\\register-bg.jpg"
-    },
-    {
-      "Id": "C:\\Users\\Feteli Isgenderov\\Desktop\\EduHome\\EduHome\\wwwroot\\admin\\images\\faces\\.DS_Store",
-      "PackagePath": "staticwebassets\\admin\\images\\faces\\.DS_Store"
     },
     {
       "Id": "C:\\Users\\Feteli Isgenderov\\Desktop\\EduHome\\EduHome\\wwwroot\\admin\\images\\faces\\face1.jpg",
@@ -253,10 +229,6 @@
       "PackagePath": "staticwebassets\\admin\\images\\logo.svg"
     },
     {
-      "Id": "C:\\Users\\Feteli Isgenderov\\Desktop\\EduHome\\EduHome\\wwwroot\\admin\\js\\.DS_Store",
-      "PackagePath": "staticwebassets\\admin\\js\\.DS_Store"
-    },
-    {
       "Id": "C:\\Users\\Feteli Isgenderov\\Desktop\\EduHome\\EduHome\\wwwroot\\admin\\js\\Chart.min.js",
       "PackagePath": "staticwebassets\\admin\\js\\Chart.min.js"
     },
@@ -303,10 +275,6 @@
     {
       "Id": "C:\\Users\\Feteli Isgenderov\\Desktop\\EduHome\\EduHome\\wwwroot\\admin\\js\\template.js",
       "PackagePath": "staticwebassets\\admin\\js\\template.js"
-    },
-    {
-      "Id": "C:\\Users\\Feteli Isgenderov\\Desktop\\EduHome\\EduHome\\wwwroot\\admin\\scss\\.DS_Store",
-      "PackagePath": "staticwebassets\\admin\\scss\\.DS_Store"
     },
     {
       "Id": "C:\\Users\\Feteli Isgenderov\\Desktop\\EduHome\\EduHome\\wwwroot\\admin\\scss\\_background.scss",
@@ -365,10 +333,6 @@
       "PackagePath": "staticwebassets\\admin\\scss\\_vertical-wrapper.scss"
     },
     {
-      "Id": "C:\\Users\\Feteli Isgenderov\\Desktop\\EduHome\\EduHome\\wwwroot\\admin\\scss\\components\\.DS_Store",
-      "PackagePath": "staticwebassets\\admin\\scss\\components\\.DS_Store"
-    },
-    {
       "Id": "C:\\Users\\Feteli Isgenderov\\Desktop\\EduHome\\EduHome\\wwwroot\\admin\\scss\\components\\_badges.scss",
       "PackagePath": "staticwebassets\\admin\\scss\\components\\_badges.scss"
     },
@@ -417,10 +381,6 @@
       "PackagePath": "staticwebassets\\admin\\scss\\landing-screens\\_auth.scss"
     },
     {
-      "Id": "C:\\Users\\Feteli Isgenderov\\Desktop\\EduHome\\EduHome\\wwwroot\\admin\\scss\\mixins\\.DS_Store",
-      "PackagePath": "staticwebassets\\admin\\scss\\mixins\\.DS_Store"
-    },
-    {
       "Id": "C:\\Users\\Feteli Isgenderov\\Desktop\\EduHome\\EduHome\\wwwroot\\admin\\scss\\mixins\\_animation.scss",
       "PackagePath": "staticwebassets\\admin\\scss\\mixins\\_animation.scss"
     },
@@ -447,10 +407,6 @@
     {
       "Id": "C:\\Users\\Feteli Isgenderov\\Desktop\\EduHome\\EduHome\\wwwroot\\admin\\scss\\style.scss",
       "PackagePath": "staticwebassets\\admin\\scss\\style.scss"
-    },
-    {
-      "Id": "C:\\Users\\Feteli Isgenderov\\Desktop\\EduHome\\EduHome\\wwwroot\\admin\\vendors\\.DS_Store",
-      "PackagePath": "staticwebassets\\admin\\vendors\\.DS_Store"
     },
     {
       "Id": "C:\\Users\\Feteli Isgenderov\\Desktop\\EduHome\\EduHome\\wwwroot\\admin\\vendors\\base\\vendor.bundle.base.css",
@@ -551,6 +507,10 @@
     {
       "Id": "C:\\Users\\Feteli Isgenderov\\Desktop\\EduHome\\EduHome\\wwwroot\\css\\style.css",
       "PackagePath": "staticwebassets\\css\\style.css"
+    },
+    {
+      "Id": "C:\\Users\\Feteli Isgenderov\\Desktop\\EduHome\\EduHome\\wwwroot\\css\\stylecomponent.css",
+      "PackagePath": "staticwebassets\\css\\stylecomponent.css"
     },
     {
       "Id": "C:\\Users\\Feteli Isgenderov\\Desktop\\EduHome\\EduHome\\wwwroot\\fonts\\Material-Design-Iconic-Fontd1f1.ttf",
@@ -1043,6 +1003,10 @@
     {
       "Id": "C:\\Users\\Feteli Isgenderov\\Desktop\\EduHome\\EduHome\\wwwroot\\js\\jquery.nicescroll.min.js",
       "PackagePath": "staticwebassets\\js\\jquery.nicescroll.min.js"
+    },
+    {
+      "Id": "C:\\Users\\Feteli Isgenderov\\Desktop\\EduHome\\EduHome\\wwwroot\\js\\main-component.js",
+      "PackagePath": "staticwebassets\\js\\main-component.js"
     },
     {
       "Id": "C:\\Users\\Feteli Isgenderov\\Desktop\\EduHome\\EduHome\\wwwroot\\js\\main.js",

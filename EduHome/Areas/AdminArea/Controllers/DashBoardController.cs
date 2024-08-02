@@ -18,9 +18,11 @@ namespace EduHome.Areas.AdminArea.Controllers
         {
             var userCount = _context.Users.Count();
             var subscriptionCount = _context.Subscriptions.Count();
+            var contactFormCount = _context.ContactFormModels.Count();
 
             ViewBag.UserCount = userCount;
             ViewBag.SubscriptionCount = subscriptionCount;
+            ViewBag.ContactFormCount = contactFormCount;
 
             return View();
         }

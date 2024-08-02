@@ -54,5 +54,11 @@ public class CourseController : Controller
         };
         return View(courseVM);
     }
+    public IActionResult LoadMore(int offset = 3)
+    {
+        var datas = _context.Courses.Skip(offset).Take(3).ToList();
+        return PartialView("_CoursePartialView", datas);
+
+    }
 
 }

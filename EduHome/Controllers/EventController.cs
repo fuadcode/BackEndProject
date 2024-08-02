@@ -1,7 +1,9 @@
 ﻿using EduHome.Data;
+using EduHome.Models;
 using EduHome.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+
 
 namespace EduHome.Controllers
 {
@@ -28,5 +30,12 @@ namespace EduHome.Controllers
             };
             return View(eventVM);
         }
+
+        public async Task<IActionResult> EventSearch(string text)
+        {
+            var data = await _dbContext.Events.Where(k => k.Name.ToLower().Contains(text.ToLower())).Take(5).ToListAsync();
+            return PartialView("_EventSearchPartialView", data);
+        }
     }
 }
+

@@ -275,4 +275,5 @@ C:\Users\Feteli Isgenderov\Desktop\EduHome\EduHome\bin\Debug\net7.0\runtimes\win
 C:\Users\Feteli Isgenderov\Desktop\EduHome\EduHome\bin\Debug\net7.0\runtimes\win\lib\net6.0\System.Security.Cryptography.ProtectedData.dll
 C:\Users\Feteli Isgenderov\Desktop\EduHome\EduHome\bin\Debug\net7.0\runtimes\win\lib\net6.0\System.Windows.Extensions.dll
 C:\Users\Feteli Isgenderov\Desktop\EduHome\EduHome\obj\Debug\net7.0\EduHome.csproj.AssemblyReference.cache
-C:\Users\Feteli Isgenderov\Desktop\EduHome\EduHome\obj\Debug\net7.0\EduHome.csproj.CopyComplete
+C:\Users\Feteli Isgenderov\Desktop\EduHome\EduHome\obj\Debug\net7.0\EduHome.sourcelink.json
+C:\Users\Feteli Isgenderov\Desktop\EduHome\EduHome\obj\Debug\net7.0\EduHome.csproj.Up2Date

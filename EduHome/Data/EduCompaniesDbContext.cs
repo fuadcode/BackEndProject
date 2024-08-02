@@ -18,11 +18,7 @@ namespace EduHome.Data
         public DbSet<Teacher> Teachers { get; set; }
         public DbSet<TeacherDetail> TeacherDetails { get; set; }
         public DbSet<Features> Features { get; set; }
-        public DbSet<Speaker> Speakers { get; set; }
-
-       
-
-
+        public DbSet<ContactFormModel> ContactFormModels { get; set; }
 
 
         public EduCompaniesDbContext() { }
