@@ -79,7 +79,7 @@ namespace EduHome.Controllers
 
 
         [HttpPost]
-        public IActionResult SubmitContactFormw(ContactFormModel model)
+        public IActionResult SubmitContactFormw(MessageForm model)
         {
             if (ModelState.IsValid)
             {
@@ -90,11 +90,11 @@ namespace EduHome.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> SubmitContactForm(ContactFormModel model)
+        public async Task<IActionResult> SubmitContactForm(MessageForm model)
         {
             if (ModelState.IsValid)
             {
-                var contactMessage = new ContactFormModel
+                var messageForm = new MessageForm
                 {
                     Name = model.Name,
                     Email = model.Email,
@@ -103,7 +103,7 @@ namespace EduHome.Controllers
                     CreatedForm = DateTime.UtcNow
                 };
 
-                _context.ContactFormModels.Add(contactMessage);
+                _context.MessageForms.Add(messageForm);
                 await _context.SaveChangesAsync();
 
                 TempData["Message"] = "Message sent successfully!";

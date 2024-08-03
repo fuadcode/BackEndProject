@@ -15,7 +15,6 @@ namespace EduHome.Services
         public IDictionary<string, string> GetSettings() => _dbContext.WebSettings
             .ToDictionary(k => k.Key, k => k.Value);
 
-        //public IActionResult GetTeachers() => _dbContext.Teachers.ToList();
 
     }
 }

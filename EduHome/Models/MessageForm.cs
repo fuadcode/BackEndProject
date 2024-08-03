@@ -1,6 +1,6 @@
 ﻿namespace EduHome.Models
 {
-    public class ContactFormModel : BaseEntity
+    public class MessageForm : BaseEntity
     {
         public string Name { get; set; }
         public string Email { get; set; }
