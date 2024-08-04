@@ -1,15 +1,17 @@
-﻿@model Dictionary<string,string>
+﻿@model Dictionary<string, string>
+
 <header class="top">
     <div class="header-top">
         <div class="container">
             <div class="row">
                 <div class="col-md-8 col-sm-8 col-xs-12">
                     <div class="header-top-left">
-                        <p>HAVE ANY QUESTION ?  +880 5698  598  6587</p>
+                        <p>HAVE ANY QUESTION? +880 5698 598 6587</p>
                     </div>
+                    
                 </div>
                 <div class="col-md-4 col-sm-4 col-xs-12">
-                    <div class="header-top-right text-right">    
+                    <div class="header-top-right text-right">
                     </div>
                 </div>
             </div>
@@ -25,57 +27,63 @@
                 </div>
                 <div class="col-md-9 col-sm-9 col-xs-6">
                     <div class="content-wrapper text-right">
+
                         <!-- Main Menu Start -->
                         <div class="main-menu">
                             <nav>
                                 <ul>
-                                    <li>
-                                        <a asp-controller="home" asp-action="Index">Home</a>
-                                    </li>
+                                    <li><a asp-controller="home" asp-action="Index">Home</a></li>
                                     <li><a asp-controller="about" asp-action="Index">About</a></li>
                                     <li>
-                                        <a asp-controller="course" asp-action="Index">courses</a>
+                                        <a asp-controller="course" asp-action="Index">Courses</a>
                                         <ul>
-                                            <li><a asp-controller="course" asp-action="Index">courses</a></li>
-                                            <li><a asp-controller="course" asp-action="detail" asp-route-id="1">courses details</a></li>
-
+                                            <li><a asp-controller="course" asp-action="Index">Courses</a></li>
+                                            <li><a asp-controller="course" asp-action="detail" asp-route-id="1">Course Details</a></li>
                                         </ul>
                                     </li>
                                     <li>
-                                        <a asp-controller="event" asp-action="Index">event</a>
+                                        <a asp-controller="event" asp-action="Index">Event</a>
                                         <ul>
-                                            <li><a asp-controller="event" asp-action="Index">event</a></li>
-                                            <li><a asp-controller="event" asp-action="detail" asp-route-id="1">events details</a></li>
+                                            <li><a asp-controller="event" asp-action="Index">Event</a></li>
+                                            <li><a asp-controller="event" asp-action="detail" asp-route-id="1">Event Details</a></li>
                                         </ul>
                                     </li>
                                     <li class="hidden-sm">
-                                        <a asp-controller="teacher" asp-action="Index">teacher</a>
+                                        <a asp-controller="teacher" asp-action="Index">Teacher</a>
                                         <ul>
-                                            <li><a asp-controller="teacher" asp-action="Index">teacher</a></li>
-                                            <li><a asp-controller="teacher" asp-action="detail" asp-route-id="1">teacher details</a></li>
+                                            <li><a asp-controller="teacher" asp-action="Index">Teacher</a></li>
+                                            <li><a asp-controller="teacher" asp-action="detail" asp-route-id="1">Teacher Details</a></li>
                                         </ul>
                                     </li>
                                     <li>
-                                        <a asp-controller="blog" asp-action="Index">blog</a>
+                                        <a asp-controller="blog" asp-action="Index">Blog</a>
                                         <ul>
-                                            <li><a asp-controller="blog" asp-action="Index">blog</a></li>
-                                            <li><a asp-controller="blog" asp-action="Detail" asp-route-id="1">blog details</a></li>
+                                            <li><a asp-controller="blog" asp-action="Index">Blog</a></li>
+                                            <li><a asp-controller="blog" asp-action="Detail" asp-route-id="1">Blog Details</a></li>
                                         </ul>
                                     </li>
                                     <li><a asp-controller="contact" asp-action="Index">Contact</a></li>
-                                    <li><a href="#">Buy Now</a>
-                                        @if (User.Identity.IsAuthenticated)
-                                        {
-                                        <li>@ViewBag.FullName</li>
-                                        <a href="/account/logout">Log out</a>
-                                        }
-                                        else
-                                        {
-                                        <li><a href="/account/login">login</a></li>
-                                       
-                                        }
+                                    <li class="menu-item"><a href="#">Buy Now</a></li>
+                                            @if (User.Identity.IsAuthenticated)
+                                            {
+                                                <li class="dropdown menu-item">
+                                            <a href="#" class="dropbtn username-link">@ViewBag.FullName</a>
+                                                    <div class="dropdown-content">
+                                                        <a asp-controller="Profile" asp-action="Index">Profile</a>
+                                                        @if (User.IsInRole("admin"))
+                                                        {
+                                                            <a asp-area="AdminArea" asp-controller="Dashboard" asp-action="Index">AdminPanel</a>
+                                                        }
+                                                        <a href="/account/logout">Logout</a>
+                                                    </div>
+                                                </li>
+                                            }
 
-
+                                
+                                    @if (!User.Identity.IsAuthenticated)
+                                    {
+                                        <li><a asp-controller="Account" asp-action="Login">Login</a></li>
+                                    }
                                 </ul>
                             </nav>
                         </div>

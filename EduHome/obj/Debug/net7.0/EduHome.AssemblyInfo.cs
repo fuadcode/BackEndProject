@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("EduHome")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+741c138b784d90678b4409df4183bba2c56f1cc5")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+0d2694ed11d5c84bfd9676fd4b460a1fe4b8500e")]
 [assembly: System.Reflection.AssemblyProductAttribute("EduHome")]
 [assembly: System.Reflection.AssemblyTitleAttribute("EduHome")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

@@ -1,0 +1,46 @@
+﻿nav ul li a {
+    color: white;
+    text-decoration: none;
+    padding: 10px 15px;
+    display: block;
+}
+
+.username-link {
+    text-shadow: 1px 1px 1px rgba(139 69 19);
+}
+
+nav ul li.menu-item {
+    margin-left: 0;
+}
+
+nav ul li.dropdown {
+    position: relative;
+}
+
+nav ul li .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: white;
+    min-width: 200px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    z-index: 9999;
+    left: 0;
+    top: 100%;
+    white-space: nowrap;
+}
+
+    nav ul li .dropdown-content a {
+        color: black;
+        padding: 12px 0;
+        text-decoration: none;
+        display: block;
+        text-align: center;
+    }
+
+        nav ul li .dropdown-content a:hover {
+            background-color: rgba(139 35 35);
+        }
+
+nav ul li.dropdown:hover .dropdown-content {
+    display: block;
+}

@@ -1,0 +1,81 @@
+﻿@model ProfilVM
+
+@{
+    ViewData["Title"] = "Profil";
+}
+
+<div class="container">
+    <h2 class="text-center mb-4 profile-heading">User Profile</h2>
+
+    <form asp-action="UpdateProfile" asp-controller="Profile" method="post" enctype="multipart/form-data">
+        <div class="card shadow-sm border-light">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <div class="form-group">
+                            <label for="fullName" class="form-label">FullName</label>
+                            <input type="text" class="form-control" id="fullName" name="FullName" value="@Model.FullName" placeholder="FullName" />
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 mb-3">
+                        <div class="form-group">
+                            <label for="userName" class="form-label">UserName</label>
+                            <input type="text" class="form-control" id="userName" name="UserName" value="@Model.UserName" readonly />
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group mb-4">
+                    <label for="email" class="form-label">Email</label>
+                    <input type="email" class="form-control" id="email" name="Email" value="@Model.Email" placeholder="Emailinizi daxil edin" />
+                </div>
+                <div class="form-group mb-4">
+                    <label for="profilePicture" class="form-label">Profile Photo</label>
+                    <div class="d-flex align-items-center">
+                        <input type="file" class="form-control-file" id="profilePicture" name="ProfilePicture" />
+                        <div class="ml-3">
+                            <img src="@Model.ProfilePictureUrl" alt="Profile Photo" class="img-circle" />
+                        </div>
+                    </div>
+                </div>
+               
+
+                <div class="text-center">
+                    <button type="submit" class="btn btn-primary">Update</button>
+                </div>
+                <a asp-controller="Account" asp-action="ChangePassword" class="btn-change-password">
+                    <i class="fas fa-lock"></i> ChangePassword
+                </a>
+
+
+            </div>
+        </div>
+    </form>
+</div>
+
+<style>
+    .btn-change-password {
+        position:relative;
+        bottom:42px;
+        display: inline-flex;
+        align-items: center;
+        padding: 13px 20px;
+        background-color: #007bff;
+        color: #fff;
+        text-decoration: none;
+        border-radius: 50%;
+        transition: background-color 0.3s ease;
+    }
+
+        .btn-change-password i {
+            margin-right: 8px;
+            font-size: 16px;
+        }
+
+        .btn-change-password:hover {
+            background-color: #0056b3;
+            text-decoration: none;
+        }
+
+</style>

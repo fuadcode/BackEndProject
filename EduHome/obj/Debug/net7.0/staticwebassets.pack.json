@@ -473,6 +473,10 @@
       "PackagePath": "staticwebassets\\css\\font-awesome.min.css"
     },
     {
+      "Id": "C:\\Users\\Feteli Isgenderov\\Desktop\\EduHome\\EduHome\\wwwroot\\css\\id-cabinet.css",
+      "PackagePath": "staticwebassets\\css\\id-cabinet.css"
+    },
+    {
       "Id": "C:\\Users\\Feteli Isgenderov\\Desktop\\EduHome\\EduHome\\wwwroot\\css\\ionicons.min.css",
       "PackagePath": "staticwebassets\\css\\ionicons.min.css"
     },
@@ -495,6 +499,10 @@
     {
       "Id": "C:\\Users\\Feteli Isgenderov\\Desktop\\EduHome\\EduHome\\wwwroot\\css\\owl.video.play.png",
       "PackagePath": "staticwebassets\\css\\owl.video.play.png"
+    },
+    {
+      "Id": "C:\\Users\\Feteli Isgenderov\\Desktop\\EduHome\\EduHome\\wwwroot\\css\\profil.css",
+      "PackagePath": "staticwebassets\\css\\profil.css"
     },
     {
       "Id": "C:\\Users\\Feteli Isgenderov\\Desktop\\EduHome\\EduHome\\wwwroot\\css\\reset.css",
@@ -607,6 +615,30 @@
     {
       "Id": "C:\\Users\\Feteli Isgenderov\\Desktop\\EduHome\\EduHome\\wwwroot\\fonts\\ionicons28b5.woff",
       "PackagePath": "staticwebassets\\fonts\\ionicons28b5.woff"
+    },
+    {
+      "Id": "C:\\Users\\Feteli Isgenderov\\Desktop\\EduHome\\EduHome\\wwwroot\\images\\136bf843-cad6-407d-8ff0-e4c91d6eb45a.jpg",
+      "PackagePath": "staticwebassets\\images\\136bf843-cad6-407d-8ff0-e4c91d6eb45a.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Feteli Isgenderov\\Desktop\\EduHome\\EduHome\\wwwroot\\images\\1ea15414-42fb-486b-8cc0-29cbfe1a4b20.jpg",
+      "PackagePath": "staticwebassets\\images\\1ea15414-42fb-486b-8cc0-29cbfe1a4b20.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Feteli Isgenderov\\Desktop\\EduHome\\EduHome\\wwwroot\\images\\9sgt6dzvffd41.jpg",
+      "PackagePath": "staticwebassets\\images\\9sgt6dzvffd41.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Feteli Isgenderov\\Desktop\\EduHome\\EduHome\\wwwroot\\images\\banner.jpg",
+      "PackagePath": "staticwebassets\\images\\banner.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Feteli Isgenderov\\Desktop\\EduHome\\EduHome\\wwwroot\\images\\programmer-quotes-3840x2160-10707.jpg",
+      "PackagePath": "staticwebassets\\images\\programmer-quotes-3840x2160-10707.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Feteli Isgenderov\\Desktop\\EduHome\\EduHome\\wwwroot\\images\\q425x26bym481.webp",
+      "PackagePath": "staticwebassets\\images\\q425x26bym481.webp"
     },
     {
       "Id": "C:\\Users\\Feteli Isgenderov\\Desktop\\EduHome\\EduHome\\wwwroot\\img\\about\\about.png",
