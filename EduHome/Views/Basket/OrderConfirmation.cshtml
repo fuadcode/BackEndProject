@@ -1,0 +1,76 @@
+﻿@model Order
+
+<div class="container mt-5">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <div class="card shadow-lg border-0 rounded">
+        <div class="card-header bg-success text-white text-center rounded-top">
+            <h5 class="mb-0">Order Confirmation</h5>
+        </div>
+        <div class="card-body p-4">
+            <div class="text-center">
+                <i class="fa-solid fa-check-circle fa-4x text-success mb-4"></i>
+                <h3 class="mb-3">Thank you for your purchase!</h3>
+                <p class="lead mb-4">
+                    You have successfully purchased the course:
+                    <strong class="text-primary">@Model.Course.Name</strong>
+                </p>
+                <div class="mb-4">
+                    <img src="~/img/course/@Model.Course.ImgUrl" class="img-thumbnail rounded-circle shadow-sm" width="120" height="120" alt="@Model.Course.Name" />
+                </div>
+                <p class="mb-4">Order Date: <strong>@Model.OrderDate.ToString("MMMM d, yyyy")</strong></p>
+                <a href="@Url.Action("Index", "Home")" class="btn btn-primary btn-lg">
+                    <i class="fas fa-home"></i> Return to Home
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .card {
+        border-radius: 15px;
+        overflow: hidden;
+        background-color: #ffffff;
+    }
+
+    .card-header {
+        background: linear-gradient(135deg, #28a745, #218838);
+        color: #fff;
+        border-bottom: none;
+        padding: 20px;
+    }
+
+    .card-body {
+        background-color: #f8f9fa;
+        padding: 30px;
+    }
+
+    .text-success {
+        color: #28a745 !important;
+    }
+
+    .text-primary {
+        color: #007bff !important;
+    }
+
+    .btn-primary {
+        background-color: #007bff;
+        border-color: #007bff;
+    }
+
+        .btn-primary:hover {
+            background-color: #0056b3;
+            border-color: #004085;
+        }
+
+    .btn-lg {
+        padding: 0.75rem 1.5rem;
+        font-size: 1.25rem;
+        border-radius: 0.3rem;
+    }
+
+    .fa-check-circle {
+        color: #28a745;
+    }
+</style>

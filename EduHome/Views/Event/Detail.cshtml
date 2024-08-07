@@ -81,7 +81,12 @@
                                 </div>
                             </div>
                             <button type="submit" class="reply-btn">Send Message</button>
-                            <div id="response-message"></div>
+                            @if (TempData["Message"] != null)
+                            {
+                                <div class="response-message @(TempData["MessageType"])">
+                                    @TempData["Message"]
+                                </div>
+                            }
                         </form>
                     </div>
                 </div>

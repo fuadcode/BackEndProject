@@ -7,5 +7,6 @@
         public string Subject { get; set; }
         public string Message { get; set; }
         public DateTime CreatedForm { get; set; }
+        public string Status { get; set; } //Pending, Accepted, Rejected
     }
 }

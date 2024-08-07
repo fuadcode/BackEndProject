@@ -114,6 +114,8 @@ namespace EduHome.Controllers
             return RedirectToAction("index", "home");
 
         }
+
+
         public async Task<IActionResult> Logout()
         {
             await _signInManager.SignOutAsync();
@@ -242,6 +244,7 @@ namespace EduHome.Controllers
             {
                 return RedirectToAction("Login");
             }
+
 
             var result = await _userManager.ChangePasswordAsync(user, model.CurrentPassword, model.NewPassword);
 

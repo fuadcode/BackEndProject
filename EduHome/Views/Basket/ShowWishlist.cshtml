@@ -1,0 +1,129 @@
+﻿@model List<BasketVM>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Wishlist</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            font-size: 2rem;
+            color: #444;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+            background: #fff;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #4CAF50;
+            color: #fff;
+        }
+
+        tr:hover {
+            background-color: #f1f1f1;
+        }
+
+        img {
+            width: 100px;
+            height: auto;
+            border-radius: 4px;
+        }
+
+        .action-buttons {
+            display: flex;
+            gap: 10px;
+        }
+
+            .action-buttons a {
+                text-decoration: none;
+                color: #fff;
+                padding: 8px 12px;
+                border-radius: 4px;
+                font-weight: bold;
+                transition: background-color 0.3s;
+            }
+
+                .action-buttons a.remove {
+                    background-color: #f44336;
+                }
+
+                    .action-buttons a.remove:hover {
+                        background-color: #e53935;
+                    }
+
+                .action-buttons a.wishlist {
+                    background-color: #2196F3;
+                }
+
+                    .action-buttons a.wishlist:hover {
+                        background-color: #1e88e5;
+                    }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>My Wishlist</h2>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Course Name</th>
+                    <th>Description</th>
+                    <th>Image</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.Name</td>
+                        <td>@item.Desc</td>
+                        <td><img src="~/img/course/@item.ImageUrl" alt="@item.Name" /></td>
+                        <td>
+                            <div class="action-buttons">
+                                <a style="position:relative; top: 1px;width: 127px;height: 34px;" class="btn btn-primary" asp-controller="Basket" asp-action="AddToBasket" asp-route-id="@item.Id">Add to Basket</a>
+                                <a style="position:relative; top: 1px;width: 97px;height: 34px;"  href="@Url.Action("RemoveFromWishlist", "Basket", new { id = item.Id })" class="remove">
+                                    <i class="fas fa-trash"></i> Remove
+                                </a>
+                            </div>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

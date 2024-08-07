@@ -1,0 +1,184 @@
+﻿@model List<OrderVM>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Success</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f4f9;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 30px;
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 2.5rem;
+            color: #333;
+            font-weight: 700;
+        }
+
+        .order-list {
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+            padding: 20px;
+            overflow: hidden;
+        }
+
+        .empty-state {
+            text-align: center;
+            padding: 50px;
+            font-size: 1.2rem;
+            color: #888;
+        }
+
+        .order-item {
+            display: flex;
+            align-items: center;
+            border-bottom: 1px solid #eee;
+            padding: 20px 0;
+        }
+
+            .order-item:last-child {
+                border-bottom: none;
+            }
+
+            .order-item img {
+                width: 120px;
+                height: 80px;
+                object-fit: cover;
+                border-radius: 8px;
+                margin-right: 20px;
+            }
+
+            .order-item .details {
+                flex: 1;
+            }
+
+                .order-item .details h3 {
+                    margin: 0 0 10px;
+                    font-size: 1.8rem;
+                    color: #333;
+                    font-weight: 600;
+                }
+
+                .order-item .details p {
+                    margin: 0 0 5px;
+                    color: #555;
+                    font-size: 1.1rem;
+                }
+
+                .order-item .details .order-date {
+                    color: #888;
+                    font-size: 0.9rem;
+                }
+
+                .order-item .details .description {
+                    color: #666;
+                }
+
+            .order-item .remove-btn {
+                background: #ff4d4d;
+                color: #fff;
+                border: none;
+                border-radius: 5px;
+                padding: 8px 15px;
+                font-size: 1rem;
+                cursor: pointer;
+                transition: background 0.3s;
+            }
+
+                .order-item .remove-btn:hover {
+                    background: #e60000;
+                }
+
+        .order-list table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .order-list th, .order-list td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+
+        .order-list th {
+            background-color: #f4f4f4;
+            font-weight: 600;
+        }
+
+        .order-list tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        .order-list img {
+            width: 80px;
+            height: 60px;
+            object-fit: cover;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Order Success</h2>
+
+        @if (Model.Any())
+        {
+            <div class="order-list">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Image</th>
+                            <th>Course Name</th>
+                            <th>Description</th>
+                            <th>Order Date</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var order in Model)
+                        {
+                            <tr>
+                                <td><img src="~/img/course/@order.CourseImageUrl" alt="@order.CourseName" /></td>
+                                <td>@order.CourseName</td>
+                                <td>@order.CourseDesc</td>
+                                <td>@order.OrderDate.ToString("MMMM dd, yyyy")</td>
+                                <td>
+                                    <form action="@Url.Action("RemoveOrder", "Basket")" method="post">
+                                        <input type="hidden" name="orderId" value="@order.OrderId" />
+                                        <button type="submit" class="remove-btn">
+                                            <i class="fas fa-trash-alt"></i> Remove
+                                        </button>
+                                    </form>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        }
+        else
+        {
+            <div class="empty-state">
+                <p>Your order list is empty.</p>
+            </div>
+        }
+    </div>
+</body>
+</html>

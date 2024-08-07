@@ -1,20 +1,25 @@
 ﻿using EduHome.Data;
 using EduHome.Models;
 using EduHome.ViewModels;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 using System.ComponentModel.DataAnnotations;
+using System.Net.Mail;
 
 namespace EduHome.Controllers
 {
     public class HomeController : Controller
     {
         private readonly EduCompaniesDbContext _context;
+        private readonly UserManager<AppUser> _userManager;
 
-        public HomeController(EduCompaniesDbContext context)
+        public HomeController(EduCompaniesDbContext context, UserManager<AppUser> userManager)
         {
             _context = context;
+            _userManager = userManager;
         }
 
         public IActionResult Index()
@@ -77,13 +82,12 @@ namespace EduHome.Controllers
         }
 
 
-
         [HttpPost]
         public IActionResult SubmitContactFormw(MessageForm model)
         {
             if (ModelState.IsValid)
             {
-               
+
                 return Json(new { success = true });
             }
             return Json(new { success = false });
@@ -92,25 +96,36 @@ namespace EduHome.Controllers
         [HttpPost]
         public async Task<IActionResult> SubmitContactForm(MessageForm model)
         {
-            if (ModelState.IsValid)
+            var user = await _userManager.FindByEmailAsync(model.Email);
+            if (user == null)
             {
-                var messageForm = new MessageForm
-                {
-                    Name = model.Name,
-                    Email = model.Email,
-                    Subject = model.Subject,
-                    Message = model.Message,
-                    CreatedForm = DateTime.UtcNow
-                };
-
-                _context.MessageForms.Add(messageForm);
-                await _context.SaveChangesAsync();
-
-                TempData["Message"] = "Message sent successfully!";
+                TempData["Message"] = "The email address is not registered. Please register to use this comment table.";
+                TempData["MessageType"] = "error";
                 return RedirectToAction("ContactForm");
             }
 
-            TempData["Message"] = "Error sending message. Please try again.";
+            if (!await _userManager.IsEmailConfirmedAsync(user))
+            {
+                TempData["Message"] = "Your email address is not confirmed. Please confirm your email address before sending a message.";
+                TempData["MessageType"] = "error";
+                return RedirectToAction("ContactForm");
+            }
+
+            var messageForm = new MessageForm
+            {
+                Name = model.Name,
+                Email = model.Email,
+                Subject = model.Subject,
+                Message = model.Message,
+                CreatedForm = DateTime.UtcNow,
+                Status = "Pending" 
+            };
+
+            _context.MessageForms.Add(messageForm);
+            await _context.SaveChangesAsync();
+
+            TempData["Message"] = "The message was sent successfully.";
+            TempData["MessageType"] = "success";
             return RedirectToAction("ContactForm");
         }
     }

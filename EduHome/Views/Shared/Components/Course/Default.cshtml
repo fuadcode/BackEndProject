@@ -1,21 +1,60 @@
 ﻿@model IEnumerable<Course>
-@foreach(var course in Model)
-{
-    <div class="col-md-4 col-sm-6 col-xs-12">
-        <div class="single-course mb-70">
-            <div class="course-img">
-                <a asp-controller="course" asp-action="detail" asp-route-id="@course.Id">
-                    <img src="img/course/@course.ImgUrl" alt="course">
-                    <div class="course-hover">
-                        <i class="fa fa-link"></i>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<div class="row">
+    @foreach (var course in Model)
+    {
+        <div class="col-md-4 col-sm-6 col-xs-12">
+            <div class="single-course mb-70">
+                <div class="course-img">
+                    <a asp-controller="Course" asp-action="Detail" asp-route-id="@course.Id">
+                        <img src="img/course/@course.ImgUrl" alt="@course.Name">
+                        <div class="course-hover">
+                            <i class="fa fa-link"></i>
+                        </div>
+                    </a>
+                </div>
+                <div class="course-content">
+                    <h3><a asp-controller="Course" asp-action="Detail" asp-route-id="@course.Id">@course.Name</a></h3>
+                    <p>@course.Desc</p>
+                    <div class="d-flex align-items-center">
+                        <a class="default-btn me-2" asp-controller="Course" asp-action="Detail" asp-route-id="@course.Id">Read More</a>
+                        <a style="position:relative; bottom:16px; left:20px;" class="btn btn-primary" asp-controller="Basket" asp-action="AddToBasket" asp-route-id="@course.Id">Add to Basket</a>
+                        <a style="position:relative; right:14px;" class="btn btn-outline-secondary" href="@Url.Action("AddToWishlist", "Basket", new { id = course.Id })">
+                            <i class="fa fa-heart"></i> Add to Wishlist
+                        </a>
+                        @if (User.Identity.IsAuthenticated)
+                        {
+                            <form action="@Url.Action("SendBuyingRequest", "Basket")" method="post">
+                                <input type="hidden" name="courseId" value="@course.Id" />
+                                <button style="position:relative; bottom:35px; left:140px; type="submit" class="btn btn-outline-secondary" style="margin-left: 10px;">
+                                    <i class="fa fa-comment-dots"></i> Buying Request
+                                </button>
+                            </form>
+                        }
+                        else
+                        {
+                            <a class="btn btn-outline-secondary" href="@Url.Action("Login", "Account")" style="margin-left: 10px;">
+                                <i class="fa fa-comment-dots"></i> Buying Request
+                            </a>
+                        }
+                        <div id="message-@course.Id" class="mt-2">
+                            @if (TempData[$"SuccessMessage_{course.Id}"] != null)
+                            {
+                                <div class="alert alert-success" role="alert">
+                                    @TempData[$"SuccessMessage_{course.Id}"]
+                                </div>
+                            }
+
+                            @if (TempData[$"ErrorMessage_{course.Id}"] != null)
+                            {
+                                <div class="alert alert-danger" role="alert">
+                                    @TempData[$"ErrorMessage_{course.Id}"]
+                                </div>
+                            }
+                        </div>
                     </div>
-                </a>
-            </div>
-            <div class="course-content">
-                <h3><a asp-controller="course" asp-action="detail" asp-route-id="@course.Id">@course.Name</a></h3>
-                <p>@course.Desc</p>
-                <a class="default-btn" asp-controller="course" asp-action="detail" asp-route-id="@course.Id">read more</a>
+                </div>
             </div>
         </div>
-    </div>
-}
+    }
+</div>
