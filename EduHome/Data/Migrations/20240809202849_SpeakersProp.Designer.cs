@@ -4,6 +4,7 @@ using EduHome.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace EduHome.Migrations
 {
     [DbContext(typeof(EduCompaniesDbContext))]
-    partial class EduHomeDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240809202849_SpeakersProp")]
+    partial class SpeakersProp
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -114,10 +117,6 @@ namespace EduHome.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Desc")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("DescPart")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 

@@ -46,8 +46,8 @@ namespace EduHome.Controllers
         }
 
         [HttpPost]
-        [Route("subscribe")]
-        public async Task<IActionResult> Subscribe(string email)
+        [Route("home/subscribe")]
+        public async Task<IActionResult> Subscribe(string email, string userName)
         {
             if (string.IsNullOrWhiteSpace(email) || !IsValidEmail(email))
             {
@@ -66,7 +66,8 @@ namespace EduHome.Controllers
             var subscription = new Subscription
             {
                 SubscriptionName = "UserSubscription",
-                Email = email
+                Email = email,
+                SubscriptionDate = DateTime.Now
             };
 
             _context.Subscriptions.Add(subscription);

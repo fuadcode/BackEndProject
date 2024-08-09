@@ -239,6 +239,8 @@ namespace EduHome.Controllers
             }
             return RedirectToAction("ShowWishlist");
         }
+
+
         public async Task<IActionResult> OrderSuccess()
         {
             var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
@@ -264,6 +266,7 @@ namespace EduHome.Controllers
 
             return View(orderVMs);
         }
+
         public async Task<IActionResult> RemoveOrder(int orderId)
         {
             var order = await _dbContext.Orders.FindAsync(orderId);

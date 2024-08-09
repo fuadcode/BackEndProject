@@ -5,7 +5,7 @@ namespace EduHome.ViewModels
 {
     public class CourseVM
     {
-        public IEnumerable<Course> Courses { get; set; }
+        public Course Course { get; set; }
         public IEnumerable<Features> Features { get; set; }
         public IEnumerable<Blog> Blogs { get; set; }
     }

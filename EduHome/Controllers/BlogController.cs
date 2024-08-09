@@ -20,9 +20,20 @@ namespace EduHome.Controllers
         }
         public IActionResult Detail(int? id)
         {
+            if (id is null) return BadRequest();
+            var blog = _dbContext.Blogs.FirstOrDefault(b => b.Id == id);
+            var courses = _dbContext.Courses.AsNoTracking().ToList();
+            if (blog == null && courses is null) return NotFound();
+
             BlogVM blogVM = new()
             {
-               
+                Name = blog.Name,
+                Desc = blog.Desc,
+                DescPart = blog.DescPart,
+                ImgURl = blog.ImgUrl,
+                Comment = blog.Comment,
+                Time = blog.Time,
+                Courses = courses
             };
 
             return View(blogVM);

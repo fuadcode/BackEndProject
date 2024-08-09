@@ -96,30 +96,10 @@
             </div>
         </div>
         <div class="row">
-            @foreach(var item in Model.Courses)
-            {
-                <div class="col-md-4 col-sm-6 col-xs-12">
-                    <div class="single-course">
-                        <div class="course-img">
-                            <a href="course-details.html">
-                                <img src="~/img/course/@item.ImgUrl" alt="course">
-                                <div class="course-hover">
-                                    <i class="fa fa-link"></i>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="course-content">
-                            <h3><a href="course-details.html">@item.Name</a></h3>
-                            <p>@item.Desc</p>
-                            <a class="default-btn" asp-controller="course" asp-action="detail" asp-route-id="1">read more</a>
-                        </div>
-                    </div>
-                </div>
-            }
-                </div>
-            </div>
+            @await Component.InvokeAsync("Course")
         </div>
- 
+    </div>
+</div>
 <!-- Courses Area End -->
 <!-- Event Area Start -->
 <div class="event-area one text-center pt-140 pb-150">
@@ -133,33 +113,36 @@
             </div>
         </div>
         <div class="row">
-            @foreach (var item in Model.Events)
-            {
-                 <div class="col-md-6 col-sm-12 col-xs-12">
-                <div class="single-event mb-35">
-                    <div class="event-date">
-                            <h3><a asp-controller="event" asp-action="detail" asp-route-id="1">@item.Time.ToString("MMM dd", englishCulture)</a></h3>
-                    </div>
-                    <div class="event-content text-left">
-                        <div class="event-content-left">
-                                <h4><a asp-controller="event" asp-action="detail" asp-route-id="1">@item.Name</a></h4>
-                            <ul>
-                                    <li><i class="fa fa-clock-o"></i>@item.Time.ToString("h:mm tt-h:mm-tt")</li>
-                                <li><i class="fa fa-map-marker"></i>@item.Area</li>
-                            </ul>
+            <div class="col-12">
+                @foreach (var item in Model.Events)
+                {
+                    <div class="col-md-6 col-sm-12 col-xs-12">
+                        <div class="single-event mb-35">
+                            <div class="event-date">
+                                <h3><a>@item.Time.ToString("dd")<span>@item.Time.ToString("MMMM", englishCulture)</span></a></h3>
+                            </div>
+                            <div class="event-content text-left">
+                                <div class="event-content-left">
+                                    <h4><a>@item.Name</a></h4>
+                                    <ul>
+                                        <li><i class="fa fa-clock-o"></i>@item.Time.ToString("hh: mm tt")</li>
+                                        <li><i class="fa fa-map-marker"></i>@item.Area</li>
+                                    </ul>
+                                </div>
+                                <div class="event-content-right">
+                                    <a class="default-btn" asp-controller="event" asp-action="detail" asp-route-id="@item.Id">join now</a>
+                                </div>
+                            </div>
                         </div>
-                        <div class="event-content-right">
-                                <a class="default-btn" asp-controller="event" asp-action="detail" asp-route-id="1">join now</a>
-                        </div>
+
                     </div>
-                </div>
-               
-               </div>       
-            }
-        </div>
+
+                }
             </div>
         </div>
-   
+    </div>
+</div>
+
 <!-- Event Area End -->
 <!-- Testimonial Area Start -->
 <div class="testimonial-area pt-110 pb-105 text-center">
@@ -181,8 +164,8 @@
                                 </div>
                             </div>
                         </div>
-                              </div>
-    </div>
+                         </div>
+                         </div>
             }
         </div>
         </div>
@@ -201,32 +184,12 @@
             </div>
         </div>
         <div class="row">
-            @foreach(var item in Model.Blogs)
-            {
-                <div class="col-md-4 col-sm-6 col-xs-12">
-                    <div class="single-blog">
-                        <div class="blog-img">
-                            <a asp-controller="blog" asp-action="detail" asp-route-id="1"><img src="~/img/blog/@item.ImgUrl" alt="blog"></a>
-                            <div class="blog-hover">
-                                <a asp-controller="blog" asp-action="detail" asp-route-id="1"><i class="fa fa-link"></i></a>
-                            </div>
-                        </div>
-                        <div class="blog-content">
-                            <div class="blog-top">
-                                <p>@item.Name  /  @item.Time.ToString("MMM dd, yyyy",englishCulture)  /  <i class="fa fa-comments-o"></i> @item.Comment</p>
-                            </div>
-                            <div class="blog-bottom">
-                                <h2><a asp-controller="blog" asp-action="detail" asp-route-id="1">@item.Desc </a></h2>
-                                <a asp-controller="blog" asp-action="detail" asp-route-id="1">read more</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            }
-                    </div>
-                </div>
-            </div>
-  
+            @await Component.InvokeAsync("Blog")
+        </div>
+
+    </div>
+</div>
+</div>
 <!-- Blog Area End -->
 <!-- Subscribe Start -->
 <div class="subscribe-area pt-60 pb-70">

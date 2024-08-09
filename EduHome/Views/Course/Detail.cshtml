@@ -26,21 +26,21 @@
                         <img src="~/img/course/courses-details.jpg" alt="courses-details">
                     </div>
                     <div class="course-details-content">
-                        <h2>CSE ENGINEERING</h2>
-                        <p>I must explain to you how all this a mistaken idea of denouncing great explorer of the rut the is lder of human happiness pcias unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit asnatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui </p>
+                        <h2>@Model.Course.Name</h2>
+                        <p>@Model.Course.Desc</p>
                         <div class="course-details-left">
                             <div class="single-course-left">
-                                <h3>about course</h3>
-                                <p>I must explain to you how all this a mistaken idea of ncing great explorer of the rut the is lder of human happinescias unde omnis iste natus error sit volptatem accuntium mque laudantium perspiciatis unde omnis iste natuss</p>
+                                <h3>@Model.Course.About</h3>
+                                <p>@Model.Course.Desc</p>
                             </div>
                             <div class="single-course-left">
-                                <h3>how to apply</h3>
-                                <p>I must explain to you how all this a mistaken idea of ncing great explorer of the rut the is lder of human happinescias unde omnis iste natus error sit volptatem accuntium mque laudantium perspiciatis unde omnis iste natuss</p>
+                                <h3>@Model.Course.Apply</h3>
+                                <p>@Model.Course.Desc</p>
                             </div>
                             <div class="single-course-left">
-                                <h3>certification</h3>
-                                <p class="margin">I must explain to you how all this a mistaken idea of ncing great explorer of the rut the is lder of human happinescias unde omnis iste natus error sit volptatem accuntium mque laudantium perspiciatis unde omnis iste natuss</p>
-                                <p>I must explain to you how all this a mistaken idea of ncing great explorer of the rut the is lder of human</p>
+                                <h3>@Model.Course.Certification</h3>
+                                <p class="margin">@Model.Course.Desc</p>
+                                <p>@Model.Course.Desc</p>
                             </div>
                         </div>
                        
@@ -63,7 +63,7 @@
                     </div>
                     <div class="reply-area">
                         <h3>LEAVE A REPLY</h3>
-                        <p>I must explain to you how all this a mistaken idea of ncing great explorer of the rut<br> the is lder of human happinescias unde omnis iste natus error sit volptatem </p>
+                        <p>@Model.Course.Desc</p>
                         <form id="contact-form" action="/Home/SubmitContactForm" method="post">
                             <div class="row">
                                 <div class="col-md-12">
@@ -141,7 +141,7 @@
                             </div>
                             <div class="single-post-content">
                                 <h4><a href="blog-details.html">English Language Course for you</a></h4>
-                                <p>By Alex  /  June 20, 2017</p>
+                                <p>  /  June 20, 2017</p>
                             </div>
                         </div>
                         <div class="single-post mb-30">

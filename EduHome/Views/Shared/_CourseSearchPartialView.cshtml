@@ -1,9 +1,12 @@
 ﻿@model IEnumerable<Course>
-@foreach (var text in Model)
-{
-    <li class="d-flex px-3">
-        <a asp-action="detail" asp-route-id="@text.Id">
-            @text.Name
-        </a>
-    </li>
-}
+
+<ul>
+    @foreach (var course in Model)
+    {
+        <li class="d-flex px-3">
+            <a asp-action="Detail" asp-route-id="@course.Id">
+                @course.Name
+            </a>
+        </li>
+    }
+</ul>

@@ -9,6 +9,7 @@ namespace EduHome.Models
         public DateTime Time { get; set; }
         public string Name { get; set; }
         public string Desc { get; set; }
+        public string DescPart { get; set; }
      
     }
 }

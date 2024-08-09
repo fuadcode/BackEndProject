@@ -1,28 +1,26 @@
-﻿`@using System.Globalization;
+﻿
 @model IEnumerable<Event>
-@{
-    CultureInfo englishCulture = new CultureInfo("en-US");
-}
+
 @foreach (var item in Model)
 {
     <div class="col-md-4 col-sm-6 col-xs-12">
         <div class="single-event mb-60">
             <div class="event-img">
-                <a asp-controller="event" asp-action="detail" asp-route-id="1">
+                <a href="event-details.html">
                     <img src="~/img/event/@item.ImgUrl" alt="event" >
                     <div class="course-hover">
                         <i class="fa fa-link"></i>
                     </div>
                 </a>
                 <div class="event-date">
-                    <h3>@item.Time.ToString("MMM d",englishCulture)</h3>
+                    <h3>@item.Time.ToString("dd") <span>@item.Time.ToString("MMMM")</span></h3>
                 </div>
             </div>
             <div class="event-content text-left">
-                <h4><a asp-controller="event" asp-action="detail" asp-route-id="1">@item.Name</a></h4>
+                <h4><a href="event-details.html">@item.Name</a></h4>
                 <ul>
-                    <li><span>Time: </span>@item.Time.ToString("h:mm tt")</li>
-                    <li><span>Venue: </span>@item.Area</li>
+                    <li><span>time: </span> @item.Time.ToString("MMMM dd, yyyy")</li>
+                    <li><span>area: </span>@item.Area</li>
                 </ul>
                 <div class="event-content-right">
                     <a class="default-btn" href="event/detail/@item.Id">join now</a>
@@ -31,4 +29,3 @@
         </div>
     </div>
 }
-

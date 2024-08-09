@@ -1,0 +1,28 @@
+﻿@model IEnumerable<Subscription>
+
+<h2>Subscriptions</h2>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Email</th>
+            <th>Subscription Date</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var subscription in Model)
+        {
+            <tr>
+                <td>@subscription.Email</td>
+                <td>@subscription.SubscriptionDate.ToString("yyyy-MM-dd HH:mm:ss")</td>
+                <td>
+                    <form asp-action="Delete" method="post">
+                        <input type="hidden" name="id" value="@subscription.Id" />
+                        <button type="submit" class="btn btn-danger">Delete</button>
+                    </form>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

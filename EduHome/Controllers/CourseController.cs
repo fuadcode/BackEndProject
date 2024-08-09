@@ -40,25 +40,26 @@ public class CourseController : Controller
     {
         if (id is null) return BadRequest();
 
-        var course = _context.Courses.AsNoTracking().ToList();
+        var course = _context.Courses.FirstOrDefault(s=>s.Id==id);
         var blogs = _context.Blogs.AsNoTracking().ToList();
         var features = _context.Features.AsNoTracking().ToList();
 
 
         CourseVM courseVM = new()
         {
-
-            Courses = course,
+            Course = course,
             Blogs = blogs,
             Features = features,
         };
         return View(courseVM);
     }
-    public IActionResult LoadMore(int offset = 3)
+    public IActionResult SearchCourses(string query)
     {
-        var datas = _context.Courses.Skip(offset).Take(3).ToList();
-        return PartialView("_CoursePartialView", datas);
+        var courses = _context.Courses
+                              .Where(c => c.Name.Contains(query))
+                              .ToList();
 
+        return PartialView("_CourseSearchResults", courses);
     }
 
 }

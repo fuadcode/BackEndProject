@@ -22,11 +22,21 @@ namespace EduHome.Controllers
         }
         public IActionResult Detail(int? id)
         {
-         
+            if (id == null) return BadRequest();
+            var data = _dbContext.Events.Include(i => i.Speakers).FirstOrDefault(k => k.Id == id);
+            var courses = _dbContext.Courses.AsNoTracking().ToList();
+            if (data == null && courses is null) return NotFound();
 
             EventVM eventVM = new()
             {
-                
+                Name = data.Name,
+                Desc = data.Desc,
+                ImgUrl = data.ImgUrl,
+                Time = data.Time,
+                Area = data.Area,
+
+                Courses = courses,
+                Speakers = data.Speakers
             };
             return View(eventVM);
         }

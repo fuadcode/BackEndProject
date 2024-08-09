@@ -14,6 +14,7 @@ namespace EduHome.Data
         public DbSet<CourseView> CourseViews { get; set; }
         public DbSet<Testimonial> Testimonials { get; set; }
         public DbSet<Blog> Blogs { get; set; }
+        public DbSet<Speaker> Speakers { get; set; }
         public DbSet<Subscription> Subscriptions { get; set; }
         public DbSet<Teacher> Teachers { get; set; }
         public DbSet<TeacherDetail> TeacherDetails { get; set; }
