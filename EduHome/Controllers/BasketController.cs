@@ -162,7 +162,6 @@ namespace EduHome.Controllers
 
         public async Task<IActionResult> AddToWishlist(int? id)
         {
-            //login olub olmamagin yoxlayir
             if (!User.Identity.IsAuthenticated)
             {
                 return RedirectToAction("Login", "Account");
@@ -170,75 +169,78 @@ namespace EduHome.Controllers
 
             if (id is null) return BadRequest();
 
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
             var existCourse = await _dbContext.Courses.FirstOrDefaultAsync(p => p.Id == id);
             if (existCourse is null) return BadRequest();
 
-            string wishlist = Request.Cookies["wishlist"];
-            List<BasketVM> list;
+            var existWishlistCourse = await _dbContext.Wishlists
+                .FirstOrDefaultAsync(w => w.UserId == userId && w.CourseId == id);
 
-
-            if (string.IsNullOrEmpty(wishlist))
-            {
-                list = new List<BasketVM>();
-            }
-            else
-            {
-                list = JsonConvert.DeserializeObject<List<BasketVM>>(wishlist);
-            }
-
-            var existWishlistCourse = list.FirstOrDefault(m => m.Id == id);
             if (existWishlistCourse is null)
             {
-
-                list.Add(new BasketVM()
+                var wishlistItem = new Wishlist
                 {
-                    Id = id.Value,
-                    BasketCount = 1,
-                    IsWishlist = true
-                });
+                    UserId = userId,
+                    CourseId = id.Value,
+                    ImgUrl = existCourse.ImgUrl,
+                    Desc = existCourse.Desc,    
+                    CreatedDate = DateTime.Now
+                };
+                _dbContext.Wishlists.Add(wishlistItem);
+                await _dbContext.SaveChangesAsync();
             }
 
-            Response.Cookies.Append("wishlist", JsonConvert.SerializeObject(list));
             return RedirectToAction("ShowWishlist");
         }
+
 
 
         public async Task<IActionResult> ShowWishlist()
         {
-            string wishlist = Request.Cookies["wishlist"];
-            List<BasketVM> list;
-
-            if (string.IsNullOrEmpty(wishlist))
+            if (!User.Identity.IsAuthenticated)
             {
-                list = new List<BasketVM>();
-            }
-            else
-            {
-                list = JsonConvert.DeserializeObject<List<BasketVM>>(wishlist);
-                foreach (var wishlistCourse in list)
-                {
-                    var existCourse = await _dbContext.Courses.FirstOrDefaultAsync(m => m.Id == wishlistCourse.Id);
-                    wishlistCourse.Name = existCourse.Name;
-                    wishlistCourse.Desc = existCourse.Desc;
-                    wishlistCourse.ImageUrl = existCourse.ImgUrl;
-                }
+                return RedirectToAction("Login", "Account");
             }
 
-            return View(list);
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            var wishlistItems = await _dbContext.Wishlists
+                .Where(w => w.UserId == userId)
+                .Include(w => w.Course)
+                .ToListAsync();
+
+            var wishlistVMs = wishlistItems.Select(w => new BasketVM
+            {
+                Id = w.Course.Id,
+                Name = w.Course.Name,
+                Desc = w.Course.Desc,
+                ImageUrl = w.Course.ImgUrl
+            }).ToList();
+
+            return View(wishlistVMs);
         }
 
-        public IActionResult RemoveFromWishlist(int? id)
+
+
+        public async Task<IActionResult> RemoveFromWishlist(int? id)
         {
-            string wishlist = Request.Cookies["wishlist"];
-            List<BasketVM> list = JsonConvert.DeserializeObject<List<BasketVM>>(wishlist);
-            var removedCourse = list.FirstOrDefault(m => m.Id == id);
-            if (removedCourse is not null)
+            if (!User.Identity.IsAuthenticated)
             {
-                list.Remove(removedCourse);
-                Response.Cookies.Append("wishlist", JsonConvert.SerializeObject(list));
+                return RedirectToAction("Login", "Account");
             }
+
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            var wishlistItem = await _dbContext.Wishlists
+                .FirstOrDefaultAsync(w => w.UserId == userId && w.CourseId == id);
+
+            if (wishlistItem is not null)
+            {
+                _dbContext.Wishlists.Remove(wishlistItem);
+                await _dbContext.SaveChangesAsync();
+            }
+
             return RedirectToAction("ShowWishlist");
         }
+
 
 
         public async Task<IActionResult> OrderSuccess()
@@ -319,5 +321,8 @@ namespace EduHome.Controllers
             TempData[$"SuccessMessage_{courseId}"] = "Your buying request has been submitted successfully.";
             return RedirectToAction("Index", "Course");
         }
+
+
+
     }
 }

@@ -8,5 +8,6 @@ namespace EduHome.ViewModels
         public Course Course { get; set; }
         public IEnumerable<Features> Features { get; set; }
         public IEnumerable<Blog> Blogs { get; set; }
+        public IEnumerable<Category> Categories { get; set; }
     }
 }

@@ -13,6 +13,7 @@ namespace EduHome.Data
         public DbSet<Course> Courses { get; set; }   
         public DbSet<CourseView> CourseViews { get; set; }
         public DbSet<Testimonial> Testimonials { get; set; }
+        public DbSet<Category> Categories { get; set; }
         public DbSet<Blog> Blogs { get; set; }
         public DbSet<Speaker> Speakers { get; set; }
         public DbSet<Subscription> Subscriptions { get; set; }
@@ -22,6 +23,7 @@ namespace EduHome.Data
         public DbSet<MessageForm> MessageForms { get; set; }
         public DbSet<Order> Orders { get; set; }
         public DbSet<BuyingRequest> BuyingRequests { get; set; }
+        public DbSet<Wishlist> Wishlists { get; set; }
 
 
         public EduCompaniesDbContext() { }

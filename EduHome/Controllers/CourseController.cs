@@ -16,7 +16,6 @@ public class CourseController : Controller
     public IActionResult Index()
     {
         ViewBag.CourseCounts = _context.Courses.Count();
-
         return View();
     }
 
@@ -39,10 +38,10 @@ public class CourseController : Controller
     public IActionResult Detail(int? id)
     {
         if (id is null) return BadRequest();
-
         var course = _context.Courses.FirstOrDefault(s=>s.Id==id);
         var blogs = _context.Blogs.AsNoTracking().ToList();
         var features = _context.Features.AsNoTracking().ToList();
+        var categories = _context.Categories.Include(m => m.Course).AsNoTracking().ToList();
 
 
         CourseVM courseVM = new()
@@ -50,6 +49,7 @@ public class CourseController : Controller
             Course = course,
             Blogs = blogs,
             Features = features,
+            Categories = categories,
         };
         return View(courseVM);
     }

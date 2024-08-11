@@ -1,0 +1,107 @@
+﻿@model IEnumerable<Wishlist>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wishlist</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/5.3.0/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+
+        .container {
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            margin-top: 30px;
+        }
+
+        .wishlist-table img {
+            width: 120px;
+            height: auto;
+            border-radius: 8px;
+        }
+
+        .wishlist-table td, .wishlist-table th {
+            vertical-align: middle;
+            text-align: center;
+        }
+
+        .wishlist-table .delete-btn {
+            color: #dc3545;
+            border: none;
+            background: none;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+            .wishlist-table .delete-btn:hover {
+                text-decoration: underline;
+            }
+
+        .wishlist-table th {
+            background-color: #343a40;
+            color: #ffffff;
+            font-weight: bold;
+        }
+
+        .wishlist-table tbody tr:hover {
+            background-color: #f1f1f1;
+        }
+
+        .delete-btn i {
+            margin-right: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2 class="mb-4 text-center">Wishlist</h2>
+        <table class="table table-bordered wishlist-table">
+            <thead>
+                <tr>
+                    <th>Image</th>
+                    <th>User</th>
+                    <th>Description</th>
+                    <th>Course</th>
+                    <th>Date Added</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var wishlist in Model)
+                {
+                    <tr>
+                        <td>
+                            @if (!string.IsNullOrEmpty(wishlist.Course.ImgUrl))
+                            {
+                                <img src="~/img/course/@wishlist.Course.ImgUrl" alt="Course Image" />
+                            }
+                            else
+                            {
+                                <span>No Image</span>
+                            }
+                        </td>
+                        <td>@wishlist.User.UserName</td>
+                        <td>@wishlist.Course.Desc</td>
+                        <td>@wishlist.Course.Name</td>
+                        <td>@wishlist.CreatedDate.ToString("dd/MM/yyyy")</td>
+                        <td>
+                            <form asp-action="Delete" asp-route-id="@wishlist.Id" method="post" style="display:inline;">
+                                <button type="submit" class="delete-btn">
+                                    <i class="fa fa-trash"></i> Delete
+                                </button>
+                            </form>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/js/all.min.js"></script>
+</body>
+</html>
