@@ -1,5 +1,6 @@
 ﻿using EduHome.Data;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace EduHome.ViewComponents
 {
@@ -13,7 +14,7 @@ namespace EduHome.ViewComponents
         }
         public async Task<IViewComponentResult> InvokeAsync()
         {
-            var teachers = _dbContext.Teachers.ToList();
+            var teachers = await _dbContext.Teachers.AsNoTracking().ToListAsync();
             return View(await Task.FromResult(teachers));
         }
 

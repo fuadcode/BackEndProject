@@ -5,6 +5,7 @@ using EduHome.Extensions;
 using EduHome.Models;
 using EduHome.ViewModels;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 
 namespace EduHome.Areas.AdminArea.Controllers
@@ -20,21 +21,21 @@ namespace EduHome.Areas.AdminArea.Controllers
             _dbContext = dbContext;
         }
 
-        public async Task<IActionResult> Index(int stage= 1)
+        public async Task<IActionResult> Index(int page = 1)
         {
             var query = _dbContext.Courses
-               .AsNoTracking()
-               .Select(m => new CourseListVM()
-               {
-                   Id = m.Id,
-                   ImgUrl = m.ImgUrl,
-                   Desc = m.Desc,
-                   Name = m.Name,
-               });
+                .AsNoTracking()
+                .Select(m => new CourseListVM()
+                {
+                    Id = m.Id,
+                    Name = m.Name,
+                    Desc = m.Desc,  
+                    ImgUrl = m.ImgUrl,
+                    Date = m.CreatedDate
+                });
 
-            return View(await PaginationVM<CourseListVM>.CreateVM(query, stage, 2));
+            return View(await PaginationVM<CourseListVM>.CreateVM(query, page, 2));
         }
-
         public async Task<IActionResult> Create()
         {
             return View();
@@ -65,6 +66,7 @@ namespace EduHome.Areas.AdminArea.Controllers
             {
                 Name = courseCreateVM.Name,
                 Desc = courseCreateVM.Desc,
+                CreatedDate = courseCreateVM.CreatedDate,
                 ImgUrl = await SaveFilesAsync(file)
             };
             await _dbContext.Courses.AddAsync(course);
@@ -73,6 +75,7 @@ namespace EduHome.Areas.AdminArea.Controllers
             return RedirectToAction("Index");
 
         }
+
 
         public async Task<string> SaveFilesAsync(IFormFile file)
         {
@@ -90,6 +93,8 @@ namespace EduHome.Areas.AdminArea.Controllers
             return file.FileName;
         }
 
+
+
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null) return BadRequest();
@@ -106,21 +111,20 @@ namespace EduHome.Areas.AdminArea.Controllers
             return RedirectToAction("Index");
         }
 
-
         public async Task<IActionResult> Detail(int? id)
         {
+            if (id is null) return BadRequest();
             var course = await _dbContext.Courses
-                .AsNoTracking()
-                .Select(m => new CourseListVM()
-                {
-                    Id = m.Id,
-                    ImgUrl = m.ImgUrl,
-                    Desc = m.Desc,
-                    Name = m.Name,
-                }).FirstOrDefaultAsync(m => m.Id == id);
-            return View(course);
-        }
+      .FirstOrDefaultAsync(c => c.Id == id);
 
+            CourseDetailVM vm = new()
+            {
+                Id = course.Id,
+                Name = course.Name,
+                Desc = course.Desc,
+            };
+            return View(vm);
+        }
 
         public async Task<IActionResult> Update(int? id)
         {

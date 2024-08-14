@@ -7,30 +7,33 @@
 <div class="container mt-4">
     <div class="row justify-content-center">
         <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">
-                    <h3>Event Details</h3>
+            <div class="card shadow-sm border-light">
+                <div class="card-header bg-primary text-white">
+                    <h3 class="mb-0">Event Details</h3>
                 </div>
                 <div class="card-body">
-                    <img src="~/img/event/@Model.ImgUrl" class="card-img-top" alt="Event Image" style="height:500px; width=:100px; object-fit: cover;" />
+                    <div class="text-center mb-4">
+                        <img src="~/img/event/@Model.ImgUrl" class="img-fluid" alt="Event Image" style="height: 400px; object-fit: cover;" />
+                    </div>
                     <div class="row mb-3">
                         <div class="col-sm-4 font-weight-bold">Name:</div>
                         <div class="col-sm-8">@Model.Name</div>
                     </div>
                     <div class="row mb-3">
-                        <div class="col-sm-4 font-weight-bold">Desc:</div>
+                        <div class="col-sm-4 font-weight-bold">Description:</div>
                         <div class="col-sm-8">@Model.Desc</div>
                     </div>
                     <div class="row mb-3">
                         <div class="col-sm-4 font-weight-bold">Area:</div>
                         <div class="col-sm-8">@Model.Area</div>
                     </div>
-
                     <div class="row mb-3">
-                        <div class="col-sm-4 font-weight-bold">CreateDate:</div>
-                        <div class="col-sm-8">@Model.CreatedDate?.ToString("dd.MM.yyyy")</div>
+                        <div class="col-sm-4 font-weight-bold">Created Date:</div>
+                        <div class="col-sm-8">@Model.CreatedDate?.ToString("dd MMMM yyyy")</div>
                     </div>
-                    <a asp-action="index" class="btn btn-outline-dark">Go Back</a>
+                    <div class="text-center">
+                        <a asp-action="index" class="btn btn-secondary">Go Back</a>
+                    </div>
                 </div>
             </div>
         </div>

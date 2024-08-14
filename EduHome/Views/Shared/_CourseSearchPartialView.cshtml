@@ -1,12 +1,15 @@
 ﻿@model IEnumerable<Course>
 
-<ul>
-    @foreach (var course in Model)
-    {
-        <li class="d-flex px-3">
-            <a asp-action="Detail" asp-route-id="@course.Id">
-                @course.Name
-            </a>
-        </li>
-    }
-</ul>
+@if (Model.Any())
+{
+    <ul>
+        @foreach (var course in Model)
+        {
+            <li>@course.Name</li>
+        }
+    </ul>
+}
+else
+{
+    <p>Not Found</p>
+}

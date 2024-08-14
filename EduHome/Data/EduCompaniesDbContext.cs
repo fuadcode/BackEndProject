@@ -18,12 +18,12 @@ namespace EduHome.Data
         public DbSet<Speaker> Speakers { get; set; }
         public DbSet<Subscription> Subscriptions { get; set; }
         public DbSet<Teacher> Teachers { get; set; }
-        public DbSet<TeacherDetail> TeacherDetails { get; set; }
-        public DbSet<Features> Features { get; set; }
         public DbSet<MessageForm> MessageForms { get; set; }
         public DbSet<Order> Orders { get; set; }
         public DbSet<BuyingRequest> BuyingRequests { get; set; }
         public DbSet<Wishlist> Wishlists { get; set; }
+        public DbSet<Basket> Baskets { get; set; }
+  
 
 
         public EduCompaniesDbContext() { }

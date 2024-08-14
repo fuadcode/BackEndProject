@@ -23,16 +23,9 @@ namespace EduHome.Controllers
         public IActionResult Detail(int? id)
         {
             if (id is null) return BadRequest();
-            var websettings = _dbContext.WebSettings.ToDictionary(s => s.Key, s => s.Value);
-            var teacherDT = _dbContext.TeacherDetails.AsNoTracking().ToList();
-
-
-            TeacherVM teacherVM = new()
-            {
-                WebSettings=websettings,
-                TeacherDetails = teacherDT,
-            };
-            return View(teacherVM);
+            var teacher = _dbContext.Teachers.FirstOrDefault(b => b.Id == id);
+            if (teacher == null) return NotFound();
+            return View(teacher);
         }
 
     }

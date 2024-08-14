@@ -31,89 +31,97 @@ namespace EduHome.Controllers
 
         public async Task<IActionResult> AddToBasket(int? id)
         {
-
             if (!User.Identity.IsAuthenticated)
             {
                 return RedirectToAction("Login", "Account");
             }
 
-
             if (id is null) return BadRequest();
-
 
             var existCourse = await _dbContext.Courses.FirstOrDefaultAsync(p => p.Id == id);
             if (existCourse is null) return BadRequest();
 
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
 
-            string basket = Request.Cookies["basket"];
-            List<BasketVM> list;
+            var existBasketItem = await _dbContext.Baskets
+                .FirstOrDefaultAsync(b => b.CourseId == id && b.UserId == userId);
 
-            if (string.IsNullOrEmpty(basket))
+            if (existBasketItem is null)
             {
-                list = new List<BasketVM>();
-            }
-            else
-            {
-                list = JsonConvert.DeserializeObject<List<BasketVM>>(basket);
-            }
-
-
-            var existBasketCourse = list.FirstOrDefault(m => m.Id == id);
-            if (existBasketCourse is null)
-            {
-
-                list.Add(new BasketVM()
+              
+                var newBasketItem = new Basket
                 {
-                    Id = id.Value,
-                    BasketCount = 1
-                });
+                    UserId = userId,
+                    CourseId = id.Value,
+                    BasketCount = 1,
+                    CreatedAt = DateTime.UtcNow
+                };
+                _dbContext.Baskets.Add(newBasketItem);
             }
             else
             {
-
-                existBasketCourse.BasketCount++;
+           
+                existBasketItem.BasketCount++;
+                _dbContext.Baskets.Update(existBasketItem);
             }
 
-            Response.Cookies.Append("basket", JsonConvert.SerializeObject(list));
+            await _dbContext.SaveChangesAsync();
+
             return RedirectToAction("ShowBasket", "Basket");
         }
 
+
+
         public async Task<IActionResult> ShowBasket()
         {
-            string basket = Request.Cookies["basket"];
-            List<BasketVM> list;
-
-            if (string.IsNullOrEmpty(basket))
+            if (!User.Identity.IsAuthenticated)
             {
-                list = new List<BasketVM>();
+                return RedirectToAction("Login", "Account");
             }
-            else
-            {
-                list = JsonConvert.DeserializeObject<List<BasketVM>>(basket);
-                foreach (var basketCourse in list)
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+
+            var basketItems = await _dbContext.Baskets
+                .Where(b => b.UserId == userId)
+                .Include(b => b.Course) 
+                .Select(b => new BasketVM
                 {
-                    var existCourse = await _dbContext.Courses.FirstOrDefaultAsync(m => m.Id == basketCourse.Id);
-                    basketCourse.Name = existCourse.Name;
-                    basketCourse.Desc = existCourse.Desc;
-                    basketCourse.ImageUrl = existCourse.ImgUrl;
-                }
-            }
+                    Id = b.CourseId,
+                    Name = b.Course.Name,
+                    Desc = b.Course.Desc,
+                    ImageUrl = b.Course.ImgUrl,
+                    BasketCount = b.BasketCount
+                })
+                .ToListAsync();
 
-            return View(list);
+            return View(basketItems);
         }
 
-        public IActionResult DeleteCourseFromBasket(int? id)
+
+        public async Task<IActionResult> DeleteCourseFromBasket(int? id)
         {
-            string basket = Request.Cookies["basket"];
-            List<BasketVM> list = JsonConvert.DeserializeObject<List<BasketVM>>(basket);
-            var deletedCourse = list.FirstOrDefault(m => m.Id == id);
-            if (deletedCourse is not null)
+            if (!User.Identity.IsAuthenticated)
             {
-                list.Remove(deletedCourse);
-                Response.Cookies.Append("basket", JsonConvert.SerializeObject(list));
+                return RedirectToAction("Login", "Account");
             }
+
+            if (id is null) return BadRequest();
+
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+
+            var basketItem = await _dbContext.Baskets
+                .FirstOrDefaultAsync(b => b.CourseId == id && b.UserId == userId);
+
+            if (basketItem is not null)
+            { 
+                _dbContext.Baskets.Remove(basketItem);
+                await _dbContext.SaveChangesAsync();
+            }
+
             return RedirectToAction("ShowBasket");
         }
+
+
+
 
         public async Task<IActionResult> ProcessPayment(int? id)
         {
@@ -157,8 +165,16 @@ namespace EduHome.Controllers
 
             if (order == null) return NotFound();
 
+            var userEmail = order.User.Email;
+
+            _emailService.SendEmail(new List<string> { userEmail },
+               "Payment made successfully",
+               "Payment Id : 12e30dd300d321",
+               "Thank you for choosing us");
+
             return View(order);
         }
+
 
         public async Task<IActionResult> AddToWishlist(int? id)
         {

@@ -1,46 +1,61 @@
 ﻿@using EduHome.Areas.AdminArea.ViewModels.BlogVMs
 @model BlogCreateVM
 
-<div class="container">
-    <div class="row">
-        <div class="card">
-            <div class="card-body">
-                <h4 class="card-title">Blogs Create form</h4>
-                <form enctype="multipart/form-data" asp-action="create" method="post" class="forms-sample">
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-8">
+            <div class="card shadow-sm border-light">
+                <div class="card-body">
+                    <h4 class="card-title text-center mb-4">Create New Blog</h4>
+                    <form enctype="multipart/form-data" asp-action="create" method="post" class="needs-validation" novalidate>
 
-                    <div class="form-group">
-                        <label asp-for="Photo"></label>
-                        <input asp-for="Photo" class="form-control" placeholder="Photo">
-                        <span class="text-danger" asp-validation-for="Photo"></span> 
+                        <div class="form-group mb-3">
+                            <label asp-for="Photo" class="form-label">Upload Photo</label>
+                            <input asp-for="Photo" type="file" class="form-control" placeholder="Choose Photo">
+                            <div class="invalid-feedback" asp-validation-for="Photo"></div>
+                        </div>
 
-                    </div>
-                    <div class="form-group">
-                        <label asp-for="Name"></label>
-                        <input asp-for="Name" class="form-control" placeholder="Name">
-                        <span class="text-danger" asp-validation-for="Name"></span> 
+                        <div class="form-group mb-3">
+                            <label asp-for="Name" class="form-label">Blog Name</label>
+                            <input asp-for="Name" class="form-control" placeholder="Enter Blog Name">
+                            <div class="invalid-feedback" asp-validation-for="Name"></div>
+                        </div>
 
-                    </div>
-                    <div class="form-group">
-                        <label asp-for="Desc"></label>
-                        <input asp-for="Desc" class="form-control" placeholder="Description">
-                        <span class="text-danger" asp-validation-for="Desc"></span> 
+                        <div class="form-group mb-3">
+                            <label asp-for="Desc" class="form-label">Description</label>
+                            <textarea asp-for="Desc" class="form-control" placeholder="Enter Description" rows="3"></textarea>
+                            <div class="invalid-feedback" asp-validation-for="Desc"></div>
+                        </div>
 
-                    </div>
-                    <div class="form-group">
-                        <label asp-for="Comment"></label>
-                        <input asp-for="Comment" class="form-control" placeholder="Comment">
-                        <span class="text-danger" asp-validation-for="Comment"></span>
-                    </div>
+                        <div class="form-group mb-3">
+                            <label asp-for="DescPart" class="form-label">Additional Description</label>
+                            <textarea asp-for="DescPart" class="form-control" placeholder="Enter Additional Description" rows="3"></textarea>
+                            <div class="invalid-feedback" asp-validation-for="DescPart"></div>
+                        </div>
 
-                    <div class="form-group">
-                        <label asp-for="Time"></label>
-                        <input asp-for="Time" class="form-control" placeholder="Time">
-                        <span class="text-danger" asp-validation-for="Time"></span>
-                    </div>
-                        <button type="submit" class="btn btn-primary mr-2">Create</button>
-                    <a asp-action="index" class="btn btn-light">Go Back</a>
-                </form>
+                        <div class="form-group mb-3">
+                            <label asp-for="Comment" class="form-label">Comments</label>
+                            <textarea asp-for="Comment" class="form-control" placeholder="Enter Comments" rows="3"></textarea>
+                            <div class="invalid-feedback" asp-validation-for="Comment"></div>
+                        </div>
+
+                        <div class="form-group mb-4">
+                            <label asp-for="Time" class="form-label">Date and Time</label>
+                            <input asp-for="Time" type="datetime-local" class="form-control">
+                            <div class="invalid-feedback" asp-validation-for="Time"></div>
+                        </div>
+
+                        <div class="d-flex justify-content-between">
+                            <button type="submit" class="btn btn-primary">Create</button>
+                            <a asp-action="index" class="btn btn-secondary">Go Back</a>
+                        </div>
+                    </form>
+                </div>
             </div>
         </div>
     </div>
 </div>
+
+@section Scripts {
+    <script src="~/js/validation.js"></script>
+}

@@ -34,6 +34,22 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5BcmVhXFZpZXdzXEJsb2dcVXBkYXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/Feteli Isgenderov/Desktop/EduHome/EduHome/Areas/AdminArea/Views/Category/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5BcmVhXFZpZXdzXENhdGVnb3J5XENyZWF0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Feteli Isgenderov/Desktop/EduHome/EduHome/Areas/AdminArea/Views/Category/Detail.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5BcmVhXFZpZXdzXENhdGVnb3J5XERldGFpbC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Feteli Isgenderov/Desktop/EduHome/EduHome/Areas/AdminArea/Views/Category/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5BcmVhXFZpZXdzXENhdGVnb3J5XEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Feteli Isgenderov/Desktop/EduHome/EduHome/Areas/AdminArea/Views/Category/Update.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5BcmVhXFZpZXdzXENhdGVnb3J5XFVwZGF0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/Feteli Isgenderov/Desktop/EduHome/EduHome/Areas/AdminArea/Views/Course/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5BcmVhXFZpZXdzXENvdXJzZVxDcmVhdGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
@@ -120,6 +136,18 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/Users/Feteli Isgenderov/Desktop/EduHome/EduHome/Areas/AdminArea/Views/Slider/Update.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5BcmVhXFZpZXdzXFNsaWRlclxVcGRhdGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Feteli Isgenderov/Desktop/EduHome/EduHome/Areas/AdminArea/Views/Speaker/Detail.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5BcmVhXFZpZXdzXFNwZWFrZXJcRGV0YWlsLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Feteli Isgenderov/Desktop/EduHome/EduHome/Areas/AdminArea/Views/Speaker/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5BcmVhXFZpZXdzXFNwZWFrZXJcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Feteli Isgenderov/Desktop/EduHome/EduHome/Areas/AdminArea/Views/Speaker/Update.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5BcmVhXFZpZXdzXFNwZWFrZXJcVXBkYXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/Feteli Isgenderov/Desktop/EduHome/EduHome/Areas/AdminArea/Views/Subscription/Index.cshtml]
@@ -234,10 +262,6 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ291cnNlXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Feteli Isgenderov/Desktop/EduHome/EduHome/Views/Course/Search.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ291cnNlXFNlYXJjaC5jc2h0bWw=
-build_metadata.AdditionalFiles.CssScope = 
-
 [C:/Users/Feteli Isgenderov/Desktop/EduHome/EduHome/Views/Event/Detail.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRXZlbnRcRGV0YWlsLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
@@ -280,10 +304,6 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/Users/Feteli Isgenderov/Desktop/EduHome/EduHome/Views/Shared/Components/WebSettingHeader/Default.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXENvbXBvbmVudHNcV2ViU2V0dGluZ0hlYWRlclxEZWZhdWx0LmNzaHRtbA==
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Users/Feteli Isgenderov/Desktop/EduHome/EduHome/Views/Shared/_CoursePartialView.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9Db3Vyc2VQYXJ0aWFsVmlldy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/Feteli Isgenderov/Desktop/EduHome/EduHome/Views/Shared/_CourseSearchPartialView.cshtml]

@@ -1,11 +1,10 @@
 ﻿using EduHome.Data;
 using EduHome.Models;
+using EduHome.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using System;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Threading.Tasks;
+
 
 namespace EduHome.Areas.AdminArea.Controllers
 {
@@ -18,12 +17,14 @@ namespace EduHome.Areas.AdminArea.Controllers
         {
             _context = context;
         }
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(int stage = 1)
         {
-            var subscriptions = await _context.Subscriptions.ToListAsync();
-            return View(subscriptions);
-        }
+            var query = _context.Subscriptions.AsQueryable();
 
+            var paginatedSubscriptions = await PaginationVM<Subscription>.CreateVM(query, stage, 3);
+
+            return View(paginatedSubscriptions);
+        }
 
 
         [HttpPost]
@@ -63,7 +64,6 @@ namespace EduHome.Areas.AdminArea.Controllers
             var emailAttribute = new EmailAddressAttribute();
             return emailAttribute.IsValid(email);
         }
-
 
 
         [HttpPost]

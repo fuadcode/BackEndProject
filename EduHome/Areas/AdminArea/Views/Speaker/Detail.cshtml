@@ -1,0 +1,24 @@
+﻿@using EduHome.Areas.AdminArea.ViewModels.SpeakerVMs
+
+@model SpeakerDetailVM
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card shadow-lg">
+                <div class="card-body text-center">
+                    <img src="~/img/event/@Model?.ImgUrl" alt="Speaker Image" class="rounded-circle img-fluid mb-4" style="width: 100px; height: 100px; object-fit: cover;" />
+
+                    <h3 class="card-title">@Model?.Name</h3>
+                    <p class="text-muted">@Model.Position</p>
+
+                    <hr class="my-4" />
+
+                    <h5>Event</h5>
+                    <p class="lead">@Model.EventName</p>
+
+                    <a asp-action="index" class="btn btn-outline-dark mt-4">Go Back</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

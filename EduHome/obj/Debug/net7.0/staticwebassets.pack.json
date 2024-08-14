@@ -729,6 +729,10 @@
       "PackagePath": "staticwebassets\\img\\contact\\contact3.png"
     },
     {
+      "Id": "C:\\Users\\Feteli Isgenderov\\Desktop\\EduHome\\EduHome\\wwwroot\\img\\course\\136bf843-cad6-407d-8ff0-e4c91d6eb45a.jpg",
+      "PackagePath": "staticwebassets\\img\\course\\136bf843-cad6-407d-8ff0-e4c91d6eb45a.jpg"
+    },
+    {
       "Id": "C:\\Users\\Feteli Isgenderov\\Desktop\\EduHome\\EduHome\\wwwroot\\img\\course\\9sgt6dzvffd41.jpg",
       "PackagePath": "staticwebassets\\img\\course\\9sgt6dzvffd41.jpg"
     },
@@ -913,6 +917,10 @@
       "PackagePath": "staticwebassets\\img\\post\\post3.jpg"
     },
     {
+      "Id": "C:\\Users\\Feteli Isgenderov\\Desktop\\EduHome\\EduHome\\wwwroot\\img\\slider\\136bf843-cad6-407d-8ff0-e4c91d6eb45a.jpg",
+      "PackagePath": "staticwebassets\\img\\slider\\136bf843-cad6-407d-8ff0-e4c91d6eb45a.jpg"
+    },
+    {
       "Id": "C:\\Users\\Feteli Isgenderov\\Desktop\\EduHome\\EduHome\\wwwroot\\img\\slider\\9sgt6dzvffd41.jpg",
       "PackagePath": "staticwebassets\\img\\slider\\9sgt6dzvffd41.jpg"
     },
@@ -941,6 +949,10 @@
       "PackagePath": "staticwebassets\\img\\slider\\slider3.jpg"
     },
     {
+      "Id": "C:\\Users\\Feteli Isgenderov\\Desktop\\EduHome\\EduHome\\wwwroot\\img\\teacher\\1ea15414-42fb-486b-8cc0-29cbfe1a4b20.jpg",
+      "PackagePath": "staticwebassets\\img\\teacher\\1ea15414-42fb-486b-8cc0-29cbfe1a4b20.jpg"
+    },
+    {
       "Id": "C:\\Users\\Feteli Isgenderov\\Desktop\\EduHome\\EduHome\\wwwroot\\img\\teacher\\9sgt6dzvffd41.jpg",
       "PackagePath": "staticwebassets\\img\\teacher\\9sgt6dzvffd41.jpg"
     },
@@ -951,6 +963,14 @@
     {
       "Id": "C:\\Users\\Feteli Isgenderov\\Desktop\\EduHome\\EduHome\\wwwroot\\img\\teacher\\home.png",
       "PackagePath": "staticwebassets\\img\\teacher\\home.png"
+    },
+    {
+      "Id": "C:\\Users\\Feteli Isgenderov\\Desktop\\EduHome\\EduHome\\wwwroot\\img\\teacher\\programmer-quotes-3840x2160-10707.jpg",
+      "PackagePath": "staticwebassets\\img\\teacher\\programmer-quotes-3840x2160-10707.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Feteli Isgenderov\\Desktop\\EduHome\\EduHome\\wwwroot\\img\\teacher\\q425x26bym481.webp",
+      "PackagePath": "staticwebassets\\img\\teacher\\q425x26bym481.webp"
     },
     {
       "Id": "C:\\Users\\Feteli Isgenderov\\Desktop\\EduHome\\EduHome\\wwwroot\\img\\teacher\\teacher-details.jpg",

@@ -4,21 +4,29 @@
 @{
     Layout = "~/Areas/AdminArea/Views/Shared/_AdminLayout.cshtml";
 }
-<div class="container">
+<div class="container mt-5">
     <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <img src="~/img/blog/@Model.ImgUrl" class="card-img-top" alt="Blog Image" style="height: 300px; object-fit: cover;" />
+        <div class="col-md-10 col-lg-8">
+            <div class="card border-light shadow-sm">
+                <img src="~/img/blog/@Model.ImgUrl" class="card-img-top" alt="Blog Image" style="height: 350px; width: 100%; object-fit: cover; image-rendering: -webkit-optimize-contrast; image-rendering: crisp-edges;" />
                 <div class="card-body">
-                    <h4 class="card-title">Name:</h4> 
-                    <p class="card-text">@Model.Name</p>
-                    <h4 class="card-subtitle mb-2 text-muted">Description:</h4>
-                    <p class="card-text">@Model.Desc</p>
-                    <h4 class="card-subtitle mb-2 text-muted">Comment:</h4>
-                    <p class="card-text">@Model.Comment</p>
-                    <div class="col-sm-4 font-weight-bold">CreateDate:</div>
-                    <div class="col-sm-8">@Model.Time.ToString("dd.MM.yyyy")</div>
-                    <a asp-action="index" class="btn btn-outline-dark">Go Back</a>
+                    <h2 class="card-title text-center font-weight-bold mb-3">@Model.Name</h2>
+                    <div class="mb-3">
+                        <h5 class="font-weight-bold">Description:</h5>
+                        <p class="card-text">@Model.Desc</p>
+
+                        <h5 class="font-weight-bold">DescriptionPart:</h5>
+                        <p class="card-text">@Model.DescPart</p>
+                    </div>
+                    <div class="mb-3">
+                        <h5 class="font-weight-bold">Comments:</h5>
+                        <p class="card-text">@Model.Comment</p>
+                    </div>
+                    <div class="mb-3">
+                        <h5 class="font-weight-bold">Create Date:</h5>
+                        <p class="card-text">@Model.Time.ToString("dd MMMM yyyy")</p>
+                    </div>
+                    <a asp-action="index" class="btn btn-primary d-block mx-auto"><i class="mdi mdi-arrow-left"></i> Go Back</a>
                 </div>
             </div>
         </div>

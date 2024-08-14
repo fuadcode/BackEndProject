@@ -3,6 +3,8 @@ using Microsoft.EntityFrameworkCore;
 using EduHome.Data;
 using EduHome.Models;
 using EduHome.ViewModels;
+using EduHome.Areas.AdminArea.ViewModels.EventVMs;
+using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 
 namespace EduHome.Areas.AdminArea.Controllers
 {
@@ -16,23 +18,24 @@ namespace EduHome.Areas.AdminArea.Controllers
             _dbContext = dbContext;
         }
 
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(int stage = 1)
         {
-            var orders = await _dbContext.Orders
+            var query = _dbContext.Orders
                 .Include(o => o.Course)
-                .ToListAsync();
+                .Select(o => new OrderVM
+                {
+                    OrderId = o.Id,
+                    CourseName = o.Course.Name,
+                    CourseDesc = o.Course.Desc,
+                    CourseImageUrl = o.Course.ImgUrl,
+                    OrderDate = o.OrderDate
+                });
 
-            var orderVMs = orders.Select(o => new OrderVM
-            {
-                OrderId = o.Id,
-                CourseName = o.Course.Name,
-                CourseDesc = o.Course.Desc,
-                CourseImageUrl = o.Course.ImgUrl,
-                OrderDate = o.OrderDate
-            }).ToList();
+            var paginatedOrders = await PaginationVM<OrderVM>.CreateVM(query, stage, 2);
 
-            return View(orderVMs);
+            return View(paginatedOrders);
         }
+
 
         [HttpPost]
         public async Task<IActionResult> RemoveOrder(int orderId)

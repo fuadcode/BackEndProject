@@ -1,4 +1,4 @@
-﻿@model TeacherVM
+﻿@model Teacher
 <!-- Banner Area Start -->
 <div class="banner-area-wrapper">
     <div class="banner-area text-center">
@@ -20,43 +20,41 @@
 <div class="teacher-details-area pt-150 pb-60">
     <div class="container">
         <div class="row">
-            @foreach(var item in Model.TeacherDetails)
-            {
-                 <div class="col-md-5 col-sm-5 col-xs-12">
+            <div class="col-md-5 col-sm-5 col-xs-12">
                 <div class="teacher-details-img">
-                    <img src="~/img/teacher/@item.ImgUrl" alt="teacher" width="400" height="400">
+                    <img src="~/img/teacher/@Model.ImgUrl" alt="teacher" width="400" height="400">
                 </div>
             </div>
             <div class="col-md-7 col-sm-7 col-xs-12">
                 <div class="teacher-details-content ml-50">
-                    <h2>@item.Name</h2>
-                    <h5>@item.Position</h5>
+                    <h2>@Model.Name</h2>
+                    <h5>@Model.Position</h5>
                     <h4>about me</h4>
-                    <p>@item.About</p>
+                    <p>@Model.About</p>
                     <ul>
-                        <li><span>degree: </span>@item.Degree</li>
-                        <li><span>experience: </span>@item.Experience</li>
-                        <li><span>hobbies: </span>@item.Hobbies</li>
-                        <li><span>faculty: </span>@item.Faculty</li>
+                        <li><span>degree: </span>@Model.Degree</li>
+                        <li><span>experience: </span>@Model.Experience</li>
+                        <li><span>hobbies: </span>@Model.Hobbies</li>
+                        <li><span>faculty: </span>@Model.Faculty</li>
                     </ul>
                 </div>
             </div>
-                <div class="row">
-                    <div class="col-md-3 col-sm-4">
-                        <div class="teacher-contact">
-                            <h4>contact information</h4>
-                            <p><span>mail me : </span>@item.EmailAdress</p>
-                            <p><span>make a call : </span>@item.PhoneNumber</p>
-                            <p><span>skype : </span>@item.Skype</p>
-                            <ul>
-                                <li><a href="https://www.facebook.com/devitems/?ref=bookmarks"><i class="zmdi zmdi-facebook"></i></a></li>
-                                <li><a href="https://www.pinterest.com/devitemsllc/"><i class="zmdi zmdi-pinterest"></i></a></li>
-                                <li><a href="#"><i class="zmdi zmdi-vimeo"></i></a></li>
-                                <li><a href="https://twitter.com/devitemsllc"><i class="zmdi zmdi-twitter"></i></a></li>
-                            </ul>
-                        </div>
-                    </div>
-      
+        </div>
+        <div class="row">
+            <div class="col-md-3 col-sm-4">
+                <div class="teacher-contact">
+                    <h4>contact information</h4>
+                    <p><span>mail me : </span>@Model.EmailAdress</p>
+                    <p><span>make a call : </span>@Model.PhoneNumber</p>
+                    <p><span>skype : </span> @Model.Skype</p>
+                    <ul>
+                        <li><a href="https://www.linkedin.com/in/fuad-isk%C9%99nd%C9%99rov"><i class="zmdi zmdi-facebook"></i></a></li>
+                        <li><a href="#"><i class="zmdi zmdi-pinterest"></i></a></li>
+                        <li><a href="#"><i class="zmdi zmdi-vimeo"></i></a></li>
+                        <li><a href="#"><i class="zmdi zmdi-twitter"></i></a></li>
+                    </ul>
+                </div>
+            </div>
             <div class="col-md-9 col-sm-8">
                 <div class="skill-area">
                     <h4>skills</h4>
@@ -67,8 +65,8 @@
                             <div class="skill-bar-item">
                                 <span>language</span>
                                 <div class="progress">
-                                    <div data-wow-delay="1.2s" data-wow-duration="1.5s" style="width: @item.Language%; visibility: visible; animation-duration: 1.5s; animation-delay: 1.2s; animation-name: fadeInLeft;" data-progress="50%" class="progress-bar wow fadeInLeft">
-                                        <span class="text-top">@item.Language%</span>
+                                    <div data-wow-delay="1.2s" data-wow-duration="1.5s" style="width: @Model.Language%; visibility: visible; animation-duration: 1.5s; animation-delay: 1.2s; animation-name: fadeInLeft;" data-progress="50%" class="progress-bar wow fadeInLeft">
+                                        <span class="text-top">@Model.Language%</span>
                                     </div>
                                 </div>
                             </div>
@@ -77,8 +75,8 @@
                             <div class="skill-bar-item">
                                 <span>team leader</span>
                                 <div class="progress">
-                                    <div data-wow-delay="1.2s" data-wow-duration="1.5s" style="width: @item.TeamLeader%; visibility: visible; animation-duration: 1.5s; animation-delay: 1.2s; animation-name: fadeInLeft;" data-progress="50%" class="progress-bar wow fadeInLeft">
-                                        <span class="text-top"> @item.TeamLeader%</span>
+                                    <div data-wow-delay="1.2s" data-wow-duration="1.5s" style="width: @Model.TeamLeader%; visibility: visible; animation-duration: 1.5s; animation-delay: 1.2s; animation-name: fadeInLeft;" data-progress="50%" class="progress-bar wow fadeInLeft">
+                                        <span class="text-top"> @Model.TeamLeader%</span>
                                     </div>
                                 </div>
                             </div>
@@ -87,8 +85,8 @@
                             <div class="skill-bar-item">
                                 <span>development</span>
                                 <div class="progress">
-                                    <div data-wow-delay="1.2s" data-wow-duration="1.5s" style="width: @item.Development%; visibility: visible; animation-duration: 1.5s; animation-delay: 1.2s; animation-name: fadeInLeft;" data-progress="50%" class="progress-bar wow fadeInLeft">
-                                        <span class="text-top">@item.Development%</span>
+                                    <div data-wow-delay="1.2s" data-wow-duration="1.5s" style="width: @Model.Development%; visibility: visible; animation-duration: 1.5s; animation-delay: 1.2s; animation-name: fadeInLeft;" data-progress="50%" class="progress-bar wow fadeInLeft">
+                                        <span class="text-top">@Model.Development%</span>
                                     </div>
                                 </div>
                             </div>
@@ -97,8 +95,8 @@
                             <div class="skill-bar-item">
                                 <span>design</span>
                                 <div class="progress">
-                                    <div data-wow-delay="1.2s" data-wow-duration="1.5s" style="width: @item.Design%; visibility: visible; animation-duration: 1.5s; animation-delay: 1.2s; animation-name: fadeInLeft;" data-progress="50%" class="progress-bar wow fadeInLeft">
-                                        <span class="text-top">@item.Design%</span>
+                                    <div data-wow-delay="1.2s" data-wow-duration="1.5s" style="width: @Model.Design%; visibility: visible; animation-duration: 1.5s; animation-delay: 1.2s; animation-name: fadeInLeft;" data-progress="50%" class="progress-bar wow fadeInLeft">
+                                        <span class="text-top">@Model.Design%</span>
                                     </div>
                                 </div>
                             </div>
@@ -107,8 +105,8 @@
                             <div class="skill-bar-item">
                                 <span>innovation</span>
                                 <div class="progress">
-                                    <div data-wow-delay="1.2s" data-wow-duration="1.5s" style="width: @item.Innovation%; visibility: visible; animation-duration: 1.5s; animation-delay: 1.2s; animation-name: fadeInLeft;" data-progress="50%" class="progress-bar wow fadeInLeft">
-                                        <span class="text-top">@item.Innovation%</span>
+                                    <div data-wow-delay="1.2s" data-wow-duration="1.5s" style="width: @Model.Innovation%; visibility: visible; animation-duration: 1.5s; animation-delay: 1.2s; animation-name: fadeInLeft;" data-progress="50%" class="progress-bar wow fadeInLeft">
+                                        <span class="text-top">@Model.Innovation%</span>
                                     </div>
                                 </div>
                             </div>
@@ -117,8 +115,8 @@
                             <div class="skill-bar-item">
                                 <span>communication</span>
                                 <div class="progress">
-                                    <div data-wow-delay="1.2s" data-wow-duration="1.5s" style="width: @item.Communication%; visibility: visible; animation-duration: 1.5s; animation-delay: 1.2s; animation-name: fadeInLeft;" data-progress="50%" class="progress-bar wow fadeInLeft">
-                                        <span class="text-top">@item.Communication%</span>
+                                    <div data-wow-delay="1.2s" data-wow-duration="1.5s" style="width: @Model.Communication%; visibility: visible; animation-duration: 1.5s; animation-delay: 1.2s; animation-name: fadeInLeft;" data-progress="50%" class="progress-bar wow fadeInLeft">
+                                        <span class="text-top">@Model.Communication%</span>
                                     </div>
                                 </div>
                             </div>
@@ -126,40 +124,32 @@
                     </div>
                 </div>
             </div>
-                </div>
-               
-                    
-
-            }
         </div>
     </div>
 </div>
-
-        <!-- Teacher End -->
-            <!-- Subscribe Start -->
-            <div class="subscribe-area pt-60 pb-70">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-8 col-md-offset-2">
-                            <div class="subscribe-content section-title text-center">
-                                <h2>Subscribe to our newsletter</h2>
-                                <p>Stay updated with our latest news and offers.</p>
-                            </div>
-                            <div class="newsletter-form">
-                                <form action="/subscribe" method="post" id="subscribe-form" novalidate>
-                                    <div id="subscribe-form-content" class="mc-form">
-                                        <input type="email" name="Email" class="email" placeholder="Enter your e-mail address" required>
-                                        <button class="default-btn" type="submit"><span>Subscribe</span></button>
-                                    </div>
-                                </form>
-
-                            </div>
+<!-- Teacher End -->
+<!-- Subscribe Start -->
+<div class="subscribe-area pt-60 pb-70">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <div class="subscribe-content section-title text-center">
+                    <h2>Subscribe to our newsletter</h2>
+                    <p>Stay updated with our latest news and offers.</p>
+                </div>
+                <div class="newsletter-form">
+                    <form action="/subscribe" method="post" id="subscribe-form" novalidate>
+                        <div id="subscribe-form-content" class="mc-form">
+                            <input type="email" name="Email" class="email" placeholder="Enter your e-mail address" required>
+                            <button class="default-btn" type="submit"><span>Subscribe</span></button>
                         </div>
-                    </div>
+                    </form>
+
                 </div>
             </div>
         </div>
     </div>
 </div>
-  
-            <!-- Subscribe End -->
+
+
+<!-- Subscribe End -->

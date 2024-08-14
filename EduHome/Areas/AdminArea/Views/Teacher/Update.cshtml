@@ -1,44 +1,125 @@
 ﻿@using EduHome.Areas.AdminArea.ViewModels.TeacherVMs
 @model TeacherUpdateVM
 
-@{
-    Layout = "~/Areas/AdminArea/Views/Shared/_AdminLayout.cshtml";
-}
-<div class="container">
-    <div class="row">
-        <div class="col-md-8 offset-md-2">
-            <div class="card">
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-8">
+            <div class="card border-0 shadow-lg rounded-lg">
                 <div class="card-body">
-                    <div class="text-center mb-3">
-                        <img src="~/img/teacher/@Model.ImgUrl" class="img-thumbnail" width="500" height="300" alt="Slider Image" />
-                    </div>
-                    <h4 class="card-title text-center mb-4">Teacher Update Form</h4>
-                    <form enctype="multipart/form-data" asp-action="update" method="post" class="forms-sample">
+                    <h4 class="card-title text-primary mb-4 text-center">Update Teacher Information</h4>
+
+                    <form enctype="multipart/form-data" method="post" asp-action="update" class="forms-sample">
+                        <div class="text-center mb-4">
+                            <img src="~/img/teacher/@Model.ImgUrl" class="img-fluid rounded-circle border border-primary" alt="Teacher Image" width="200" height="200" />
+                        </div>
+
                         <div class="form-group">
-                            <label asp-for="Name"></label>
-                            <input asp-for="Name" class="form-control" placeholder="Enter Name" />
+                            <label asp-for="Name" class="font-weight-bold text-secondary"></label>
+                            <input asp-for="Name" class="form-control form-control-lg" placeholder="Name">
                             <span class="text-danger" asp-validation-for="Name"></span>
                         </div>
+
                         <div class="form-group">
-                            <label asp-for="Position"></label>
-                            <textarea asp-for="Position" class="form-control" placeholder="Enter Description"></textarea>
+                            <label asp-for="Position" class="font-weight-bold text-secondary"></label>
+                            <input asp-for="Position" class="form-control form-control-lg" placeholder="Position">
                             <span class="text-danger" asp-validation-for="Position"></span>
                         </div>
+
                         <div class="form-group">
-                            <label asp-for="Photo"></label>
-                            <input type="file" asp-for="Photo" class="form-control-file" />
+                            <label asp-for="About" class="font-weight-bold text-secondary"></label>
+                            <textarea asp-for="About" class="form-control form-control-lg" rows="4" placeholder="About"></textarea>
+                            <span class="text-danger" asp-validation-for="About"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label asp-for="Degree" class="font-weight-bold text-secondary"></label>
+                            <input asp-for="Degree" class="form-control form-control-lg" placeholder="Degree">
+                            <span class="text-danger" asp-validation-for="Degree"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label asp-for="Experience" class="font-weight-bold text-secondary"></label>
+                            <input asp-for="Experience" class="form-control form-control-lg" placeholder="Experience">
+                            <span class="text-danger" asp-validation-for="Experience"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label asp-for="Hobbies" class="font-weight-bold text-secondary"></label>
+                            <input asp-for="Hobbies" class="form-control form-control-lg" placeholder="Hobbies">
+                            <span class="text-danger" asp-validation-for="Hobbies"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label asp-for="Faculty" class="font-weight-bold text-secondary"></label>
+                            <input asp-for="Faculty" class="form-control form-control-lg" placeholder="Faculty">
+                            <span class="text-danger" asp-validation-for="Faculty"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label asp-for="PhoneNumber" class="font-weight-bold text-secondary"></label>
+                            <input asp-for="PhoneNumber" class="form-control form-control-lg" placeholder="Phone Number">
+                            <span class="text-danger" asp-validation-for="PhoneNumber"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label asp-for="Skype" class="font-weight-bold text-secondary"></label>
+                            <input asp-for="Skype" class="form-control form-control-lg" placeholder="Skype">
+                            <span class="text-danger" asp-validation-for="Skype"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label asp-for="EmailAdress" class="font-weight-bold text-secondary"></label>
+                            <input asp-for="EmailAdress" class="form-control form-control-lg" placeholder="Email Address">
+                            <span class="text-danger" asp-validation-for="EmailAdress"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label asp-for="Language" class="font-weight-bold text-secondary"></label>
+                            <input asp-for="Language" class="form-control form-control-lg" placeholder="Language">
+                            <span class="text-danger" asp-validation-for="Language"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label asp-for="TeamLeader" class="font-weight-bold text-secondary"></label>
+                            <input asp-for="TeamLeader" class="form-control form-control-lg" placeholder="Team Leader">
+                            <span class="text-danger" asp-validation-for="TeamLeader"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label asp-for="Development" class="font-weight-bold text-secondary"></label>
+                            <input asp-for="Development" class="form-control form-control-lg" placeholder="Development">
+                            <span class="text-danger" asp-validation-for="Development"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label asp-for="Design" class="font-weight-bold text-secondary"></label>
+                            <input asp-for="Design" class="form-control form-control-lg" placeholder="Design">
+                            <span class="text-danger" asp-validation-for="Design"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label asp-for="Innovation" class="font-weight-bold text-secondary"></label>
+                            <input asp-for="Innovation" class="form-control form-control-lg" placeholder="Innovation">
+                            <span class="text-danger" asp-validation-for="Innovation"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label asp-for="Communication" class="font-weight-bold text-secondary"></label>
+                            <input asp-for="Communication" class="form-control form-control-lg" placeholder="Communication">
+                            <span class="text-danger" asp-validation-for="Communication"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label asp-for="Photo" class="font-weight-bold text-secondary"></label>
+                            <input asp-for="Photo" type="file" class="form-control-file">
                             <span class="text-danger" asp-validation-for="Photo"></span>
                         </div>
-                        <div class="text-center">
-                            <button type="submit" class="btn btn-primary">Update</button>
-                            <a asp-action="index" class="btn btn-light ml-2">Go Back</a>
-                        </div>
+
+                        <button type="submit" class="btn btn-primary btn-lg">Update</button>
+                        <a asp-action="index" class="btn btn-light btn-lg">Go Back</a>
                     </form>
                 </div>
             </div>
         </div>
     </div>
 </div>
-@section Scripts {
-    <script src="~/js/validation.js"></script>
-}

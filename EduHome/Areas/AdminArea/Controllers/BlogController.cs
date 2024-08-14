@@ -31,6 +31,7 @@ namespace EduHome.Areas.AdminArea.Controllers
                     Name = m.Name,
                     Comment = m.Comment,
                     Time = m.Time,
+                    DescPart = m.DescPart,
                 });
 
             return View(await PaginationVM<BlogListVM>.CreateVM(query, stage, 2));
@@ -64,6 +65,7 @@ namespace EduHome.Areas.AdminArea.Controllers
                     Name = m.Name,
                     Comment = m.Comment,
                     Time = m.Time,
+                    DescPart = m.DescPart,
                 }).FirstOrDefaultAsync(m => m.Id == id);
             return View(blog);
         }
@@ -100,6 +102,7 @@ namespace EduHome.Areas.AdminArea.Controllers
                 Desc = blogCreateVM.Desc,
                 Comment = blogCreateVM.Comment,
                 Time = blogCreateVM.Time,
+                DescPart = blogCreateVM.DescPart,
                 ImgUrl = await SaveFilesAsync(file)
             };
             await _dbContext.Blogs.AddAsync(blog);

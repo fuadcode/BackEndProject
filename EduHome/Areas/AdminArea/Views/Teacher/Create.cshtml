@@ -1,41 +1,130 @@
 ﻿@using EduHome.Areas.AdminArea.ViewModels.TeacherVMs
 @model TeacherCreateVM
 
-<div class="container">
-    <div class="row">
-        <div class="card">
-            <div class="card-body">
-                <h4 class="card-title">Teacher Create form</h4>
-                <form enctype="multipart/form-data" asp-action="create" method="post" class="forms-sample">
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-9 col-xl-8">
+            <div class="card border-0 shadow-lg rounded-lg">
+                <div class="card-body p-5">
+                    <h4 class="card-title text-primary mb-4 text-center">Create New Teacher</h4>
 
-                    <div class="form-group">
-                        <label asp-for="Photo"></label>
-                        <input asp-for="Photo" class="form-control" placeholder="Photo">
-                        <span class="text-danger" asp-validation-for="Photo"></span> 
+                    <form enctype="multipart/form-data" asp-action="create" method="post" class="forms-sample">
+     
+                        <div class="text-center mb-4">
+                      
+                            <div class="mt-3">
+                                <input asp-for="Photo" type="file" class="form-control-file">
+                                <span class="text-danger" asp-validation-for="Photo"></span>
+                            </div>
+                        </div>
 
-                    </div>
-                    <div class="form-group">
-                        <label asp-for="Name"></label>
-                        <input asp-for="Name" class="form-control" placeholder="Name">
-                        <span class="text-danger" asp-validation-for="Name"></span> 
+                        <div class="form-group">
+                            <label asp-for="Name" class="font-weight-bold text-secondary"></label>
+                            <input asp-for="Name" class="form-control form-control-lg border border-primary rounded-lg" placeholder="Name">
+                            <span class="text-danger" asp-validation-for="Name"></span>
+                        </div>
 
-                    </div>
-                    <div class="form-group">
-                        <label asp-for="Position"></label>
-                        <input asp-for="Position" class="form-control" placeholder="Position">
-                        <span class="text-danger" asp-validation-for="Position"></span> 
+                        <div class="form-group">
+                            <label asp-for="Position" class="font-weight-bold text-secondary"></label>
+                            <input asp-for="Position" class="form-control form-control-lg border border-primary rounded-lg" placeholder="Position">
+                            <span class="text-danger" asp-validation-for="Position"></span>
+                        </div>
 
-                    </div>
+                        <div class="form-group">
+                            <label asp-for="About" class="font-weight-bold text-secondary"></label>
+                            <textarea asp-for="About" class="form-control form-control-lg border border-primary rounded-lg" rows="4" placeholder="About"></textarea>
+                            <span class="text-danger" asp-validation-for="About"></span>
+                        </div>
 
-                    <div class="form-group">
-                        <label asp-for="CreatedDate"></label>
-                        <input asp-for="CreatedDate" class="form-control" placeholder="CreatedDate">
-                        <span class="text-danger" asp-validation-for="CreatedDate"></span>
+                        <div class="form-group">
+                            <label asp-for="Degree" class="font-weight-bold text-secondary"></label>
+                            <input asp-for="Degree" class="form-control form-control-lg border border-primary rounded-lg" placeholder="Degree">
+                            <span class="text-danger" asp-validation-for="Degree"></span>
+                        </div>
 
-                    </div>
-                    <button type="submit" class="btn btn-primary mr-2">Create</button>
-                    <a asp-action="index" class="btn btn-light">Go Back</a>
-                </form>
+                        <div class="form-group">
+                            <label asp-for="Experience" class="font-weight-bold text-secondary"></label>
+                            <input asp-for="Experience" class="form-control form-control-lg border border-primary rounded-lg" placeholder="Experience">
+                            <span class="text-danger" asp-validation-for="Experience"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label asp-for="Hobbies" class="font-weight-bold text-secondary"></label>
+                            <input asp-for="Hobbies" class="form-control form-control-lg border border-primary rounded-lg" placeholder="Hobbies">
+                            <span class="text-danger" asp-validation-for="Hobbies"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label asp-for="Faculty" class="font-weight-bold text-secondary"></label>
+                            <input asp-for="Faculty" class="form-control form-control-lg border border-primary rounded-lg" placeholder="Faculty">
+                            <span class="text-danger" asp-validation-for="Faculty"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label asp-for="PhoneNumber" class="font-weight-bold text-secondary"></label>
+                            <input asp-for="PhoneNumber" class="form-control form-control-lg border border-primary rounded-lg" placeholder="Phone Number">
+                            <span class="text-danger" asp-validation-for="PhoneNumber"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label asp-for="Skype" class="font-weight-bold text-secondary"></label>
+                            <input asp-for="Skype" class="form-control form-control-lg border border-primary rounded-lg" placeholder="Skype">
+                            <span class="text-danger" asp-validation-for="Skype"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label asp-for="EmailAdress" class="font-weight-bold text-secondary"></label>
+                            <input asp-for="EmailAdress" type="email" class="form-control form-control-lg border border-primary rounded-lg" placeholder="Email Address">
+                            <span class="text-danger" asp-validation-for="EmailAdress"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label asp-for="Language" class="font-weight-bold text-secondary"></label>
+                            <input asp-for="Language" type="number" class="form-control form-control-lg border border-primary rounded-lg" placeholder="Language">
+                            <span class="text-danger" asp-validation-for="Language"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label asp-for="TeamLeader" class="font-weight-bold text-secondary"></label>
+                            <input asp-for="TeamLeader" type="number" class="form-control form-control-lg border border-primary rounded-lg" placeholder="Team Leader">
+                            <span class="text-danger" asp-validation-for="TeamLeader"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label asp-for="Development" class="font-weight-bold text-secondary"></label>
+                            <input asp-for="Development" type="number" class="form-control form-control-lg border border-primary rounded-lg" placeholder="Development">
+                            <span class="text-danger" asp-validation-for="Development"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label asp-for="Design" class="font-weight-bold text-secondary"></label>
+                            <input asp-for="Design" type="number" class="form-control form-control-lg border border-primary rounded-lg" placeholder="Design">
+                            <span class="text-danger" asp-validation-for="Design"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label asp-for="Innovation" class="font-weight-bold text-secondary"></label>
+                            <input asp-for="Innovation" type="number" class="form-control form-control-lg border border-primary rounded-lg" placeholder="Innovation">
+                            <span class="text-danger" asp-validation-for="Innovation"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label asp-for="Communication" class="font-weight-bold text-secondary"></label>
+                            <input asp-for="Communication" type="number" class="form-control form-control-lg border border-primary rounded-lg" placeholder="Communication">
+                            <span class="text-danger" asp-validation-for="Communication"></span>
+                        </div>
+                     @*    <div class="form-group">
+                            <label asp-for="CreatedDate" class="font-weight-bold text-secondary"></label>
+                            <input asp-for="CreatedDate" type="date" class="form-control form-control-lg border border-primary rounded-lg">
+                            <span class="text-danger" asp-validation-for="CreatedDate"></span>
+                        </div> *@
+
+                        <div class="form-group text-center mt-4">
+                            <button type="submit" class="btn btn-primary btn-lg px-4 py-2">Create Teacher</button>
+                            <a asp-action="index" class="btn btn-light btn-lg px-4 py-2 ml-3">Go Back</a>
+                        </div>
+                    </form>
+                </div>
             </div>
         </div>
     </div>

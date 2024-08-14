@@ -1,0 +1,28 @@
+﻿@using EduHome.Areas.AdminArea.ViewModels.CategoryVMs
+
+@model CategoryUpdateVM
+
+<div class="container mt-4">
+    <div class="row justify-content-center">
+        <div class="col-lg-6 col-md-8">
+            <div class="card shadow-sm border-light">
+                <div class="card-body">
+                    <h4 class="card-title mb-4">Update Category</h4>
+                    <form asp-action="update" method="post" class="needs-validation" novalidate>
+                        <div class="mb-3">
+                            <label asp-for="Name" class="form-label"></label>
+                            <input asp-for="Name" class="form-control" placeholder="Enter category name" />
+                            <div class="invalid-feedback">
+                                <span asp-validation-for="Name"></span>
+                            </div>
+                        </div>
+                        <div class="d-flex justify-content-between">
+                            <button type="submit" class="btn btn-primary">Update</button>
+                            <a asp-action="index" class="btn btn-outline-secondary">Go Back</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

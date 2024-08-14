@@ -1,37 +1,107 @@
 ﻿@using EduHome.Areas.AdminArea.ViewModels.TeacherVMs
-@model TeacherListVM
+@model TeacherDetailVM
 
-@{
-    Layout = "~/Areas/AdminArea/Views/Shared/_AdminLayout.cshtml";
-}
-<div class="container mt-4">
+<div class="container mt-5">
     <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">
-                    <h3>User Details</h3>
-                </div>
-                <div class="card-body">
-                    <img src="~/img/teacher/@Model.ImgUrl" class="card-img-top" alt="Teacher Image" style="height:500px; width=:100px; object-fit: cover;" />
-                    <div class="row mb-3">
-                        <div class="col-sm-4 font-weight-bold">Name:</div>
-                        <div class="col-sm-8">@Model.Name</div>
+        <div class="col-lg-10">
+            <div class="card border-0 shadow-lg rounded-lg">
+                <div class="row no-gutters">
+                    <div class="col-md-4 d-flex justify-content-center align-items-center bg-light border-right">
+                        <img src="~/img/teacher/@Model.ImgUrl" class="img-fluid rounded-circle border border-primary" alt="Teacher Image" width="300" height="300" />
                     </div>
-                    <div class="row mb-3">
-                        <div class="col-sm-4 font-weight-bold">Position:</div>
-                        <div class="col-sm-8">@Model.Position</div>
+                    <div class="col-md-8">
+                        <div class="card-body p-4">
+                            <div class="text-center mb-4">
+                                <h1 class="display-4 font-weight-bold text-primary">@Model.Name</h1>
+                                <h3 class="font-weight-light text-muted">@Model.Position</h3>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <div class="bg-light p-3 rounded border">
+                                        <h5 class="text-secondary">About</h5>
+                                        <p>@Model.About</p>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <div class="bg-light p-3 rounded border">
+                                        <h5 class="text-secondary">Degree</h5>
+                                        <p>@Model.Degree</p>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <div class="bg-light p-3 rounded border">
+                                        <h5 class="text-secondary">Experiences</h5>
+                                        <p>@Model.Experience</p>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <div class="bg-light p-3 rounded border">
+                                        <h5 class="text-secondary">Hobbies</h5>
+                                        <p>@Model.Hobbies</p>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <div class="bg-light p-3 rounded border">
+                                        <h5 class="text-secondary">Faculty</h5>
+                                        <p>@Model.Faculty</p>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <div class="bg-light p-3 rounded border">
+                                        <h5 class="text-secondary">Phone</h5>
+                                        <p>@Model.PhoneNumber</p>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <div class="bg-light p-3 rounded border">
+                                        <h5 class="text-secondary">Skype</h5>
+                                        <p>@Model.Skype</p>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <div class="bg-light p-3 rounded border">
+                                        <h5 class="text-secondary">Mail</h5>
+                                        <p>@Model.EmailAdress</p>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <div class="bg-light p-3 rounded border">
+                                        <h5 class="text-secondary">Language</h5>
+                                        <p>@Model.Language</p>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <div class="bg-light p-3 rounded border">
+                                        <h5 class="text-secondary">Team Leader</h5>
+                                        <p>@Model.TeamLeader</p>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <div class="bg-light p-3 rounded border">
+                                        <h5 class="text-secondary">Design</h5>
+                                        <p>@Model.Design</p>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <div class="bg-light p-3 rounded border">
+                                        <h5 class="text-secondary">Innovation</h5>
+                                        <p>@Model.Innovation</p>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <div class="bg-light p-3 rounded border">
+                                        <h5 class="text-secondary">Communication</h5>
+                                        <p>@Model.Communication</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <a asp-action="index" class="btn btn-primary btn-lg mt-4">Go Back</a>
+                        </div>
                     </div>
-                    <div class="row mb-3">
-                        <div class="col-sm-4 font-weight-bold">CreateDate:</div>
-                        <div class="col-sm-8">@Model.CreatedDate?.ToString("dd.MM.yyyy")</div>
-                    </div>
-                    <a asp-action="index" class="btn btn-outline-dark">Go Back</a>
                 </div>
             </div>
         </div>
     </div>
 </div>
-
-@section Scripts {
-    <script src="~/js/validation.js"></script>
-}

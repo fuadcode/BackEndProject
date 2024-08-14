@@ -1,4 +1,5 @@
 ﻿
+using EduHome.Areas.AdminArea.ViewModels.EventVMs;
 using EduHome.Areas.AdminArea.ViewModels.UserVms;
 using EduHome.Helpers;
 using EduHome.Models;
@@ -7,6 +8,7 @@ using EduHome.ViewModels;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 namespace EduHome.Areas.AdminArea.Controllers
 {
     [Area("AdminArea")]
@@ -23,18 +25,21 @@ namespace EduHome.Areas.AdminArea.Controllers
             _emailService = emailService;
 
         }
-     
+
 
         public async Task<IActionResult> Index(string searchText, int stage = 1)
         {
-            var users = string.IsNullOrEmpty(searchText) ? await _userManager.Users.ToListAsync()
-                   : await _userManager.Users.Where(u => u.UserName.ToLower().Contains(searchText.ToLower()) ||
-                u.FullName.ToLower().Contains(searchText.ToLower())).ToListAsync();
+            var query = string.IsNullOrEmpty(searchText)
+                ? _userManager.Users
+                : _userManager.Users.Where(u => u.UserName.ToLower().Contains(searchText.ToLower()) ||
+                                                 u.FullName.ToLower().Contains(searchText.ToLower()));
 
-            return View(users);
-           
-
+            var pagination = await PaginationVM<AppUser>.CreateVM(query, stage, 3); 
+            return View(pagination);
         }
+
+
+
         public IActionResult Create()
         {
             return View();
@@ -93,8 +98,6 @@ namespace EduHome.Areas.AdminArea.Controllers
             await _userManager.UpdateAsync(user);
             return RedirectToAction("index");
         }
-
-
 
         public async Task<IActionResult> Detail(string id)
         {
