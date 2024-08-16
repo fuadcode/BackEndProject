@@ -18,6 +18,8 @@ namespace EduHome.Controllers
 
         public IActionResult Index()
         {
+
+            ViewBag.EventCounts = _dbContext.Events.Count();
             return View();
         }
         public IActionResult Detail(int? id)
@@ -41,10 +43,14 @@ namespace EduHome.Controllers
             return View(eventVM);
         }
 
-        public async Task<IActionResult> EventSearch(string text)
+        [HttpGet]
+        public IActionResult Search(string search)
         {
-            var data = await _dbContext.Events.Where(k => k.Name.ToLower().Contains(text.ToLower())).Take(5).ToListAsync();
-            return PartialView("_EventSearchPartialView", data);
+            var events = _dbContext.Events.AsEnumerable() 
+                .Where(c => string.IsNullOrEmpty(search) || c.Name.IndexOf(search, StringComparison.OrdinalIgnoreCase) >= 0)
+                .ToList();
+
+            return PartialView("_EventSearchPartialView", events);
         }
     }
 }

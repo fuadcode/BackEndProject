@@ -6,10 +6,12 @@
         @foreach (var course in Model)
         {
             <li>@course.Name</li>
+            <li>@course.Desc</li>
+            <img src="img/course/@course.ImgUrl" alt="@course.Name">
         }
     </ul>
 }
 else
 {
-    <p>Not Found</p>
+    <p>No courses found</p>
 }

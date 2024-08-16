@@ -24,6 +24,7 @@ namespace EduHome
             });
             services.AddHttpContextAccessor();
             services.AddScoped<IEmailService, EmailService>();
+            services.AddScoped<IOtpService, OtpService>();
             services.AddIdentity<AppUser,IdentityRole>(options =>
 
             {

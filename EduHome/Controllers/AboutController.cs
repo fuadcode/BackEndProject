@@ -1,9 +1,7 @@
 ﻿using EduHome.Data;
-using EduHome.Models;
 using EduHome.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using NuGet.Configuration;
 
 namespace EduHome.Controllers
 {

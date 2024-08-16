@@ -1,12 +1,10 @@
 ﻿using EduHome.Data;
 using EduHome.Models;
-using EduHome.Services;
 using EduHome.Services.Interfaces;
 using EduHome.ViewModels;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using Newtonsoft.Json;
 using System.Security.Claims;
 
 namespace EduHome.Controllers
@@ -69,8 +67,6 @@ namespace EduHome.Controllers
 
             return RedirectToAction("ShowBasket", "Basket");
         }
-
-
 
         public async Task<IActionResult> ShowBasket()
         {

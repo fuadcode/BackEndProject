@@ -229,6 +229,10 @@
       "PackagePath": "staticwebassets\\admin\\images\\logo.svg"
     },
     {
+      "Id": "C:\\Users\\Feteli Isgenderov\\Desktop\\EduHome\\EduHome\\wwwroot\\admin\\images\\otp-icon.png",
+      "PackagePath": "staticwebassets\\admin\\images\\otp-icon.png"
+    },
+    {
       "Id": "C:\\Users\\Feteli Isgenderov\\Desktop\\EduHome\\EduHome\\wwwroot\\admin\\js\\Chart.min.js",
       "PackagePath": "staticwebassets\\admin\\js\\Chart.min.js"
     },
@@ -801,10 +805,6 @@
       "PackagePath": "staticwebassets\\img\\event\\event-details.jpg"
     },
     {
-      "Id": "C:\\Users\\Feteli Isgenderov\\Desktop\\EduHome\\EduHome\\wwwroot\\img\\event\\event1.jpg",
-      "PackagePath": "staticwebassets\\img\\event\\event1.jpg"
-    },
-    {
       "Id": "C:\\Users\\Feteli Isgenderov\\Desktop\\EduHome\\EduHome\\wwwroot\\img\\event\\event10.jpg",
       "PackagePath": "staticwebassets\\img\\event\\event10.jpg"
     },
@@ -819,18 +819,6 @@
     {
       "Id": "C:\\Users\\Feteli Isgenderov\\Desktop\\EduHome\\EduHome\\wwwroot\\img\\event\\event13.jpg",
       "PackagePath": "staticwebassets\\img\\event\\event13.jpg"
-    },
-    {
-      "Id": "C:\\Users\\Feteli Isgenderov\\Desktop\\EduHome\\EduHome\\wwwroot\\img\\event\\event2.jpg",
-      "PackagePath": "staticwebassets\\img\\event\\event2.jpg"
-    },
-    {
-      "Id": "C:\\Users\\Feteli Isgenderov\\Desktop\\EduHome\\EduHome\\wwwroot\\img\\event\\event3.jpg",
-      "PackagePath": "staticwebassets\\img\\event\\event3.jpg"
-    },
-    {
-      "Id": "C:\\Users\\Feteli Isgenderov\\Desktop\\EduHome\\EduHome\\wwwroot\\img\\event\\event5.jpg",
-      "PackagePath": "staticwebassets\\img\\event\\event5.jpg"
     },
     {
       "Id": "C:\\Users\\Feteli Isgenderov\\Desktop\\EduHome\\EduHome\\wwwroot\\img\\event\\event6.jpg",

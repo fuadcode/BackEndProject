@@ -1,46 +1,17 @@
 ﻿
 //search-Course
-$("#input-search").on("keyup", function () {
-    $("#searchResults").empty();
-    var value = $(this).val().trim();
-    if (value) {
-        $.ajax({
-            url: "/course/CourseSearch?text=" + encodeURIComponent(value),
-            method: "get",
-            success: function (data) {
-                $("#searchResults").html(data); 
-            },
-            error: function (error) {
-                console.log(error);
-            }
-        });
-    }
-});
+function searchCourses() {
+    var searchQuery = document.getElementById('searchInput').value;
 
+    fetch(`/Course/Search?search=${encodeURIComponent(searchQuery)}`)
+        .then(response => response.text())
+        .then(html => {
+            document.getElementById('courseResults').innerHTML = html;
+        })
+        .catch(error => console.error('Error:', error));
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    return false; 
+}
 
 
 

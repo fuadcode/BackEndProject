@@ -36,4 +36,15 @@ public class CourseController : Controller
         return View(courseVM);
     }
 
+    [HttpGet]
+    public IActionResult Search(string search)
+    {
+        var courses = _context.Courses.AsEnumerable() 
+            .Where(c => string.IsNullOrEmpty(search) || c.Name.IndexOf(search, StringComparison.OrdinalIgnoreCase) >= 0)
+            .ToList();
+
+        return PartialView("_CourseSearchPartialView", courses);
+    }
+
+
 }

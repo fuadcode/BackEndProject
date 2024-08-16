@@ -21,15 +21,10 @@
 <div class="blog-area pt-150 pb-150">
     <div class="container">
         <div class="row">
-        
             @await Component.InvokeAsync("Blog")
         </div>
         <div class="row">
             <div class="col-xs-12">
-                <div class="pagination">
-                    <ul>
-                       
-                    </ul>
                 </div>
             </div>
         </div>
@@ -40,23 +35,10 @@
 <div class="subscribe-area pt-60 pb-70">
     <div class="container">
         <div class="row">
-            <div class="col-md-8 col-md-offset-2">
-                <div class="subscribe-content section-title text-center">
-                    <h2>Subscribe to our newsletter</h2>
-                    <p>Stay updated with our latest news and offers.</p>
-                </div>
-                <div class="newsletter-form">
-                    <form action="/subscribe" method="post" id="subscribe-form" novalidate>
-                        <div id="subscribe-form-content" class="mc-form">
-                            <input type="email" name="Email" class="email" placeholder="Enter your e-mail address" required>
-                            <button class="default-btn" type="submit"><span>Subscribe</span></button>
-                        </div>
-                    </form>
-
-                </div>
-            </div>
+            @await Component.InvokeAsync("Subscription")
         </div>
     </div>
 </div>
-
+    </div>
+</div>
 <!-- Subscribe End -->

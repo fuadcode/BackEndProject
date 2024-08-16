@@ -1,5 +1,7 @@
 ﻿using EduHome.Helpers;
+using EduHome.Migrations;
 using EduHome.Models;
+using EduHome.Services;
 using EduHome.Services.Interfaces;
 using EduHome.ViewModels;
 using Microsoft.AspNetCore.Identity;
@@ -14,30 +16,36 @@ namespace EduHome.Controllers
         private readonly SignInManager<AppUser> _signInManager;
         private readonly RoleManager<IdentityRole> _roleManager;
         private readonly IEmailService _emailService;
+        private readonly IOtpService _otpService;
 
-        public AccountController(UserManager<AppUser> userManager, SignInManager<AppUser> signInManager, RoleManager<IdentityRole> roleManager, IEmailService emailService)
+        public AccountController(UserManager<AppUser> userManager, SignInManager<AppUser> signInManager, RoleManager<IdentityRole> roleManager, IEmailService emailService, IOtpService otpService)
         {
             _userManager = userManager;
             _signInManager = signInManager;
             _roleManager = roleManager;
             _emailService = emailService;
+            _otpService = otpService;
         }
         public IActionResult Register()
         {
             return View();
         }
 
-        [HttpPost]
 
+        [HttpPost]
         public async Task<IActionResult> Register(RegisterVM registerVM)
         {
             if (!ModelState.IsValid) return View(registerVM);
+
+            var otpCode = _otpService.GenerateOTP();
             AppUser user = new()
             {
                 FullName = registerVM.FullName,
                 UserName = registerVM.UserName,
                 Email = registerVM.Email,
+                OTPCode = otpCode
             };
+
             IdentityResult result = await _userManager.CreateAsync(user, registerVM.Password);
             if (!result.Succeeded)
             {
@@ -46,27 +54,62 @@ namespace EduHome.Controllers
                     ModelState.AddModelError("", error.Description);
                 }
                 return View(registerVM);
-
             }
 
             await _userManager.AddToRoleAsync(user, nameof(RolesEnum.Member));
-
-
-            string token = await _userManager.GenerateEmailConfirmationTokenAsync(user);
-            string link = Url.Action(nameof(VerifyEmail), "Account", new { email = user.Email, token },
-                Request.Scheme, Request.Host.ToString());
 
             string body = string.Empty;
             using (StreamReader reader = new StreamReader("wwwroot/templates/emailTemplate/emailConfirm.html"))
             {
                 body = reader.ReadToEnd();
-            };
-            body = body.Replace("{{link}}", link);
-            body = body.Replace("{{username}}", user.UserName);
-            _emailService.SendEmail(new() { user.Email }, body, "Email verification", "Verify email");
+            }
 
-            await _userManager.AddToRoleAsync(user, RolesEnum.Member.ToString());
-            return RedirectToAction("index", "home");
+            body = body.Replace("{{otpCode}}", otpCode);
+            body = body.Replace("{{username}}", user.UserName);
+
+            _emailService.SendEmail(new() { user.Email }, body, "OTP Verification", "Verify OTP");
+
+            var enterOtpVM = new VerifyOTPVM { Email = user.Email, Token = otpCode };
+            return View("EnterOtp", enterOtpVM);
+        }
+
+
+        [HttpPost]
+        public async Task<IActionResult> VerifyOtp(string email, string otpCode)
+        {
+            var user = await _userManager.FindByEmailAsync(email);
+            if (user == null || user.OTPCode != otpCode)
+            {
+                ModelState.AddModelError("", "Invalid OTP Code.");
+                return View("EnterOtp", new VerifyOTPVM { Email = email });
+            }
+
+            var token = await _userManager.GenerateEmailConfirmationTokenAsync(user);
+            var result = await _userManager.ConfirmEmailAsync(user, token);
+
+            if (!result.Succeeded)
+            {
+                TempData["ErrorMessage"] = string.Join(" ", result.Errors.Select(e => e.Description));
+                return RedirectToAction("EnterOtp");
+            }
+            if (!result.Succeeded)
+            {
+                foreach (var error in result.Errors)
+                {
+                    ModelState.AddModelError("", error.Description);
+                }
+                return View("EnterOtp", new VerifyOTPVM { Email = email });
+            }
+            await _signInManager.SignInAsync(user, true);
+
+            return RedirectToAction("Index", "Home");
+        }
+
+
+        public IActionResult EnterOtp(string userId)
+        {
+            ViewBag.UserId = userId;
+            return View();
         }
 
 
@@ -74,8 +117,9 @@ namespace EduHome.Controllers
         {
             return View();
         }
-        [HttpPost]
 
+
+        [HttpPost]
         public async Task<IActionResult> Login(LoginVM loginVM)
         {
             if (!ModelState.IsValid) return View(loginVM);
@@ -112,7 +156,6 @@ namespace EduHome.Controllers
                 return View(loginVM);
             }
             return RedirectToAction("index", "home");
-
         }
 
 
@@ -203,15 +246,15 @@ namespace EduHome.Controllers
             return RedirectToAction("index", "home");
         }
 
-        public async Task<IActionResult> VerifyEmail(string email, string token)
-        {
-            AppUser user = await _userManager.FindByEmailAsync(email);
-            if (user is null) return BadRequest();
-            await _userManager.ConfirmEmailAsync(user, token);
-            await _signInManager.SignInAsync(user, true);
-            return RedirectToAction("index", "home");
+        //public async Task<IActionResult> VerifyEmail(string email, string token)
+        //{
+        //    AppUser user = await _userManager.FindByEmailAsync(email);
+        //    if (user is null) return BadRequest();
+        //    await _userManager.ConfirmEmailAsync(user, token);
+        //    await _signInManager.SignInAsync(user, true);
+        //    return RedirectToAction("index", "home");
 
-        }
+        //}
 
         public async Task<IActionResult> AddRole()
         {

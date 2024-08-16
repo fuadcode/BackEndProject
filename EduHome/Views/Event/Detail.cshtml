@@ -98,13 +98,13 @@
                                 <ul class="list-unstyled py-3" id="searchList">
                                     <li>
                                         <input type="search" placeholder="Search..." id="input-search" name="search" />
+                                        <div id="eventResults"></div>
                                     </li>
                                 </ul>
                                 <button type="submit">
                                     <span><i class="fa fa-search"></i></span>
                                 </button>
                             </form>
-                            <div id="search-results"></div>
                         </div>
                     </div>
                     <div class="single-blog-widget mb-50">
@@ -190,23 +190,25 @@
 <div class="subscribe-area pt-60 pb-70">
     <div class="container">
         <div class="row">
-            <div class="col-md-8 col-md-offset-2">
-                <div class="subscribe-content section-title text-center">
-                    <h2>Subscribe to our newsletter</h2>
-                    <p>Stay updated with our latest news and offers.</p>
-                </div>
-                <div class="newsletter-form">
-                    <form action="/subscribe" method="post" id="subscribe-form" novalidate>
-                        <div id="subscribe-form-content" class="mc-form">
-                            <input type="email" name="Email" class="email" placeholder="Enter your e-mail address" required>
-                            <button class="default-btn" type="submit"><span>Subscribe</span></button>
-                        </div>
-                    </form>
-
-                </div>
-            </div>
+            @await Component.InvokeAsync("Subscription")
         </div>
     </div>
 </div>
-
+    </div>
+</div>
 <!-- Subscribe End -->
+<script>
+    //search-Event
+    function searchEvents() {
+        var searchQuery = document.getElementById('searchInput').value;
+
+        fetch(`/Event/Search?search=${encodeURIComponent(searchQuery)}`)
+            .then(response => response.text())
+            .then(html => {
+                document.getElementById('eventResults').innerHTML = html;
+            })
+            .catch(error => console.error('Error:', error));
+
+        return false;
+    }
+</script>

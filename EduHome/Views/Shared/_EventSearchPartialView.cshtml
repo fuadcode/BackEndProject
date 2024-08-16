@@ -1,9 +1,9 @@
 ﻿@model IEnumerable<Event>
-@foreach (var text in Model)
+@foreach (var search in Model)
 {
     <li class="d-flex px-3">
-        <a asp-action="detail" asp-route-id="@text.Id">
-            @text.Name
+        <a asp-action="detail" asp-route-id="@search.Id">
+            @search.Name
         </a>
     </li>
 }
